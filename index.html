@@ -1,442 +1,2369 @@
 <!DOCTYPE html>
-<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>绿进沙退｜毛乌素沙地四十年</title>
-<meta name="description" content="毛乌素沙地1986—2025：同一块地的卫星影像对比、四十年植被变化和治沙人石光银的经历。">
-<meta name="theme-color" content="#0b120e"><link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/css/main.css"><link rel="stylesheet" href="assets/css/editorial.css"><link rel="stylesheet" href="assets/css/immersive.css"></head>
-<body data-view="story" data-estimates="show"><a class="skip-link" href="#main">跳到内容</a>
-<nav class="nav show" id="nav" aria-label="作品导航"><a class="nav-brand" href="#hero"><span class="brand-symbol">绿</span><span>绿进沙退</span></a>
-<div class="view-switch" role="group" aria-label="选择观看方式"><button type="button" data-view="story" aria-pressed="true">故事</button><button type="button" data-view="explore" aria-pressed="false">自由探索</button><button type="button" data-view="method" aria-pressed="false">数据方法</button></div>
-<ul class="nav-links"><li><a href="#story">治沙人</a></li><li><a href="#stage">四十年</a></li><li><a href="#today">今天</a></li></ul>
-<button class="nav-play" id="panelPlay" type="button" aria-pressed="false" aria-label="播放区域时间轴"><svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path id="panelPlayIcon" d="M8 5v14l11-7z" fill="currentColor"/></svg><span class="sp-txt">播放年份</span></button>
-<div class="nav-year"><span id="navYear">1986</span></div><button class="nav-tour" id="navTour" type="button">故事导览</button>
-<button class="nav-dev" id="navDev" type="button" hidden aria-label="开发者设置">设置</button><button class="vinyl" id="vinyl" type="button" aria-pressed="false" aria-label="播放背景音乐" title="背景音乐"><span class="vinyl-disc" aria-hidden="true"></span><span class="vinyl-hole" aria-hidden="true"></span></button></nav>
-<audio id="bgm" src="assets/audio/bgm.mp3" preload="none" loop></audio><div class="devpanel" id="devPanel" hidden>
-  <div class="dev-head">
-    <span class="dev-title">开发者设置</span>
-    <span class="dev-hint" id="devHint">调完可「导出」配置；点「恢复默认」还原成发布默认</span>
-    <button class="dev-x" id="devClose" type="button" aria-label="关闭">×</button>
-  </div>
-  <div class="dev-body">
-    <!-- A. 导览落点捕捉 -->
-    <section class="dev-sec">
-      <h4>① 导览落点（手动滚到想要的位置）</h4>
-      <ol class="dev-list" id="devSteps"></ol>
-      <div class="dev-row">
-        <button class="dev-btn" id="devPick" type="button">📍 记录当前落点</button>
-        <button class="dev-btn ghost" id="devPrev" type="button">上一步</button>
-        <button class="dev-btn ghost" id="devNext" type="button">下一步</button>
-      </div>
-      <p class="dev-note">
-        用法：先在左边点选要改的步骤 → <strong>把页面手动滚到想要的位置</strong> → 点「记录当前落点」。
-        落点记的是 <code>页面滚动位置 + 视口内的元素锚点</code>，所以换屏幕尺寸也能大致复现。
-      </p>
-    </section>
-    <!-- B. 每步停留 -->
-    <section class="dev-sec">
-      <h4>② 每步停留时长（毫秒）</h4>
-      <div class="dev-holds" id="devHolds"></div>
-    </section>
-    <!-- C. 时间轴速度 -->
-    <section class="dev-sec">
-      <h4>③ 时间轴播放速度（每帧毫秒）</h4>
-      <div class="dev-row">
-        <input type="range" id="devSpeed" min="30" max="600" step="5" value="200">
-        <span class="dev-val" id="devSpeedVal">200 ms</span>
-      </div>
-      <p class="dev-note" id="devSpeedNote"></p>
-    </section>
-    <div class="dev-row">
-      <button class="dev-btn primary" id="devExport" type="button">导出为 JSON</button>
-      <button class="dev-btn ghost" id="devReset" type="button">恢复默认</button>
-    </div>
-    <textarea class="dev-out" id="devOut" readonly placeholder="点「导出为 JSON」后，这里会出现可直接发给我的配置"></textarea>
-  </div>
-</div>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#07090d" />
+  <meta name="description" content="于金硕（Jinshuo Yu）的个人主页：北京工业大学机械类 2026 级，方向是物理 AI 与具身智能。这里按“问题 → 做法 → 结果 → 边界”记录仿真机器鱼控制、门店经营 Agent、遥感数据叙事等项目。" />
+  <meta name="keywords" content="于金硕, 物理AI, 具身智能, AI Agent, 北京工业大学, 机械工程, 仿真机器鱼, 个人主页" />
+  <meta name="author" content="于金硕 Jinshuo Yu" />
+  <meta property="og:title" content="于金硕 · 先诊断，再动手；用实测说话" />
+  <meta property="og:description" content="北京工业大学机械类 2026 级。仿真机器鱼控制、门店经营 Agent、遥感数据叙事——每个数字都能回到日志。" />
+  <meta property="og:type" content="website" />
+  <title>于金硕 | 机械类大一 · 物理 AI 与具身智能方向</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2307090d'/%3E%3Ctext x='32' y='44' font-size='36' font-weight='900' text-anchor='middle' fill='%232ee6c8' font-family='sans-serif'%3E于%3C/text%3E%3C/svg%3E" />
+  <script>
+    /* 首屏前执行：避免主题闪烁，并标记 JS 可用（滚动显现只在有 JS 时隐藏内容） */
+    document.documentElement.classList.add('js');
+    /* 兜底：脚本一旦报错就取消“先隐藏再显现”，保证内容始终可见 */
+    window.addEventListener('error', function () { document.documentElement.classList.remove('js'); });
+    try { if (localStorage.getItem('user_theme') === 'light') document.documentElement.setAttribute('data-theme', 'light'); } catch (e) {}
+  </script>
 
-<!-- ============ 导览控制条 ============ -->
-<div class="tour" id="tour" hidden>
-  <div class="tour-head">
-    <span class="tour-step"><b id="tourIdx">1</b> / <span id="tourTotal">8</span></span>
-    <span class="tour-dots" id="tourDots"></span>
-    <button class="tour-x" id="tourExit" type="button" aria-label="退出导览">×</button>
-  </div>
-  <div class="tour-title" id="tourTitle">—</div>
-  <div class="tour-sub" id="tourSub"></div>
-  <p class="tour-body" id="tourBody"></p>
-  <div class="tour-tip" id="tourTip"></div>
-  <div class="tour-foot">
-    <button class="tour-btn" id="tourPrev" type="button">← 上一步</button>
-    <button class="tour-btn primary" id="tourNext" type="button">下一步 →</button>
-    <button class="tour-btn auto" id="tourAuto" type="button" aria-pressed="false">自动播放</button>
-  </div>
-</div>
+  <!--
+    动效手法参考了以下开源项目的思路，均为原生 CSS / JS 重新实现，无外部依赖：
+    · Magic UI (MIT)      —— Border Beam、Animated Beam、Number Ticker、Marquee、Text Reveal
+    · React Bits          —— BlurText、DecryptedText、SpotlightCard、Magnet、ClickSpark
+    · bchiang7/v4 (MIT)   —— 编号小节标题、首屏错峰入场、项目交替布局（brittanychiang.com）
+  -->
+  <style>
+    /* ==================== 1. 设计变量 ==================== */
+    :root {
+      --bg-rgb: 7, 9, 13;          --surface-rgb: 15, 20, 28;   --text-rgb: 233, 238, 245;
+      --acc-rgb: 46, 230, 200;     --gold-rgb: 246, 196, 83;    --red-rgb: 255, 122, 122;
+      --blue-rgb: 122, 162, 255;   --violet-rgb: 179, 157, 255;
+      --sand-rgb: 214, 170, 100;   --green-rgb: 76, 201, 120;
+      --bg: rgb(var(--bg-rgb));    --bg2: #0b0f15;  --surface: rgb(var(--surface-rgb));  --surface2: #141a24;
+      --line: rgba(255, 255, 255, .08);  --line2: rgba(255, 255, 255, .16);
+      --text: rgb(var(--text-rgb));  --text2: #a9b3c2;  --text3: #6b7686;
+      --acc: rgb(var(--acc-rgb));  --acc-ink: #04221d;  --shine: #eafffb;
+      --gold: rgb(var(--gold-rgb)); --red: rgb(var(--red-rgb)); --blue: rgb(var(--blue-rgb)); --violet: rgb(var(--violet-rgb));
+      --water1: #0e2c35;  --water2: #08161d;
+      --shadow: 0 24px 60px -24px rgba(0, 0, 0, .7);
+      --r: 18px;  --hh: 64px;
+      --sans: "HarmonyOS Sans SC", "MiSans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+      /* 等宽栈末尾接中文黑体，避免中文字符回退到宋体 */
+      --mono: "JetBrains Mono", "Cascadia Code", "SF Mono", "Fira Code", Consolas, Menlo, "HarmonyOS Sans SC", "PingFang SC", "Microsoft YaHei UI", "Microsoft YaHei", monospace;
+      --ease: cubic-bezier(.2, .8, .2, 1);
+      color-scheme: dark;
+    }
+    :root[data-theme="light"] {
+      --bg-rgb: 245, 243, 238;     --surface-rgb: 255, 255, 255; --text-rgb: 20, 26, 34;
+      --acc-rgb: 10, 143, 123;     --gold-rgb: 168, 112, 14;     --red-rgb: 201, 59, 59;
+      --blue-rgb: 47, 95, 208;     --violet-rgb: 107, 79, 216;
+      --sand-rgb: 201, 150, 70;    --green-rgb: 40, 150, 80;
+      --bg2: #efece5;  --surface2: #f8f6f1;
+      --line: rgba(20, 26, 34, .10);  --line2: rgba(20, 26, 34, .22);
+      --text2: #4a5565;  --text3: #7b8594;
+      --acc-ink: #ffffff;  --shine: #6fe0cf;
+      --water1: #e2f4f2;  --water2: #cbe7e6;
+      --shadow: 0 24px 50px -28px rgba(20, 26, 34, .35);
+      color-scheme: light;
+    }
+    @property --beam { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
 
-<main id="main"><section id="opening" class="opening" aria-label="开场：毛乌素沙地 1986—2025 年逐年植被变化">
-<video id="openingVideo" class="opening-video" poster="assets/video/opening-first.jpg" muted playsinline autoplay preload="auto" aria-hidden="true"><source src="assets/video/opening.mp4" type="video/mp4"><source src="assets/video/opening.webm" type="video/webm"></video>
-<div class="opening-shade" aria-hidden="true"></div>
-<div class="opening-top"><span>毛乌素沙地 · 1986—2025</span><span>每一帧是一年的卫星合成影像（Landsat，生长季）</span><button type="button" id="openingSkip" class="opening-skip">跳过 ↓</button></div>
-<div class="opening-counter" aria-live="off">
-<div class="opening-year" id="openingYear">1986</div>
-<div class="opening-meta"><span>整片研究区植被指数</span><b id="openingNdvi">0.169</b><em id="openingPhase">1986—2000 · 平稳期</em></div>
-</div>
-<div class="opening-bar" id="openingBar" aria-hidden="true"><i></i><span style="left:0">1986</span><span style="left:38.5%">2001</span><span style="left:66.7%">2012</span><span style="right:0">2025</span></div>
-<div class="opening-end"><p class="opening-headline">四十年，<br>这片沙地的植被指数接近翻倍。</p>
-<div class="opening-actions"><button type="button" id="openingNext" class="opening-next">看它是怎么变绿的 ↓</button><button type="button" id="openingReplay" class="opening-replay">↺ 再看一遍</button></div></div>
-</section><section id="hero" class="hero editorial-hero"><canvas id="heroCanvas" hidden></canvas>
-<div class="hero-inner"><div class="eyebrow">毛乌素沙地南缘 · 1986—2025</div><h1 class="hero-title">绿进沙退</h1>
-<div class="hero-sub">同一块地，隔了三十九年。</div><p class="hero-lede">左边是 1986 年 8 月的卫星影像，右边是 2025 年 8 月。<br>拖动中间那条线，看沙地上多出了什么。</p>
-<p class="hero-motto">一条时间轴，滑动看沙漠变绿洲，同时对照世界上正在变黄的地方。这是中国生态治理的一个具体切口，也是一份可以逐项核对的遥感档案。</p>
-<div class="hero-acts"><button class="hero-cta" id="heroTour" type="button">跟着故事看 · 约 3 分钟<span class="arrow">→</span></button><button class="hero-cta ghost" data-action="explore" type="button">自己探索</button><a class="hero-link" href="#method">为什么这四十年不是伪影 →</a></div>
-<div class="hero-stats" id="heroStats"></div></div>
-<div class="hero-image"><figure class="compare-figure" data-comparison="hero">
-      <div class="compare-top"><span data-compare-title>陕西榆林 · 横山区北部 · 无定河北岸</span><span class="resolution-tag" data-compare-resolution>30 米 / Landsat</span></div>
-      <div class="compare-stage" style="--split:50%">
-        <img class="compare-before" data-before src="assets/data/hero-case/1986-rgb.jpg" alt="1986年8月2日横山区北部Landsat真彩色影像" decoding="async">
-        <img class="compare-after" data-after src="assets/data/hero-case/2025-rgb.jpg" alt="2025年8月13日同一范围Landsat真彩色影像" decoding="async">
-        <span class="compare-year before" data-before-label>1986</span><span class="compare-year after" data-after-label>2025</span>
-        <div class="compare-divider" aria-hidden="true"><span>↔</span></div>
-        <div class="compare-unavailable" data-compare-error hidden>影像没有加载出来。请用启动器打开项目，或刷新重试。</div>
-      </div>
-      <label class="compare-control"><span>拖动对比</span><input type="range" min="0" max="100" value="50" data-split aria-label="调整左右两期影像的分隔线"><output data-split-output>50%</output></label>
-      <div class="compare-kind hero-kind" role="group" aria-label="选择首屏影像类型"><button type="button" data-hero-kind="rgb" aria-pressed="true">真彩色</button><button type="button" data-hero-kind="ndvi" aria-pressed="false">植被指数</button></div><div id="heroLegend" class="local-legend" hidden><div class="local-colorbar"></div><div class="local-color-ticks"><span>0</span><span>0.5</span><span>1</span></div></div>
-      <figcaption data-compare-caption>1986-08-02 · Landsat 5 ／ 2025-08-13 · Landsat 8　同一 30 米网格，同一套显示参数。</figcaption>
-    </figure><div class="hero-image-foot"><span>横山城区以北、巴拉素以南的风沙区；底部的河是无定河。这块地是用四十年变化图挑出来的</span><span>109.24°–109.42°E / 38.03°–38.21°N</span></div></div><div id="heroTag" hidden></div></section><section id="prologue" class="section prologue"><div class="sec-head"><div class="sec-idx">01</div><div><p class="section-kicker">序章 · 三张实景</p><h2>沙，治，绿。</h2><p>三张照片拍摄地点和年份各不相同，用来看治沙的三个阶段；同一地点的前后对比，看上面的卫星影像。<b>这一屏是意象，不是证据</b>——它负责把人留下、把主题摆出来；严谨的部分在后面。</p></div></div>
-<p class="prologue-lede">沙没有消失，是被按住了——从风起时一路往前挪的黄，<br>到一棵一棵长进沙地里的<em>绿</em>。</p>
-<div class="prologue-grid">
-<figure class="pro-card" data-k="sand"><div class="pro-photo"><img src="assets/img/prologue/sand.jpg" alt="流沙中枯死的老树" loading="lazy" decoding="async"><span class="pro-mark">沙</span></div><div class="pro-body"><h3>沙埋住了一切</h3><p>风一起，沙丘就往前挪。种下的树被埋住、枯死，最后只剩枝干留在原地。</p><p class="pro-cap">流沙中枯死的老树 · 治理前 · 图：项目组提供</p></div></figure>
-<figure class="pro-card" data-k="planting"><div class="pro-photo"><img src="assets/img/prologue/planting.jpg" alt="沙丘上成活的行树与灌草" loading="lazy" decoding="async"><span class="pro-mark">治</span></div><div class="pro-body"><h3>人把沙按住</h3><p>草方格一格一格压下去，树苗一棵一棵插进去。变绿从来不是一场雨的事。</p><p class="pro-cap">沙丘上成活的行树与灌草 · 治理中 · 图：项目组提供</p></div></figure>
-<figure class="pro-card" data-k="greening"><div class="pro-photo"><img src="assets/img/prologue/greening.jpg" alt="穿过林带的公路航拍" loading="lazy" decoding="async"><span class="pro-mark">绿</span></div><div class="pro-body"><h3>绿连成了网</h3><p>路修进了沙地，两侧是几十年长出来的林带。</p><p class="pro-cap">穿林带而过的公路航拍 · 治理后 · 图：项目组提供</p></div></figure>
-</div><div class="pro-arrow"><span>沙</span><i></i><span>治</span><i></i><span>绿</span></div><div class="pl-claim"><span class="pl-claim-k">一句话</span><div><b>沙地自己在变绿。</b><p>1986—1990 年植被最稀、约占研究区三分之一的土地，植被覆盖度（模型估算）五年均值从 <em id="plCoreLo">7.0</em>% 升到 <em id="plCoreHi">41.4</em>%，增加 <em id="plCorePp">34.4</em> 个百分点。后面每一屏，都是这句话的尺子。</p></div></div></section><section id="story" class="section people-section"><div class="sec-head"><div class="sec-idx">02</div><div><p class="section-kicker">从一个人开始</p><h2>卖了羊和骡子，换来第一批树苗。</h2><p>石光银，陕西定边人。1984 年起在狼窝沙治沙，2021 年获“七一勋章”。</p></div></div>
-<div class="story-stats">
-<div class="story-stat"><b>84<small>只羊</small> 1<small>头骡子</small></b><span>1984 年，他卖掉这些换树苗钱</span></div>
-<div class="story-stat is-loss"><b>90%</b><span>1986 年栽下的树苗被风沙毁掉，第二年又毁了 80%</span></div>
-<div class="story-stat"><b>800<small>公里</small></b><span>1988 年在 6000 亩地上扎下的沙障</span></div>
-<div class="story-stat is-win"><b>92.5%</b><span>1998 年核查，这片地的植被覆盖率</span></div>
-</div><div class="main-story"><div class="story-intro"><div class="person-initial" aria-hidden="true">石</div><h3 id="mainPersonName">石光银</h3><p id="mainPersonPlace">陕西定边</p><p id="mainPersonIntro">正在读取人物经历。</p><a class="source-inline" id="mainPersonSource" href="https://www.forestry.gov.cn/c/www/dxsj/55.jhtml" target="_blank" rel="noopener">读新华社原报道 ↗</a></div><div class="person-timeline" id="mainPersonTimeline"></div></div><blockquote class="main-quote">“干成治沙一件事，就算没白活。”<small>—— 石光银，新华社 2021-07-07 报道标题引语</small></blockquote>
-<details class="people-extra" open><summary>毛乌素周边，还有这几位治沙人</summary><h3 class="today-subhead">毛乌素周边，还有这几位治沙人</h3><p class="people-lede">数据背后是具体的人。四十年间，是无数农户、林场职工和地方干部把树苗一棵一棵插进沙里。下面三位的经历都来自公开报道，照片逐张注明署名。</p><div class="story-grid" id="storyGrid"></div></details></section><section id="beforeafter" class="section mechanism-section"><div class="sec-head"><div class="sec-idx">03</div><div><p class="section-kicker">怎么让植物留下</p><h2>先稳住沙，再让植物扎根。</h2><p>1988 年，狼窝沙换的就是这个顺序：沙障挡风，灌草固沙，低洼处种树，种活了接着管。</p></div></div>
-<div class="mechanism-grid">
-<article class="mechanism-card"><div class="mechanism-art"><svg viewBox="0 0 360 190" role="img" aria-label="草方格沙障让近地风变弱的示意">
-<defs><clipPath id="mDune1"><path d="M0 152C70 116 150 98 232 118C284 131 322 126 360 116V190H0Z"/></clipPath></defs>
-<path d="M0 152C70 116 150 98 232 118C284 131 322 126 360 116V190H0Z" fill="#dcc08f"/>
-<path d="M0 165C80 136 160 124 240 140C290 150 330 146 360 140V190H0Z" fill="#cfae74"/>
-<g clip-path="url(#mDune1)"><g transform="translate(150 96) skewX(-38) scale(1 .42)" stroke="#9f7a45" stroke-width="3" fill="none">
-<path d="M0 0V220M26 0V220M52 0V220M78 0V220M104 0V220M130 0V220M156 0V220M182 0V220M208 0V220M234 0V220M260 0V220"/>
-<path d="M0 0H260M0 26H260M0 52H260M0 78H260M0 104H260M0 130H260M0 156H260M0 182H260M0 208H260"/></g></g>
-<g stroke="#4f7a5c" stroke-width="3" stroke-linecap="round" fill="none"><path d="M14 58H118m-12-8 12 8-12 8"/><path d="M8 82H104m-12-8 12 8-12 8"/><path d="M20 106H92m-12-8 12 8-12 8"/></g>
-<g stroke="#4f7a5c" stroke-width="2" stroke-linecap="round" fill="none" opacity=".55"><path d="M206 66h34m-8-6 8 6-8 6"/><path d="M214 86h22m-7-5 7 5-7 5"/></g>
-<g fill="#b8945c"><circle cx="40" cy="128" r="2"/><circle cx="62" cy="120" r="1.6"/><circle cx="86" cy="124" r="2.2"/><circle cx="104" cy="114" r="1.5"/><circle cx="126" cy="118" r="1.8"/></g>
-<text x="16" y="40" font-size="13" fill="#4f6656">风</text><text x="262" y="102" font-size="13" fill="#5f4a26">草方格</text><path d="M276 106 262 128" stroke="#5f4a26" stroke-width="1.2"/></svg></div>
-<span class="mechanism-number">01</span><h3>扎沙障，把风压下去</h3><p>把麦草、稻草一格一格扎进沙里，地面变粗糙，贴地的风慢下来，沙子就不容易被吹走。</p><span class="diagram-label">示意图</span></article>
-<article class="mechanism-card"><div class="mechanism-art"><svg viewBox="0 0 360 190" role="img" aria-label="沙蒿、沙柳先固沙，低洼处种杨柳的示意">
-<path d="M0 128C60 116 120 114 190 124C230 130 250 146 290 150C320 152 340 146 360 142V190H0Z" fill="#dcc08f"/>
-<path d="M0 150C70 140 140 140 200 146C250 152 300 166 360 160V190H0Z" fill="#cfae74"/>
-<g fill="#7d9b62"><ellipse cx="54" cy="116" rx="24" ry="12"/><ellipse cx="40" cy="110" rx="12" ry="9"/><ellipse cx="68" cy="108" rx="13" ry="9"/></g>
-<g stroke="#8a6a44" stroke-width="1.6" fill="none" stroke-linecap="round"><path d="M54 126c-10 10-24 14-38 16M54 126c8 12 22 16 36 18M54 126v20"/></g>
-<g stroke="#6f8f58" stroke-width="2.2" stroke-linecap="round" fill="none"><path d="M150 124 132 70M150 124 146 60M150 124 160 62M150 124 176 74M150 124 124 86"/></g>
-<g fill="#86a86a"><ellipse cx="133" cy="72" rx="3" ry="7"/><ellipse cx="146" cy="62" rx="3" ry="7"/><ellipse cx="160" cy="64" rx="3" ry="7"/><ellipse cx="174" cy="76" rx="3" ry="7"/><ellipse cx="126" cy="88" rx="3" ry="7"/></g>
-<g stroke="#8a6a44" stroke-width="1.6" fill="none" stroke-linecap="round"><path d="M150 126c-12 14-28 20-44 24M150 126c10 16 26 22 42 24"/></g>
-<rect x="281" y="96" width="7" height="54" fill="#7a5c3a"/><ellipse cx="284" cy="78" rx="26" ry="34" fill="#4f7a5c"/><ellipse cx="270" cy="92" rx="14" ry="16" fill="#5f8a68"/>
-<g stroke="#8a6a44" stroke-width="1.6" fill="none" stroke-linecap="round"><path d="M284 150v26M284 158c-10 8-18 12-26 14M284 160c10 8 18 12 26 13"/></g>
-<g font-size="12" fill="#4f5a46"><text x="30" y="84">沙蒿</text><text x="134" y="46">沙柳</text><text x="246" y="38">杨柳 · 低洼处</text></g></svg></div>
-<span class="mechanism-number">02</span><h3>灌草先上，树种在低处</h3><p>沙蒿、沙柳耐旱，根扎得浅而广，先把沙面连成片；杨树、柳树要水多，种在地下水近的低洼地。</p><span class="diagram-label">示意图</span></article>
-<article class="mechanism-card"><div class="mechanism-art"><svg viewBox="0 0 360 190" role="img" aria-label="种下、补植管护、成林三个阶段的示意">
-<path d="M0 150C90 140 180 142 270 146C310 148 340 146 360 144V190H0Z" fill="#dcc08f"/>
-<g><rect x="56" y="118" width="4" height="30" fill="#7a5c3a"/><path d="m58 104-12 18h24Z" fill="#7d9b62"/><path d="M48 150v-34" stroke="#b08d55" stroke-width="2"/></g>
-<g><rect x="168" y="102" width="5" height="46" fill="#7a5c3a"/><path d="m170 74-20 34h40Z" fill="#6f9a6a"/><rect x="198" y="128" width="3" height="20" fill="#7a5c3a"/><path d="m199 116-9 16h18Z" fill="#9ab77c"/><path d="M196 104h8m-4-4v8" stroke="#a56934" stroke-width="2"/></g>
-<g fill="#4f7a5c"><rect x="272" y="104" width="5" height="44" fill="#7a5c3a"/><path d="m274 56-26 54h52Z"/><rect x="302" y="112" width="5" height="36" fill="#7a5c3a"/><path d="m304 70-22 46h44Z" fill="#5f8a68"/><rect x="246" y="118" width="4" height="30" fill="#7a5c3a"/><path d="m248 86-17 36h34Z" fill="#6f9a6a"/></g>
-<g stroke="#9a8a6a" stroke-width="2" fill="none" stroke-dasharray="4 5"><path d="M86 120h50m-8-6 8 6-8 6"/><path d="M216 120h20m-7-6 7 6-7 6"/></g>
-<g font-size="12" fill="#4f5a46"><text x="38" y="176">种下</text><text x="150" y="176">补植 · 管护</text><text x="262" y="176">成林</text></g></svg></div>
-<span class="mechanism-number">03</span><h3>种活以后，年年补、年年管</h3><p>死了的苗要补上，林子要防牲畜啃、防火、更新老树。2021 年的报道里，石光银把这些经验教给了孙子。</p><span class="diagram-label">示意图</span></article></div>
-<div class="mechanism-note"><strong>为什么要几十年？</strong><p>沙障先挡几年风，灌草要长好几年才连成片，树种活了还得一年一年补、一年一年管。下面的卫星曲线，前十五年几乎是平的。</p></div></section><section id="stage" class="section">
-  <div class="sec-head"><div class="sec-idx">04</div><div><p class="section-kicker">中间发生了什么</p><h2>四十年，分三段看。</h2><p>下面这条线是整片研究区每年的植被指数（NDVI）。点线上任意一年，地图跳到那一年；也可以直接按播放。</p></div></div>
-<div class="phase-block" id="phaseBlock"><div class="phase-chart" id="phaseChart" role="img" aria-label="区域NDVI 1986至2025年曲线，分三段"></div><ol class="phase-list" id="phaseList"></ol>
-<p class="phase-foot">分段由三段直线拟合自动得出，底部标的是有报道来源的同期事件，只标时间。<button type="button" class="trace" data-trace="phases">怎么分的段</button></p></div>
+    /* ==================== 2. 基础 ==================== */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--hh) + 20px); -webkit-text-size-adjust: 100%; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 400 16px/1.75 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    h1, h2, h3, h4, p, ul, ol, dl, dd, figure { margin: 0; padding: 0; }
+    ul, ol { list-style: none; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+    ::selection { background: var(--acc); color: var(--acc-ink); }
+    :focus-visible { outline: 2px solid var(--acc); outline-offset: 3px; border-radius: 6px; }
+    [hidden] { display: none !important; }
+    .wrap { max-width: 1120px; margin-inline: auto; padding-inline: clamp(16px, 4vw, 32px); }
+    .ic { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+    .skip { position: fixed; left: 12px; top: -60px; z-index: 100; padding: 8px 14px; border-radius: 10px; background: var(--acc); color: var(--acc-ink); font-weight: 700; transition: top .2s; }
+    .skip:focus { top: 12px; }
+    ::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
 
-  <div class="stage-grid">
-    <!-- 主图 -->
-    <div class="card map-card">
-      <div class="card-head">
-        <div>
-          <div class="card-title">毛乌素沙地 · 逐年 NDVI</div>
-          <div class="card-meta" id="mapMeta">Landsat 4/5/7/8/9 SR · 生长季 6—9 月中位数合成 · 网格 500 m · 37.3°N–39.6°N / 107.3°E–110.6°E</div>
-        </div>
-        <div class="year-chip"><span id="mapYear">1986</span></div>
-      </div>
-      <div class="map-wrap">
-        <canvas id="muCanvas"></canvas>
-        <canvas id="abCanvas"></canvas>
-        <button id="mapRetry" class="map-retry" hidden type="button">重试影像</button><div class="map-hint" id="zoomHint">滚轮缩放 · 拖动平移</div>
-        <div class="probe" id="probe" hidden>
-          <div class="probe-head"><b id="probeTitle">单点像元（非区域均值）</b><button id="probeClose" aria-label="关闭">×</button></div>
-          <svg id="probeChart" viewBox="0 0 240 72" width="100%" height="72" aria-hidden="true"></svg>
-          <div class="probe-foot" id="probeFoot"></div>
-          <button id="probeRetry" class="probe-retry" type="button" hidden>重试点查</button>
-          <details class="probe-note">
-            <summary>这个读数怎么来的</summary>
-            <div class="pn-body">读数是从<b>着色图近似反算</b>的NDVI。单元来自264×184降采样预览，不能当作单个500米像元。PNG量化和降采样都会引入误差，原始浮点栅格尚未提供，不能据此承诺测量精度。<b>y轴与下方区域NDVI曲线同一量程</b>；局部波动不代表区域变化。<b>虚线段</b>表示图集该单元无有效颜色记录，<b>压在边框上的点</b>表示超出区域量程。页面成效摘要使用原序列的五年窗口均值。</div>
-          </details>
-        </div>
-        <div class="map-legend">
-          <div class="legend-bar"></div>
-          <div class="legend-ticks"><span>0.0 低植被</span><span>0.35</span><span>0.7 茂密植被</span></div>
-        </div>
-        <div class="map-note" id="mapNote">1986 年 · 越绿表示 NDVI 越高</div>
-        <div class="atlas-chip" id="atlasChip" hidden>预览影像 · 暂停后加载完整图</div>
-      </div>
-      <div class="layer-chips" id="mapLayers">
-        <label class="chip"><input type="checkbox" checked data-layer="roads"><span>现状道路</span></label>
-        <label class="chip"><input type="checkbox" data-layer="admin"><span>现状区划</span></label>
-        <label class="chip"><input type="checkbox" checked data-layer="boundary"><span>低 NDVI 区域</span></label>
-        <label class="chip"><input type="checkbox" checked data-layer="river"><span>黄河</span></label>
-        <label class="chip"><input type="checkbox" checked data-layer="places"><span>地名</span></label>
-        <label class="chip"><input type="checkbox" data-layer="grid"><span>经纬网</span></label>
-        <span class="chip chip-trace chip-trace-first" title="点开看行政区划的数据来源、许可与精度">图层来源
-          <span class="trace" data-trace="admin">行政区划</span></span>
-        <span class="chip chip-trace" title="点开看路网的数据来源、许可与精度">
-          <span class="trace" data-trace="roads">道路网</span></span>
-        <span class="chip chip-trace" title="点开看全球对照画面的来源与口径">
-          <span class="trace" data-trace="globalimg">全球对照</span></span>
-        <span class="chip chip-trace" title="点开看为什么放大后会像素格化">
-          <span class="trace" data-trace="zoomres">放大行为</span></span>
-      </div>
-      <p class="map-reference-note">道路、区划和地名用的是现在的数据，只用来找位置。</p><div class="ab-bar">
-        <label class="chip"><input type="checkbox" id="abToggle"><span>两个年份对比</span></label>
-        <span class="ab-pick">对比年 B
-          <input type="range" id="abRange" min="1986" max="2025" step="1" value="2025">
-          <b id="abYear">2025</b>
-        </span>
-        <span class="ab-tip">开启后拖动中间分隔线，对比左右两个年份</span>
-      </div>
-    </div>
+    /* 背景：点阵 + 两团缓慢漂移的光 */
+    .bg { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+    .bg::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(circle at 1px 1px, var(--line2) 1px, transparent 0); background-size: 26px 26px; -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 20%, transparent 78%); mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 20%, transparent 78%); opacity: .7; }
+    .bg i { position: absolute; border-radius: 50%; animation: drift 24s ease-in-out infinite alternate; }
+    .bg i:nth-child(1) { width: 60vw; height: 60vw; left: -18vw; top: -26vw; background: radial-gradient(circle, rgba(var(--acc-rgb), .16), transparent 62%); }
+    .bg i:nth-child(2) { width: 46vw; height: 46vw; right: -14vw; top: 6vh; background: radial-gradient(circle, rgba(var(--blue-rgb), .12), transparent 62%); animation-delay: -9s; }
+    .bg i:nth-child(3) { width: 40vw; height: 40vw; left: 30vw; bottom: -24vw; background: radial-gradient(circle, rgba(var(--gold-rgb), .08), transparent 62%); animation-delay: -15s; }
+    @keyframes drift { to { transform: translate3d(5vw, 7vh, 0) scale(1.14); } }
+    #fx { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 90; pointer-events: none; }
+    .progress { position: fixed; top: 0; left: 0; z-index: 70; width: 100%; height: 2px; transform: scaleX(0); transform-origin: 0 50%; background: linear-gradient(90deg, var(--acc), var(--gold)); }
 
-    <!-- 全球对照 -->
-    <div class="card global-card">
-      <div class="card-head">
-        <div>
-          <div class="card-title">同期 · 世界别处在发生什么</div>
-          <div class="card-meta">同一年份，别处正在失去什么。卫星图是真实观测（1987/1988 与 2025 两期，点卡片切换）；右下角数值和进度条仍是锚点插值示意，四个案例指标不同</div>
-        </div>
-      </div>
-      <div class="global-grid" id="globalGrid"></div>
-      <div class="global-foot">
-        <span class="gf-green">● 中国毛乌素 · 区域覆盖度估算 <b id="gfCover">11.0%</b></span>
-        <span class="gf-sand">● 各案例分别阅读，不计算平均退化指标。</span>
-      </div>
-      <p class="global-scale">放在全球尺度看：同期咸海水面大幅萎缩，亚马逊森林持续被砍伐，北极 9 月海冰明显缩小。毛乌素这四十年，走的是相反的方向。</p>
-    </div>
-  </div>
+    /* ==================== 3. 通用组件 ==================== */
+    .card { position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); transition: border-color .3s; }
+    .card::before { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .4s; background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(var(--acc-rgb), .09), transparent 62%); }
+    .card:hover { border-color: var(--line2); }
+    .card:hover::before { opacity: 1; }
+    /* 流光描边（Border Beam）：一段光沿卡片边框巡游 */
+    .beam::after { content: ""; position: absolute; inset: -1px; border-radius: inherit; padding: 1px; pointer-events: none; background: conic-gradient(from var(--beam), transparent 0 68%, rgba(var(--acc-rgb), .95) 82%, rgba(var(--gold-rgb), .95) 91%, transparent 97%); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; animation: beam 7s linear infinite; }
+    @keyframes beam { to { --beam: 360deg; } }
 
-  <!-- 数据卡片 -->
-  <div class="local-process-block"><div class="local-process-head"><h3>放大到盐池县城：四个夏天</h3><p>同一个 30 米窗口，挑了四个夏天的单日影像。2000 年那张比 1986 年还淡——那几年正好在平稳期，单日影像也受当天天气和作物长势影响，长期变化看上面的曲线。</p></div><div id="localProcess" class="local-process"></div></div><div class="stat-row" id="statRow"></div><p class="reading-note">前四个数来自整片研究区的年度合成影像，覆盖度由像元二分模型估算；后三个是旧工程留下的趋势示意，锚点插值，不是实测，可在下方“自由探索”里收起。</p>
+    .tag { display: inline-flex; align-items: center; gap: 6px; height: 22px; padding: 0 9px; border-radius: 99px; font: 600 11px/1 var(--mono); letter-spacing: .04em; white-space: nowrap; border: 1px solid; flex: none; }
+    .tag::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+    .t-m { color: var(--acc);    border-color: rgba(var(--acc-rgb), .35);    background: rgba(var(--acc-rgb), .08); }
+    .t-w { color: var(--gold);   border-color: rgba(var(--gold-rgb), .35);   background: rgba(var(--gold-rgb), .08); }
+    .t-s { color: var(--violet); border-color: rgba(var(--violet-rgb), .35); background: rgba(var(--violet-rgb), .08); }
+    .t-p { color: var(--blue);   border-color: rgba(var(--blue-rgb), .35);   background: rgba(var(--blue-rgb), .08); }
+    .t-w::before { animation: blip 1.6s ease-in-out infinite; }
+    @keyframes blip { 50% { opacity: .25; transform: scale(.7); } }
 
-  <!-- 粘性时间轴 -->
-  <div class="timeline-dock" id="timelineDock">
-    <div class="tl-inner">
-      <button class="tl-play" id="tlPlay" aria-label="播放">
-        <svg viewBox="0 0 24 24" width="18" height="18"><path id="playIcon" d="M8 5v14l11-7z" fill="currentColor"/></svg>
+    .chip { display: inline-block; font: 500 12px/1.4 var(--mono); padding: 4px 10px; border-radius: 8px; border: 1px solid var(--line); color: var(--text2); background: var(--surface2); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 46px; padding: 0 22px; border-radius: 99px; font-weight: 700; font-size: 14.5px; transition: transform .25s var(--ease), box-shadow .25s, border-color .25s, color .25s; will-change: transform; }
+    .btn-p { background: var(--acc); color: var(--acc-ink); box-shadow: 0 10px 26px -12px rgba(var(--acc-rgb), .8); }
+    .btn-p:hover { box-shadow: 0 16px 34px -12px rgba(var(--acc-rgb), .9); }
+    .btn-g { border: 1px solid var(--line2); }
+    .btn-g:hover { border-color: var(--acc); color: var(--acc); }
+    .fine { font-size: 12px; color: var(--text3); line-height: 1.6; }
+    .mono { font-family: var(--mono); }
+
+    /* 滚动显现 + 逐字模糊入场（BlurText） */
+    .js .rv { opacity: 0; transform: translateY(44px) scale(.97); transition: opacity .9s var(--ease), transform .9s var(--ease); transition-delay: calc(var(--i, 0) * 80ms); }
+    .js .rv.in { opacity: 1; transform: none; }
+    .js .split .ch { display: inline-block; opacity: 0; filter: blur(10px); transform: translateY(.35em); transition: opacity .7s var(--ease), filter .7s var(--ease), transform .7s var(--ease); transition-delay: calc(var(--i) * 45ms + var(--d, 0ms)); }
+    .js .in .split .ch, .js .split.in .ch { opacity: 1; filter: none; transform: none; }
+    .pop { animation: pop .5s var(--ease) both; animation-delay: calc(var(--i, 0) * 40ms); }
+    @keyframes pop { from { opacity: 0; transform: translateY(14px) scale(.97); } }
+
+    /* ==================== 4. 顶栏 ==================== */
+    .hd { position: sticky; top: 0; z-index: 60; height: var(--hh); background: rgba(var(--bg-rgb), .72); -webkit-backdrop-filter: saturate(1.4) blur(14px); backdrop-filter: saturate(1.4) blur(14px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+    .hd.scrolled { border-bottom-color: var(--line); }
+    .hd-in { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: .02em; }
+    .brand-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--acc); animation: ping 2.4s infinite; }
+    @keyframes ping { 0% { box-shadow: 0 0 0 0 rgba(var(--acc-rgb), .55); } 70%, 100% { box-shadow: 0 0 0 9px rgba(var(--acc-rgb), 0); } }
+    .brand-sub { font: 500 11px/1 var(--mono); color: var(--text3); letter-spacing: .08em; padding: 5px 9px; border: 1px solid var(--line); border-radius: 99px; }
+    .nav { position: relative; display: flex; gap: 2px; padding: 4px; border: 1px solid var(--line); border-radius: 99px; background: rgba(var(--surface-rgb), .6); }
+    .nav a { position: relative; z-index: 1; padding: 5px 14px; font-size: 14px; color: var(--text2); border-radius: 99px; transition: color .25s; }
+    .nav a:hover, .nav a.on { color: var(--text); }
+    .nav-ink { position: absolute; z-index: 0; top: 4px; bottom: 4px; left: 0; width: 0; opacity: 0; border-radius: 99px; background: rgba(var(--acc-rgb), .14); border: 1px solid rgba(var(--acc-rgb), .32); transition: transform .4s var(--ease), width .4s var(--ease), opacity .25s; }
+    .hd-act { display: flex; gap: 6px; }
+    .ib { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; border: 1px solid var(--line); color: var(--text2); transition: color .2s, border-color .2s, transform .2s; }
+    .ib:hover { color: var(--acc); border-color: rgba(var(--acc-rgb), .5); transform: translateY(-1px); }
+    .i-moon { display: none; }
+    [data-theme="light"] .i-sun { display: none; }
+    [data-theme="light"] .i-moon { display: block; }
+    .burger { display: none; }
+    .drawer { display: none; }
+
+    /* ==================== 5. 首屏 ==================== */
+    .hero { position: relative; padding: clamp(36px, 8vh, 84px) 0 0; }
+    .hero-glow { position: absolute; inset: -80px 0 0; pointer-events: none; background: radial-gradient(520px circle at var(--sx, 72%) var(--sy, 34%), rgba(var(--acc-rgb), .10), transparent 70%); }
+    .hero-grid { position: relative; display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, .9fr); gap: clamp(24px, 4vw, 60px); align-items: center; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; font: 500 12px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--acc); }
+    .eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; }
+    .hero h1 { font-size: clamp(60px, 11vw, 132px); line-height: 1; font-weight: 900; letter-spacing: .01em; margin: 20px 0 0; }
+    .hero h1 .ch { background: linear-gradient(180deg, var(--text) 38%, rgba(var(--text-rgb), .48)); -webkit-background-clip: text; background-clip: text; color: transparent; cursor: default; }
+    .js .hero h1.in .ch { transition: opacity .7s var(--ease), filter .7s var(--ease), transform .5s cubic-bezier(.3, 1.7, .5, 1); }
+    .js .hero h1.in .ch:hover { transform: translateY(-12px) rotate(-4deg); transition-delay: 0s; background: linear-gradient(180deg, var(--acc), var(--gold)); -webkit-background-clip: text; background-clip: text; }
+    /* 首屏鱼群画布：在内容下层游动 */
+    #school { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+    .hero > .wrap, .hero > .marq { position: relative; z-index: 1; }
+    .hint { margin-top: 16px; font: 500 12px/1.6 var(--mono); color: var(--text3); }
+    @media (hover: none) { .hint { display: none; } }
+    .hero-en { display: block; margin-top: 14px; font: 500 clamp(12px, 1.5vw, 15px)/1 var(--mono); color: var(--text3); letter-spacing: .28em; text-transform: uppercase; }
+    .lead { margin-top: 26px; font-size: clamp(21px, 2.9vw, 31px); font-weight: 800; line-height: 1.4; }
+    .lead em { font-style: normal; background: linear-gradient(110deg, var(--acc) 38%, var(--shine) 50%, var(--acc) 62%); background-size: 260% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: shine 5s linear infinite; }
+    @keyframes shine { from { background-position: 130% 0; } to { background-position: -130% 0; } }
+    .typer { margin-top: 14px; min-height: 3.4em; font: 500 14px/1.7 var(--mono); color: var(--text3); }
+    .typer b { color: var(--text); font-weight: 600; }
+    .caret { display: inline-block; width: 8px; height: 1.05em; margin-left: 3px; vertical-align: -2px; background: var(--acc); animation: caret 1s steps(1) infinite; }
+    @keyframes caret { 50% { opacity: 0; } }
+    .hero-desc { margin-top: 10px; max-width: 58ch; color: var(--text2); }
+    .hero-desc strong { color: var(--text); font-weight: 700; }
+    .cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+
+    .pf { padding: 22px; box-shadow: var(--shadow); transition: transform .3s ease-out; will-change: transform; }
+    .pf-top { display: flex; align-items: center; gap: 16px; }
+    .avatar { position: relative; width: 88px; height: 88px; flex: none; overflow: hidden; border-radius: 24px; border: 1px solid var(--line2); background: var(--surface2); cursor: zoom-in; }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; transition: transform .6s var(--ease); }
+    .avatar:hover img { transform: scale(1.1); }
+    .avatar.miss::after { content: "于"; position: absolute; inset: 0; display: grid; place-items: center; font-size: 36px; font-weight: 900; color: var(--acc); }
+    .pf-name { font-size: 19px; font-weight: 800; }
+    .pf-role { margin-top: 4px; font: 500 12px/1.5 var(--mono); color: var(--text3); }
+    .kv { display: grid; gap: 9px; margin-top: 18px; font-size: 14px; }
+    .kv div { display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: baseline; }
+    .kv dt { font: 500 11px/1 var(--mono); color: var(--text3); letter-spacing: .08em; }
+    .kv dd button { text-align: left; border-bottom: 1px dashed var(--line2); transition: color .2s, border-color .2s; }
+    .kv dd button:hover, .kv dd a:hover { color: var(--acc); border-color: var(--acc); }
+    .now { margin-top: 18px; padding-top: 16px; border-top: 1px dashed var(--line2); }
+    .now-h { display: flex; justify-content: space-between; margin-bottom: 8px; font: 500 11px/1 var(--mono); letter-spacing: .12em; color: var(--text3); }
+    .now li { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 6px 0; font-size: 13.5px; }
+    .now li a { transition: color .2s; }
+    .now li a:hover { color: var(--acc); }
+
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: clamp(36px, 6vw, 56px); }
+    .stat { padding: 20px; transition: transform .25s ease-out, border-color .3s; }
+    .stat-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+    .stat-n { font: 800 clamp(28px, 3.6vw, 40px)/1 var(--mono); letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+    .stat-n small { margin-left: 4px; font-size: .42em; font-weight: 600; color: var(--text3); letter-spacing: 0; }
+    .stat-l { margin-top: 12px; font-size: 14.5px; font-weight: 700; }
+    .stat-s { margin-top: 4px; font-size: 12.5px; line-height: 1.6; color: var(--text3); }
+
+    .marq { margin-top: clamp(36px, 6vw, 60px); padding: 14px 0; overflow: hidden; border-block: 1px solid var(--line); -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
+    .marq-in { display: flex; gap: 36px; width: max-content; animation: marq 44s linear infinite; font: 600 13px/1 var(--mono); letter-spacing: .08em; color: var(--text3); white-space: nowrap; }
+    .marq:hover .marq-in { animation-play-state: paused; }
+    .marq i { font-style: normal; color: var(--acc); }
+    @keyframes marq { to { transform: translateX(-50%); } }
+
+    /* ==================== 6. 小节 ==================== */
+    .sec { padding: clamp(60px, 9vw, 108px) 0 0; }
+    .sec-h { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 14px 28px; margin-bottom: 30px; }
+    .sec-no { font: 600 12px/1 var(--mono); color: var(--acc); letter-spacing: .14em; }
+    .sec-h h2 { margin-top: 10px; font-size: clamp(28px, 4.2vw, 42px); font-weight: 900; line-height: 1.15; }
+    .sec-sub { max-width: 44ch; font-size: 15px; color: var(--text2); }
+
+    .about { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 18px; }
+    .story { padding: clamp(20px, 3vw, 32px); }
+    .story p { color: var(--text2); }
+    .story p + p { margin-top: 14px; }
+    .story strong { color: var(--text); }
+    .story blockquote { margin: 22px 0 0; padding: 14px 18px; border-left: 3px solid var(--acc); border-radius: 0 12px 12px 0; background: rgba(var(--acc-rgb), .06); font-size: 18px; font-weight: 800; }
+    .side { display: grid; gap: 18px; align-content: start; }
+    .side .card { padding: 20px; }
+    .side h3 { margin-bottom: 12px; font-size: 15px; font-weight: 800; }
+    .legend li { display: grid; grid-template-columns: 74px 1fr; gap: 10px; align-items: center; padding: 6px 0; font-size: 13.5px; color: var(--text2); }
+    .offer li { position: relative; padding: 5px 0 5px 22px; font-size: 14px; color: var(--text2); }
+    .offer li::before { content: "→"; position: absolute; left: 0; color: var(--acc); font-family: var(--mono); }
+
+    /* ==================== 7. 项目 ==================== */
+    .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+    .fl { height: 36px; padding: 0 15px; border-radius: 99px; border: 1px solid var(--line); font-size: 13.5px; color: var(--text2); transition: color .2s, border-color .2s, background .2s; }
+    .fl:hover { border-color: var(--line2); color: var(--text); }
+    .fl.on { background: var(--text); border-color: var(--text); color: var(--bg); font-weight: 700; }
+    .pj { margin-bottom: 18px; padding: clamp(18px, 3vw, 32px); }
+    .pj.hide { display: none; }
+    .pj-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+    .pj-kicker { font: 500 12px/1.6 var(--mono); color: var(--text3); letter-spacing: .04em; }
+    .pj h3 { margin: 10px 0 8px; font-size: clamp(20px, 2.7vw, 27px); font-weight: 900; line-height: 1.3; }
+    .pj-one { max-width: 72ch; color: var(--text2); }
+    .pj-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: clamp(18px, 3vw, 36px); align-items: start; margin-top: 24px; }
+    .pj-grid.flip > :first-child { order: 2; }
+    .psr { display: grid; gap: 15px; }
+    .psr > div { display: grid; grid-template-columns: 40px 1fr; gap: 12px; }
+    .psr dt { padding-top: 5px; font: 600 11px/1 var(--mono); color: var(--acc); letter-spacing: .1em; }
+    .psr dd { font-size: 14.5px; color: var(--text2); }
+    .psr dd b { color: var(--text); }
+    .psr ol { display: grid; gap: 7px; counter-reset: s; }
+    .psr ol li { position: relative; padding-left: 26px; counter-increment: s; }
+    .psr ol li::before { content: counter(s); position: absolute; left: 0; top: 4px; width: 18px; height: 18px; display: grid; place-items: center; border-radius: 6px; background: rgba(var(--acc-rgb), .12); color: var(--acc); font: 700 10.5px/1 var(--mono); }
+    .stack { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; }
+    details.more { margin-top: 20px; padding-top: 14px; border-top: 1px dashed var(--line2); }
+    details.more summary { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; list-style: none; font-size: 14px; font-weight: 700; color: var(--acc); }
+    details.more summary::-webkit-details-marker { display: none; }
+    details.more summary::after { content: "+"; font: 600 17px/1 var(--mono); transition: transform .3s var(--ease); }
+    details.more[open] summary::after { transform: rotate(45deg); }
+    details.more[open] > :not(summary) { animation: pop .45s var(--ease) both; }
+    .note { margin-top: 16px; padding: 14px 16px; border-radius: 12px; border: 1px solid rgba(var(--gold-rgb), .3); background: rgba(var(--gold-rgb), .06); font-size: 14px; color: var(--text2); }
+    .note b { color: var(--gold); }
+
+    /* 轨迹回放 */
+    .rp { overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: var(--bg2); }
+    .rp-top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+    .segc { display: inline-flex; gap: 2px; max-width: 100%; padding: 3px; overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; scrollbar-width: none; }
+    .segc button { display: inline-flex; align-items: baseline; gap: 6px; padding: 6px 10px; border-radius: 7px; font: 600 12px/1 var(--mono); white-space: nowrap; color: var(--text3); transition: color .2s, background .2s; }
+    .segc button small { font-size: 11px; font-weight: 500; opacity: .8; }
+    .segc button:hover { color: var(--text); }
+    .segc button.on { background: var(--surface2); color: var(--text); box-shadow: inset 0 0 0 1px var(--line2); }
+    .rp-clock { font: 700 24px/1 var(--mono); letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+    .rp-clock small { margin-left: 3px; font-size: 12px; color: var(--text3); }
+    .rp-stage { position: relative; aspect-ratio: 3 / 2; background: radial-gradient(120% 90% at 28% 18%, var(--water1), var(--water2) 72%); }
+    .rp-stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .rp-badge { position: absolute; left: 12px; bottom: 12px; padding: 6px 12px; border-radius: 99px; font: 700 12px/1.4 var(--mono); opacity: 0; transform: translateY(8px); transition: opacity .4s, transform .4s var(--ease); background: rgba(var(--bg-rgb), .8); border: 1px solid rgba(var(--acc-rgb), .5); color: var(--acc); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+    .rp-badge.bad { border-color: rgba(var(--red-rgb), .5); color: var(--red); }
+    .rp-badge.show { opacity: 1; transform: none; }
+    .rp-cps { display: flex; flex-wrap: wrap; gap: 6px; padding: 10px 12px; border-top: 1px solid var(--line); }
+    .cp { display: inline-flex; align-items: center; gap: 5px; padding: 4px 7px; border-radius: 6px; border: 1px solid var(--line); font: 500 11px/1 var(--mono); color: var(--text3); transition: color .25s, border-color .25s; }
+    .cp::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--line2); transition: background .25s, box-shadow .25s; }
+    .cp.hit { color: var(--text); border-color: rgba(var(--acc-rgb), .45); }
+    .cp.hit::before { background: var(--acc); box-shadow: 0 0 8px var(--acc); }
+    .rp-ctl { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-top: 1px solid var(--line); }
+    .rp-btn { min-width: 36px; height: 36px; padding: 0 9px; display: grid; place-items: center; border-radius: 10px; border: 1px solid var(--line2); font: 700 12px/1 var(--mono); transition: color .2s, border-color .2s; }
+    .rp-btn:hover { color: var(--acc); border-color: var(--acc); }
+    .bar { flex: 1; height: 4px; overflow: hidden; border-radius: 4px; background: var(--line); }
+    .bar i { display: block; width: 0; height: 100%; border-radius: inherit; background: var(--acc); }
+    .rp-note { min-height: 4.6em; padding: 2px 12px 12px; font-size: 13px; line-height: 1.7; color: var(--text2); }
+    .splits { display: grid; gap: 9px; margin-top: 16px; }
+    .splits-h { display: flex; justify-content: space-between; gap: 10px; font: 500 11px/1 var(--mono); color: var(--text3); letter-spacing: .06em; }
+    .splits-h span { display: inline-flex; align-items: center; gap: 5px; }
+    .splits-h i { width: 14px; height: 4px; border-radius: 2px; }
+    .sp { display: grid; grid-template-columns: 96px 1fr; gap: 10px; align-items: center; font-size: 12.5px; color: var(--text3); transition: color .25s; }
+    .sp.cur { color: var(--text); font-weight: 700; }
+    .sp-b { display: grid; gap: 3px; }
+    .sb { display: flex; align-items: center; gap: 8px; }
+    .sb i { flex: none; width: 0; height: 7px; border-radius: 4px; transition: width 1.2s var(--ease); transition-delay: calc(var(--i, 0) * 90ms); }
+    .sb em { font: 600 11px/1 var(--mono); font-style: normal; color: var(--text2); }
+    .in .sb i { width: calc(var(--w) * .8); }
+    .c-a { background: var(--blue); }
+    .c-b { background: var(--acc); }
+    .vrail { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); row-gap: 18px; margin-top: 18px; padding: 8px 2px 4px; }
+    .vr { position: relative; padding: 14px 14px 0 0; }
+    .vr::before { content: ""; position: absolute; top: 4px; left: 0; right: 0; height: 1px; background: var(--line2); }
+    .vr::after { content: ""; position: absolute; top: 0; left: 0; width: 9px; height: 9px; border-radius: 50%; background: var(--surface); border: 2px solid var(--text3); }
+    .vr.ok::after { background: var(--acc); border-color: var(--acc); }
+    .vr.bad::after { border-color: var(--red); }
+    .vr b { font: 700 12px/1 var(--mono); }
+    .vr span { display: block; margin-top: 4px; font-size: 12px; line-height: 1.55; color: var(--text3); }
+
+    /* 流程连线光束（Animated Beam） */
+    .pipe { position: relative; display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; }
+    .pipe::before, .pipe::after { content: ""; position: absolute; left: 10%; right: 10%; top: 21px; height: 2px; border-radius: 2px; }
+    .pipe::before { background: var(--line2); }
+    .pipe::after { background: linear-gradient(90deg, transparent, var(--acc), var(--gold), transparent) no-repeat; background-size: 28% 100%; animation: beamx 3.2s linear infinite; }
+    @keyframes beamx { from { background-position: -40% 0; } to { background-position: 140% 0; } }
+    .pipe button { position: relative; z-index: 1; display: grid; justify-items: center; align-content: start; gap: 7px; padding: 4px 2px 6px; text-align: center; }
+    .pn { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%; background: var(--surface); border: 1.5px solid var(--line2); font: 700 13px/1 var(--mono); color: var(--text3); transition: background .3s, color .3s, border-color .3s, transform .3s var(--ease), box-shadow .3s; }
+    .pipe button:hover .pn { border-color: var(--acc); color: var(--acc); }
+    .pipe button.done .pn { border-color: var(--acc); color: var(--acc); }
+    .pipe button.on .pn { background: var(--acc); border-color: var(--acc); color: var(--acc-ink); transform: scale(1.12); box-shadow: 0 0 0 6px rgba(var(--acc-rgb), .16); }
+    .pipe b { font-size: 13.5px; line-height: 1.3; }
+    .pipe small { font: 500 10px/1.3 var(--mono); color: var(--text3); }
+    .pipe-d { min-height: 5.4em; margin-top: 12px; padding: 12px 14px; border-left: 2px solid var(--acc); border-radius: 0 10px 10px 0; background: var(--bg2); font-size: 14px; color: var(--text2); }
+    .pipe-d b { color: var(--text); }
+    .vf { margin-top: 14px; padding: 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg2); font-size: 14px; line-height: 2; color: var(--text2); }
+    .vf-h { display: flex; justify-content: space-between; margin-bottom: 4px; font: 600 11px/1.6 var(--mono); color: var(--text3); letter-spacing: .08em; }
+    .vf b { padding: 1px 5px; border-radius: 5px; font-family: var(--mono); font-weight: 700; color: var(--text); transition: background .3s, color .3s; }
+    .vf b.chk { background: rgba(var(--acc-rgb), .14); color: var(--acc); }
+    .vf b.bad.chk { background: rgba(var(--red-rgb), .16); color: var(--red); animation: shake .45s; }
+    @keyframes shake { 20%, 60% { transform: translateX(-3px); } 40%, 80% { transform: translateX(3px); } }
+    .vf-m { display: flex; align-items: center; gap: 10px; margin-top: 8px; font: 600 12px/1.4 var(--mono); opacity: .35; transition: opacity .4s; }
+    .vf-m .bar i { transition: width 1s var(--ease); }
+    .vf.done .vf-m { opacity: 1; }
+    .vf.done .vf-m .bar i { width: 91.7%; }
+    .vf-m span b { padding: 0; color: var(--red); background: none; }
+
+    /* 90 天验证计划 */
+    .pipe.p3 { grid-template-columns: repeat(3, 1fr); }
+    .pipe.p3::before, .pipe.p3::after { left: 16.7%; right: 16.7%; }
+    .d90 { overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: var(--bg2); }
+    .d90-h { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 12px; padding: 12px 14px; border-bottom: 1px solid var(--line); font: 600 11px/1.5 var(--mono); color: var(--text3); letter-spacing: .06em; }
+    .d90 .pipe { margin: 16px 10px 0; }
+    .d90-list { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 14px; counter-reset: k; }
+    .d90-list li { display: flex; align-items: flex-start; gap: 9px; min-height: 3.6em; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); font-size: 13.5px; line-height: 1.55; color: var(--text2); counter-increment: k; }
+    .d90-list li::before { content: counter(k); flex: none; width: 18px; height: 18px; margin-top: 1px; display: grid; place-items: center; border-radius: 6px; background: rgba(var(--acc-rgb), .12); color: var(--acc); font: 700 10.5px/1 var(--mono); }
+    .fork { display: grid; grid-template-columns: auto 1fr 1fr; align-items: center; gap: 8px; padding: 0 14px 14px; font-size: 13px; }
+    .fork-q { font: 600 11px/1.4 var(--mono); color: var(--text3); letter-spacing: .04em; }
+    .fork span { padding: 9px 10px; border-radius: 10px; border: 1px dashed var(--line2); text-align: center; color: var(--text2); transition: border-color .4s, background .4s, color .4s; }
+    .fork b { font-family: var(--mono); }
+    .d90.end .fork .no { border-style: solid; border-color: rgba(var(--red-rgb), .45); background: rgba(var(--red-rgb), .07); color: var(--text); }
+    .d90.end .fork .yes { border-style: solid; border-color: rgba(var(--acc-rgb), .5); background: rgba(var(--acc-rgb), .08); color: var(--text); }
+    .cols3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 16px; }
+    .cols3 > div { padding: 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg2); }
+    .cols3 .pts { display: grid; gap: 6px; margin-top: 12px; }
+    .cols3 .pts li { font-size: 14px; }
+    .ask { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px 16px; margin-top: 18px; padding: 14px 16px; border-radius: 12px; border: 1px solid rgba(var(--acc-rgb), .3); background: rgba(var(--acc-rgb), .06); font-size: 14px; color: var(--text2); }
+    .ask .link { margin-top: 0; }
+
+    /* NDVI 曲线 */
+    .ndvi { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: var(--bg2); --g: 1; }
+    .ndvi::before, .ndvi::after { content: ""; position: absolute; inset: 0; pointer-events: none; }
+    .ndvi::before { background: linear-gradient(160deg, rgba(var(--sand-rgb), .22), transparent 70%); opacity: calc(1 - var(--g)); }
+    .ndvi::after { background: linear-gradient(160deg, rgba(var(--green-rgb), .22), transparent 70%); opacity: var(--g); }
+    .ndvi > * { position: relative; z-index: 1; }
+    .ndvi-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 14px 0; font: 600 11px/1.5 var(--mono); color: var(--text3); letter-spacing: .06em; }
+    .ndvi > svg { display: block; width: 100%; height: auto; }
+    .ndvi > svg text { font: 500 10px var(--mono); fill: var(--text3); }
+    .nd-grid { stroke: var(--line); stroke-width: 1; }
+    .nd-bp { stroke: var(--line2); stroke-width: 1; stroke-dasharray: 3 4; }
+    .nd-line { fill: none; stroke: url(#ndG); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .js .nd-line { stroke-dasharray: 700; stroke-dashoffset: 700; transition: stroke-dashoffset 2.2s var(--ease) .2s; }
+    .js .in .nd-line { stroke-dashoffset: 0; }
+    .nd-area { fill: url(#ndA); opacity: .5; }
+    .nd-dot { fill: var(--bg); stroke: var(--text); stroke-width: 2.5; }
+    .nd-guide { stroke: var(--text3); stroke-width: 1; stroke-dasharray: 2 3; }
+    .ndvi-ctl { display: flex; align-items: center; gap: 10px; padding: 4px 14px 12px; }
+    .ndvi-out { padding: 0 14px 12px; font-size: 13px; color: var(--text2); }
+    .ndvi-out b { font-family: var(--mono); color: var(--text); }
+    input[type="range"] { flex: 1; height: 24px; margin: 0; background: none; accent-color: var(--acc); cursor: pointer; }
+
+    .duo { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 18px; }
+    .duo .pj { margin-bottom: 0; display: flex; flex-direction: column; }
+    .duo .pj ul.pts { display: grid; gap: 6px; margin-top: 14px; }
+    .pts li { position: relative; padding-left: 16px; font-size: 14.5px; color: var(--text2); }
+    .pts li::before { content: ""; position: absolute; left: 0; top: .72em; width: 6px; height: 2px; background: var(--acc); }
+    .shot { position: relative; display: block; width: 100%; margin-top: 16px; overflow: hidden; border-radius: 12px; border: 1px solid var(--line); aspect-ratio: 16 / 9; background: var(--surface2); cursor: zoom-in; }
+    .shot img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s var(--ease); }
+    .shot:hover img { transform: scale(1.05); }
+    .link { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; font-size: 14px; font-weight: 700; color: var(--acc); }
+    .link .ic { width: 15px; height: 15px; transition: transform .25s var(--ease); }
+    .link:hover .ic { transform: translate(2px, -2px); }
+    .lessons { display: grid; grid-template-columns: repeat(14, 1fr); gap: 4px; margin-top: 18px; }
+    .lessons i { height: 26px; display: grid; place-items: center; border-radius: 6px; border: 1px solid var(--line); font: 600 9.5px/1 var(--mono); font-style: normal; color: var(--text3); }
+    .lessons i.cur { border-color: var(--gold); color: var(--gold); background: rgba(var(--gold-rgb), .1); animation: blip 1.8s ease-in-out infinite; }
+    .mt-auto { margin-top: auto; padding-top: 16px; }
+
+    /* ==================== 8. 方法 ==================== */
+    .lp { display: grid; grid-template-columns: minmax(0, 330px) 1fr; gap: clamp(20px, 4vw, 52px); align-items: center; padding: clamp(18px, 3vw, 32px); }
+    .lp svg { display: block; width: 100%; height: auto; overflow: visible; }
+    .lp-ring { fill: none; stroke: var(--line2); stroke-width: 1.5; stroke-dasharray: 3 7; transform-origin: 160px 160px; animation: spin 60s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .lp-arc { fill: none; stroke: var(--acc); stroke-width: 2.5; stroke-linecap: round; transform: rotate(-90deg); transform-origin: 160px 160px; transition: stroke-dashoffset .7s var(--ease); }
+    .lp-node { cursor: pointer; outline: none; }
+    .lp-node circle { fill: var(--surface); stroke: var(--line2); stroke-width: 1.5; transition: fill .3s, stroke .3s, r .3s; }
+    .lp-node text { font: 700 13px var(--sans); fill: var(--text2); text-anchor: middle; dominant-baseline: central; pointer-events: none; transition: fill .3s; }
+    .lp-node:hover circle, .lp-node:focus-visible circle { stroke: var(--acc); }
+    .lp-node.on circle { fill: var(--acc); stroke: var(--acc); r: 30px; }
+    .lp-node.on text { fill: var(--acc-ink); }
+    .lp-c1 { font: 800 34px var(--mono); fill: var(--text); text-anchor: middle; }
+    .lp-c2 { font: 500 10px var(--mono); fill: var(--text3); text-anchor: middle; letter-spacing: .14em; }
+    .lp-step { font: 600 12px/1 var(--mono); color: var(--acc); letter-spacing: .12em; }
+    .lp-t { margin: 10px 0 8px; font-size: clamp(22px, 3vw, 28px); font-weight: 900; }
+    .lp-d { color: var(--text2); }
+    .lp-ex { margin-top: 16px; padding: 14px 16px; border-radius: 12px; border: 1px solid var(--line); background: var(--bg2); font-size: 14.5px; color: var(--text2); }
+    .lp-ex small { display: block; margin-bottom: 4px; font: 600 11px/1.4 var(--mono); color: var(--text3); letter-spacing: .08em; }
+    .lp-body.sw > * { animation: pop .45s var(--ease) both; }
+    .creed { margin: 18px 0; padding: clamp(22px, 4vw, 40px); border-radius: var(--r); border: 1px solid var(--line); font-size: clamp(19px, 2.8vw, 30px); font-weight: 800; line-height: 1.6; }
+    .creed span { opacity: .18; transition: opacity .35s; }
+    .creed span.lit { opacity: 1; }
+    .creed cite { display: block; margin-top: 14px; font: 500 12px/1.5 var(--mono); font-style: normal; color: var(--text3); letter-spacing: .06em; }
+    .prs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .pr { padding: 20px; transition: transform .25s ease-out, border-color .3s; }
+    .pr:hover { transform: translateY(-4px); }
+    .pr-n { font: 600 11px/1 var(--mono); color: var(--text3); letter-spacing: .1em; }
+    .pr h3 { margin: 10px 0 6px; font-size: 17px; font-weight: 800; line-height: 1.4; }
+    .pr p { font-size: 14px; color: var(--text2); }
+    .pr .src { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+
+    /* ==================== 9. 能力 / 教育 / 证书 ==================== */
+    .sk { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .sk .card { padding: 22px; display: flex; flex-direction: column; }
+    .sk-h { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .sk-h h3 { font-size: 17px; font-weight: 800; }
+    .lv { display: inline-flex; gap: 3px; }
+    .lv i { width: 16px; height: 5px; border-radius: 3px; background: var(--line2); }
+    .lv i.f { background: var(--acc); }
+    .sk-p { margin: 6px 0 14px; font-size: 13px; color: var(--text3); }
+    .sk-list { display: flex; flex-wrap: wrap; gap: 7px; }
+    .skill { padding: 6px 11px; border-radius: 9px; border: 1px solid var(--line); background: var(--surface2); font-size: 13.5px; transition: border-color .2s, color .2s, transform .2s var(--ease), background .2s; }
+    .skill:hover { transform: translateY(-2px); border-color: var(--line2); }
+    .skill.on { border-color: var(--acc); color: var(--acc); background: rgba(var(--acc-rgb), .08); }
+    .ev { min-height: 4.2em; margin-top: 16px; padding-top: 12px; border-top: 1px dashed var(--line2); font-size: 13px; color: var(--text2); }
+    .ev small { display: block; font: 600 10.5px/1.6 var(--mono); color: var(--text3); letter-spacing: .1em; }
+
+    .edu { padding: clamp(20px, 3vw, 30px); }
+    .edu-top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .edu-id { display: flex; align-items: center; gap: 14px; }
+    .edu-logo { width: 54px; height: 54px; display: grid; place-items: center; border-radius: 14px; background: rgba(var(--acc-rgb), .1); border: 1px solid rgba(var(--acc-rgb), .3); font: 800 13px/1 var(--mono); color: var(--acc); }
+    .edu-id h3 { font-size: 18px; font-weight: 800; }
+    .edu-id p { font-size: 14px; color: var(--text2); }
+    .edu-pts { display: grid; gap: 8px; margin-top: 18px; }
+    .certs-box { margin-top: 18px; padding: clamp(18px, 3vw, 28px); }
+    .certs-h { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+    .certs-h h3 { font-size: 17px; font-weight: 800; }
+    .certs { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+    .cert { position: relative; aspect-ratio: 3 / 2; overflow: hidden; border-radius: 10px; border: 1px solid var(--line); background: var(--surface2); cursor: zoom-in; transition: border-color .25s, transform .35s var(--ease); }
+    .cert:hover { border-color: var(--acc); transform: translateY(-3px); }
+    .cert img { width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .5s, transform .6s var(--ease); }
+    .cert.ok img { opacity: 1; }
+    .cert:hover img { transform: scale(1.06); }
+    .cert-n { position: absolute; left: 6px; bottom: 6px; z-index: 1; padding: 3px 6px; border-radius: 6px; background: rgba(var(--bg-rgb), .75); font: 600 10px/1 var(--mono); color: var(--text2); }
+    .cert.miss { cursor: default; display: grid; place-items: center; }
+    .certs-more { display: flex; justify-content: center; margin-top: 14px; }
+    .cl-tabs { margin: 22px 0 12px; }
+    .cl { display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px 24px; }
+    .cl li { position: relative; padding: 5px 0 5px 24px; font-size: 14px; color: var(--text2); }
+    .cl li::before { content: ""; position: absolute; left: 2px; top: 12px; width: 11px; height: 6px; border-left: 2px solid var(--acc); border-bottom: 2px solid var(--acc); transform: rotate(-45deg); }
+
+    /* ==================== 10. 路径 / 场外 / 联系 ==================== */
+    .tl { position: relative; padding-left: 30px; }
+    .tl::before { content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; border-radius: 2px; background: var(--line); }
+    .tl-fill { position: absolute; left: 7px; top: 8px; width: 2px; height: 0; border-radius: 2px; background: linear-gradient(var(--acc), var(--gold)); }
+    .tl-i { position: relative; padding-bottom: 30px; }
+    .tl-i:last-child { padding-bottom: 0; }
+    .tl-i::before { content: ""; position: absolute; left: -30px; top: 5px; width: 16px; height: 16px; border-radius: 50%; background: var(--bg); border: 2px solid var(--line2); transition: border-color .4s, box-shadow .4s; }
+    .tl-i.in::before { border-color: var(--acc); box-shadow: 0 0 0 5px rgba(var(--acc-rgb), .14); }
+    .tl-t { font: 600 12px/1.6 var(--mono); color: var(--acc); letter-spacing: .08em; }
+    .tl-i h3 { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin: 2px 0 8px; font-size: 19px; font-weight: 800; }
+    .tl-i p { max-width: 74ch; font-size: 14.5px; color: var(--text2); }
+    .tl-i .pts { margin-top: 6px; max-width: 74ch; }
+
+    .life { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .lf { position: relative; overflow: hidden; aspect-ratio: 4 / 5; border-radius: var(--r); border: 1px solid var(--line); background: var(--surface2); cursor: zoom-in; text-align: left; }
+    .lf img { width: 100%; height: 100%; object-fit: cover; transition: transform .9s var(--ease), filter .5s; filter: saturate(.85); }
+    .lf:hover img { transform: scale(1.06); filter: none; }
+    .lf-b { position: absolute; inset: auto 0 0 0; padding: 60px 18px 18px; background: linear-gradient(transparent, rgba(4, 6, 9, .92)); color: #eef2f7; }
+    .lf-b h3 { font-size: 17px; font-weight: 800; }
+    .lf-b p { margin-top: 4px; font-size: 13.5px; line-height: 1.65; color: #b9c2cf; }
+
+    .contact { margin-top: clamp(60px, 9vw, 108px); padding: clamp(32px, 6vw, 64px) clamp(20px, 4vw, 48px); text-align: center; overflow: hidden; }
+    .contact h2 { font-size: clamp(28px, 5vw, 48px); font-weight: 900; line-height: 1.2; }
+    .contact p { max-width: 52ch; margin: 14px auto 0; color: var(--text2); }
+    .contact .cta { justify-content: center; }
+    .ft { padding: 36px 0 110px; text-align: center; font-size: 12.5px; line-height: 1.9; color: var(--text3); }
+    .ft b { color: var(--text2); }
+
+    /* ==================== 11. 浮动控件 ==================== */
+    .music { position: fixed; left: max(16px, env(safe-area-inset-left)); bottom: max(16px, env(safe-area-inset-bottom)); z-index: 55; display: flex; align-items: center; height: 44px; border-radius: 99px; border: 1px solid var(--line2); background: rgba(var(--surface-rgb), .86); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); box-shadow: var(--shadow); }
+    .music-b { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 50%; color: var(--text2); }
+    .music-t { max-width: 0; overflow: hidden; white-space: nowrap; font: 500 12px/1 var(--mono); color: var(--text2); transition: max-width .4s var(--ease), padding .4s var(--ease); }
+    .music:hover .music-t, .music.playing .music-t { max-width: 140px; padding-right: 14px; }
+    .music.playing .music-b { color: var(--acc); }
+    .eq { display: none; align-items: flex-end; gap: 2px; height: 14px; }
+    .eq i { width: 3px; height: 100%; border-radius: 2px; background: var(--acc); transform-origin: 50% 100%; animation: eq .9s ease-in-out infinite; }
+    .eq i:nth-child(2) { animation-delay: -.3s; }
+    .eq i:nth-child(3) { animation-delay: -.6s; }
+    @keyframes eq { 0%, 100% { transform: scaleY(.3); } 50% { transform: scaleY(1); } }
+    .music.playing .eq { display: flex; }
+    .music.playing .music-b .ic { display: none; }
+    .totop { position: fixed; right: max(16px, env(safe-area-inset-right)); bottom: max(16px, env(safe-area-inset-bottom)); z-index: 55; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--line2); background: rgba(var(--surface-rgb), .86); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity .3s, transform .3s var(--ease), color .2s, border-color .2s; }
+    .totop.show { opacity: 1; transform: none; pointer-events: auto; }
+    .totop:hover { color: var(--acc); border-color: var(--acc); }
+    .toast { position: fixed; left: 50%; bottom: 28px; z-index: 95; max-width: calc(100vw - 32px); padding: 11px 18px; border-radius: 99px; border: 1px solid rgba(var(--acc-rgb), .4); background: rgba(var(--surface-rgb), .95); box-shadow: var(--shadow); font-size: 14px; font-weight: 600; opacity: 0; transform: translate(-50%, 16px); pointer-events: none; transition: opacity .3s, transform .35s var(--ease); }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    .lb { position: fixed; inset: 0; z-index: 99; display: grid; grid-template-columns: 64px 1fr 64px; align-items: center; background: rgba(4, 6, 9, .93); opacity: 0; transition: opacity .25s; }
+    .lb.open { opacity: 1; }
+    .lb figure { grid-column: 2; display: grid; justify-items: center; gap: 12px; }
+    .lb img { max-width: 100%; max-height: 82vh; border-radius: 10px; box-shadow: 0 30px 80px rgba(0, 0, 0, .6); transform: scale(.96); transition: transform .35s var(--ease); }
+    .lb.open img { transform: none; }
+    .lb figcaption { font: 500 13px/1.5 var(--mono); color: #b9c2cf; text-align: center; }
+    .lb button { width: 46px; height: 46px; display: grid; place-items: center; justify-self: center; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .2); color: #fff; font-size: 24px; line-height: 1; transition: background .2s; }
+    .lb button:hover { background: rgba(255, 255, 255, .12); }
+    .lb-x { position: absolute; top: 16px; right: 16px; }
+
+    /* ==================== 11b. 大动效：光晕、幽灵编号、幕间、开场 ==================== */
+    /* 光标光晕：只在卡片之间的背景上可见 */
+    .aura { position: fixed; left: 0; top: 0; z-index: -1; width: 620px; height: 620px; margin: -310px 0 0 -310px; border-radius: 50%; pointer-events: none; background: radial-gradient(circle, rgba(var(--acc-rgb), .11), transparent 62%); opacity: 0; transition: opacity .8s; will-change: transform; }
+    .aura.on { opacity: 1; }
+    /* 小节标题后的巨型描边编号，随滚动做视差 */
+    .sec-h { position: relative; }
+    .ghost { position: absolute; right: 0; top: -.42em; z-index: -1; font: 900 clamp(110px, 20vw, 240px)/1 var(--mono); letter-spacing: -.04em; color: transparent; -webkit-text-stroke: 1px rgba(var(--text-rgb), .09); pointer-events: none; -webkit-user-select: none; user-select: none; transform: translateY(var(--py, 0px)); }
+    .rp-stage.shake { animation: shake .45s; }
+
+    /* 幕间：创业思考。默认是普通列表；有 JS 且未要求减少动效时，变成“钉住”的全屏滚动舞台 */
+    .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+    .stage { position: relative; margin-top: clamp(60px, 9vw, 108px); }
+    .stage-pin { position: relative; padding: 40px 0; overflow: hidden; }
+    .stage-in { position: relative; z-index: 1; width: 100%; }
+    .stage-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: clamp(18px, 5vh, 46px); }
+    .stage-count, .stage-foot, .stage-ghost, .stage-orb { display: none; }
+    .sq { margin: 0 0 28px; font-size: clamp(20px, 3vw, 30px); font-weight: 900; line-height: 1.45; }
+    .sq footer { margin-top: 10px; font: 500 12px/1.5 var(--mono); color: var(--text3); letter-spacing: .1em; }
+    .js .stage:not(.flat) { height: 480vh; }
+    .js .stage:not(.flat) .stage-pin { position: sticky; top: 0; height: 100vh; height: 100svh; padding: var(--hh) 0 0; display: grid; align-items: center; }
+    .js .stage:not(.flat) .stage-count { display: block; font: 600 13px/1 var(--mono); color: var(--text3); letter-spacing: .1em; }
+    .js .stage:not(.flat) .stage-count b { font-size: 24px; color: var(--text); }
+    .js .stage:not(.flat) .stage-quotes { position: relative; min-height: clamp(250px, 46vh, 440px); }
+    .js .stage:not(.flat) .sq { position: absolute; left: 0; top: 0; width: 100%; margin: 0; font-size: clamp(27px, 5.2vw, 64px); line-height: 1.36; opacity: 0; transform: translateY(60px); filter: blur(12px); transition: opacity .55s var(--ease), transform .75s var(--ease), filter .55s var(--ease); pointer-events: none; }
+    .js .stage:not(.flat) .sq.on { opacity: 1; transform: none; filter: none; }
+    .js .stage:not(.flat) .sq.past { transform: translateY(-60px); }
+    .js .stage:not(.flat) .sq footer { margin-top: 22px; font-size: 13px; }
+    .js .stage:not(.flat) .sq p > span[aria-hidden] { opacity: .13; transition: opacity .25s, color .6s; }
+    .js .stage:not(.flat) .sq p > span.lit { opacity: 1; }
+    .js .stage:not(.flat) .sq p > span.hot { color: var(--acc); }
+    .js .stage:not(.flat) .stage-foot { display: flex; align-items: center; gap: 16px; margin-top: clamp(18px, 5vh, 44px); font: 500 12px/1.5 var(--mono); color: var(--text3); }
+    .js .stage:not(.flat) .stage-foot .bar { max-width: 300px; }
+    .js .stage:not(.flat) .stage-foot .bar i { background: linear-gradient(90deg, var(--acc), var(--gold)); }
+    .stage-skip { margin-left: auto; color: var(--text2); border-bottom: 1px dashed var(--line2); transition: color .2s, border-color .2s; }
+    .stage-skip:hover { color: var(--acc); border-color: var(--acc); }
+    .js .stage:not(.flat) .stage-orb { display: block; position: absolute; right: 6%; top: 16%; width: 46vw; height: 46vw; max-width: 640px; max-height: 640px; border-radius: 50%; filter: blur(90px); opacity: .2; background-color: var(--acc); transition: background-color 1.1s; }
+    .js .stage:not(.flat) .stage-ghost { display: block; position: absolute; right: -1vw; bottom: -5vw; font: 900 44vw/.8 var(--mono); letter-spacing: -.06em; color: transparent; -webkit-text-stroke: 1.5px rgba(var(--text-rgb), .08); pointer-events: none; -webkit-user-select: none; user-select: none; }
+
+    /* 开场幕布：由脚本创建，首次进入播放一次 */
+    .intro .hero .rv, .intro .hero h1 .ch { opacity: 0 !important; transform: translateY(30px) !important; transition: none !important; }
+    .intro-c { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; cursor: pointer; }
+    .intro-c > i { position: absolute; left: 0; right: 0; height: 50.5%; background: var(--bg); transition: transform .8s cubic-bezier(.7, 0, .2, 1); }
+    .intro-c > i:nth-child(1) { top: 0; }
+    .intro-c > i:nth-child(2) { bottom: 0; }
+    .intro-c.open { pointer-events: none; }
+    .intro-c.open > i:nth-child(1) { transform: translateY(-101%); }
+    .intro-c.open > i:nth-child(2) { transform: translateY(101%); }
+    .intro-b { position: relative; z-index: 1; text-align: center; transition: opacity .3s, transform .6s var(--ease); }
+    .intro-c.open .intro-b { opacity: 0; transform: scale(1.08); }
+    .intro-n { font: 800 clamp(58px, 14vw, 160px)/1 var(--mono); letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+    .intro-n small { margin-left: .15em; font-size: .28em; color: var(--text3); letter-spacing: 0; }
+    .intro-t { margin-top: 16px; font: 500 12px/1.6 var(--mono); letter-spacing: .22em; color: var(--text3); }
+    .intro-l { width: min(60vw, 420px); height: 2px; margin: 22px auto 0; overflow: hidden; border-radius: 2px; background: var(--line); }
+    .intro-l b { display: block; height: 100%; background: linear-gradient(90deg, var(--acc), var(--gold)); transform: scaleX(0); transform-origin: 0 50%; }
+
+    /* ==================== 12. 响应式 ==================== */
+    @media (max-width: 980px) {
+      .nav { display: none; }
+      .burger { display: grid; }
+      .drawer { display: grid; position: absolute; left: 0; right: 0; top: var(--hh); padding: 8px clamp(16px, 4vw, 32px) 16px; background: rgba(var(--bg-rgb), .97); border-bottom: 1px solid var(--line); opacity: 0; transform: translateY(-10px); pointer-events: none; transition: opacity .25s, transform .3s var(--ease); }
+      .drawer.open { opacity: 1; transform: none; pointer-events: auto; }
+      .drawer a { display: flex; justify-content: space-between; padding: 13px 4px; border-bottom: 1px solid var(--line); font-weight: 700; }
+      .drawer a span { font: 500 11px/2 var(--mono); color: var(--text3); }
+      .hero-grid, .about, .pj-grid, .lp { grid-template-columns: minmax(0, 1fr); }
+      .pj-grid.flip > :first-child { order: 0; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .prs { grid-template-columns: repeat(2, 1fr); }
+      .sk { grid-template-columns: minmax(0, 1fr); }
+      .lp svg { max-width: 300px; margin-inline: auto; }
+      .ev { min-height: 0; }
+      .cols3 { grid-template-columns: minmax(0, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .brand-sub { display: none; }
+      .stat { padding: 16px; }
+      .prs, .cl { grid-template-columns: minmax(0, 1fr); }
+      .life { grid-auto-flow: column; grid-auto-columns: 78%; grid-template-columns: none; overflow-x: auto; scroll-snap-type: x mandatory; margin-inline: calc(-1 * clamp(16px, 4vw, 32px)); padding-inline: clamp(16px, 4vw, 32px); scrollbar-width: none; }
+      .lf { scroll-snap-align: center; }
+      .sp { grid-template-columns: 78px 1fr; }
+      #rpVer { display: grid; grid-template-columns: repeat(3, 1fr); width: 100%; }
+      #rpVer button { flex-direction: column; align-items: center; gap: 4px; padding: 7px 4px; }
+      .pipe b { font-size: 12px; }
+      .pipe small { display: none; }
+      .pipe.p3 small { display: block; }
+      .d90-list { grid-template-columns: minmax(0, 1fr); }
+      .d90-list li { min-height: 0; }
+      .fork { grid-template-columns: 1fr 1fr; }
+      .fork-q { grid-column: 1 / -1; }
+      .lb { grid-template-columns: 8px 1fr 8px; }
+      .lb-nav { position: absolute; bottom: 18px; }
+      .lb-nav.prev { left: calc(50% - 60px); }
+      .lb-nav.next { right: calc(50% - 60px); }
+      .lessons { grid-template-columns: repeat(7, 1fr); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; transition-delay: 0s !important; scroll-behavior: auto !important; }
+      .js .rv, .js .split .ch { opacity: 1; transform: none; filter: none; }
+      .creed span { opacity: 1; }
+    }
+
+    /* ==================== 13. 打印 ==================== */
+    @media print {
+      :root, :root[data-theme="light"] { --bg-rgb: 255, 255, 255; --surface-rgb: 255, 255, 255; --text-rgb: 17, 17, 17; --acc-rgb: 10, 125, 108; --gold-rgb: 138, 90, 0; --bg2: #fff; --surface2: #f5f5f5; --line: #ddd; --line2: #bbb; --text2: #333; --text3: #666; --acc-ink: #fff; --water1: #eef7f6; --water2: #e3f0ef; }
+      .hd, .bg, .progress, #fx, .music, .totop, .toast, .lb, .filters, .rp-ctl, .cta, .marq, .ndvi-ctl, .certs-more, .hero-glow, .caret, #school, .aura, .ghost, .hint, .intro-c, .stage-orb, .stage-ghost, .stage-foot, .stage-count, .sr { display: none !important; }
+      body { font-size: 12.5px; }
+      .hero h1 .ch { background: none; color: var(--text); }
+      .js .stage:not(.flat) { height: auto; margin-top: 30px; }
+      .js .stage:not(.flat) .stage-pin { position: static; height: auto; display: block; padding: 0; }
+      .js .stage:not(.flat) .stage-quotes { min-height: 0; }
+      .js .stage:not(.flat) .sq { position: static; margin: 0 0 12px; font-size: 16px; opacity: 1 !important; transform: none !important; filter: none !important; }
+      .js .stage:not(.flat) .sq p > span[aria-hidden] { opacity: 1 !important; color: inherit !important; }
+      .js .rv, .js .split .ch { opacity: 1 !important; transform: none !important; filter: none !important; }
+      .card, .tl-i { break-inside: avoid; box-shadow: none; }
+      .beam::after { display: none; }
+      .pj.hide { display: block !important; }
+      .cl[hidden] { display: grid !important; }
+      .sec { padding-top: 30px; }
+      .creed span { opacity: 1; }
+      .lead em { color: var(--acc); background: none; }
+      .life { grid-template-columns: repeat(3, 1fr); }
+      .ft { padding-bottom: 20px; }
+    }
+  </style>
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="bg" aria-hidden="true"><i></i><i></i><i></i></div>
+<canvas id="fx" aria-hidden="true"></canvas>
+
+<!-- 图标 -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+  <symbol id="i-print" viewBox="0 0 24 24"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v7H6z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 5v14l12-7z" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-replay" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
+  <symbol id="i-music" viewBox="0 0 24 24"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></symbol>
+</defs></svg>
+
+<!-- ==================== 顶栏 ==================== -->
+<header class="hd" id="hd">
+  <div class="wrap hd-in">
+    <a class="brand" href="#top" aria-label="回到顶部">
+      <span class="brand-dot"></span><span>于金硕</span><span class="brand-sub">BJUT · ME ’30</span>
+    </a>
+    <nav class="nav" id="nav" aria-label="主导航">
+      <a href="#about">关于</a><a href="#projects">项目</a><a href="#method">方法</a><a href="#skills">能力</a><a href="#edu">证书</a><a href="#path">路径</a><a href="#contact">联系</a>
+      <span class="nav-ink" id="navInk"></span>
+    </nav>
+    <div class="hd-act">
+      <button class="ib" id="btnTheme" type="button" aria-label="切换深色 / 浅色" title="切换深色 / 浅色">
+        <svg class="ic i-sun"><use href="#i-sun"/></svg><svg class="ic i-moon"><use href="#i-moon"/></svg>
       </button>
-      <div class="tl-year"><span id="tlYear">1986</span></div>
-      <div class="tl-slider">
-        <input type="range" id="tlRange" min="1986" max="2025" step="1" value="1986">
-        <div class="tl-marks" id="tlMarks"></div>
-      </div>
+      <button class="ib" id="btnPrint" type="button" aria-label="打印或导出 PDF" title="打印 / 导出 PDF"><svg class="ic"><use href="#i-print"/></svg></button>
+      <button class="ib burger" id="btnBurger" type="button" aria-label="展开菜单" aria-expanded="false" aria-controls="drawer"><svg class="ic"><use href="#i-menu"/></svg></button>
     </div>
-    <!-- 阶段判读：绝对定位在胶囊**外**（右上方），不占 flex 宽度。
-         放进 flex 流的话，文案「沙进人退」↔「退耕还林 · 规模治理」宽度差一倍，
-         flex:1 的滑轨会被推得忽宽忽窄 —— 拖动手感与视觉基线都在抖。 -->
-    <div class="tl-tip" id="tlTip">1986—2000 · 平稳期</div>
   </div>
-</section><section id="today" class="section today-section"><div class="sec-head"><div class="sec-idx">05</div><div><p class="section-kicker">今天</p><h2>现在的样子。</h2><p>先看整片研究区：把头五年和最近五年各叠成一张平均图，再相减。</p></div></div>
-<div class="region-grid"><div class="region-figure-wrap"><figure class="compare-figure" data-comparison="region">
-      <div class="compare-top"><span data-compare-title>整片研究区 · 五年平均 NDVI</span><span class="resolution-tag" data-compare-resolution>500 米 · 年度合成</span></div>
-      <div class="compare-stage" style="--split:50%">
-        <img class="compare-before" data-before src="assets/data/change/window-1987-1991.png" alt="1987至1991年五年平均NDVI图" decoding="async">
-        <img class="compare-after" data-after src="assets/data/change/window-2020-2024.png" alt="2020至2024年五年平均NDVI图" decoding="async">
-        <span class="compare-year before" data-before-label>1987—1991</span><span class="compare-year after" data-after-label>2020—2024</span>
-        <div class="compare-divider" aria-hidden="true"><span>↔</span></div>
-        <div class="compare-unavailable" data-compare-error hidden>影像没有加载出来。请用启动器打开项目，或刷新重试。</div>
-      </div>
-      <label class="compare-control"><span>拖动对比</span><input type="range" min="0" max="100" value="50" data-split aria-label="调整左右两期影像的分隔线"><output data-split-output>50%</output></label>
-      <figcaption data-compare-caption>左：1987—1991 平均　右：2020—2024 平均　色标与上方地图相同（0—0.7）。</figcaption>
-    </figure>
-<div class="region-places" id="regionPlaces" aria-hidden="true"></div>
-<div class="compare-kind" role="group" aria-label="切换区域图"><button type="button" data-region-kind="compare" aria-pressed="true">前后对比</button><button type="button" data-region-kind="delta" aria-pressed="false">只看变化</button></div>
-<div class="delta-legend" id="deltaLegend" hidden><div class="delta-bar"></div><div class="delta-ticks"><span>−0.15 下降</span><span>0</span><span>+0.1</span><span>+0.2</span><span>+0.4 上升</span></div></div></div>
-<div class="region-reading"><div class="big-number"><b><button type="button" class="trace" data-trace="change" id="changeShare">69%</button></b><p>的面积，植被指数上升超过 0.1。</p></div>
-<ul class="region-facts"><li><b id="changeShare005">88%</b> 的面积上升超过 0.05</li><li><b id="changeFall">0.09%</b> 的面积下降超过 0.1</li><li>区域平均 NDVI <b id="changeMeans">0.174 → 0.325</b></li></ul>
-<p class="region-note">切到“只看变化”，几乎整片都是绿的。零星的红点落在榆林、靖边、定边的城区——城镇扩大，地面被房屋和道路盖住了。</p></div></div>
-<h3 class="today-subhead">第二个 30 米窗口：盐池县城一带</h3><p class="today-subnote">首屏那块地挑的是没有城镇的沙地。这一块在宁夏盐池县城，能同时看到植被变化和城镇扩张——绿色增加并不都来自治沙。</p>
-<div class="today-grid"><div><figure class="compare-figure" data-comparison="today">
-      <div class="compare-top"><span data-compare-title>盐池县城一带 · 同一窗口</span><span class="resolution-tag" data-compare-resolution>30 米 / Landsat</span></div>
-      <div class="compare-stage" style="--split:50%">
-        <img class="compare-before" data-before src="assets/data/local-case/1986-rgb.png" alt="1986年7月31日盐池县城一带Landsat真彩色影像" decoding="async">
-        <img class="compare-after" data-after src="assets/data/local-case/2025-rgb.png" alt="2025年8月11日同一范围Landsat真彩色影像" decoding="async">
-        <span class="compare-year before" data-before-label>1986</span><span class="compare-year after" data-after-label>2025</span>
-        <div class="compare-divider" aria-hidden="true"><span>↔</span></div>
-        <div class="compare-unavailable" data-compare-error hidden>影像没有加载出来。请用启动器打开项目，或刷新重试。</div>
-      </div>
-      <label class="compare-control"><span>拖动对比</span><input type="range" min="0" max="100" value="50" data-split aria-label="调整左右两期影像的分隔线"><output data-split-output>50%</output></label>
-      <figcaption data-compare-caption>1986-07-31 · Landsat 5 ／ 2025-08-11 · Landsat 8　同一 30 米网格，同一套显示参数。</figcaption>
-    </figure><div class="compare-kind" role="group" aria-label="选择局部影像类型"><button type="button" data-image-kind="rgb" aria-pressed="true">真彩色</button><button type="button" data-image-kind="ndvi" aria-pressed="false">NDVI</button></div><div id="localLegend" class="local-legend" hidden><div class="local-colorbar"></div><div class="local-color-ticks"><span>0</span><span>0.5</span><span>1</span></div><p>局部 NDVI 显示范围 0—1，色带和上面的区域图不同。透明处是被云或阴影挡住的像元。</p></div></div>
-<div class="today-reading"><div class="today-observation"><span>看得见的</span><h3>县城往外长了一圈，沙地退到了边上。</h3><p>城区和道路明显扩大，农田的格子更整齐；1986 年连片的橙黄色沙地，到 2025 年被深色的植被斑块切碎了。</p></div>
-<div class="today-observation"><span>整片研究区</span><h3>植被指数接近翻倍。</h3><div class="today-value"><b id="todayNdviLo">—</b><span>→</span><b id="todayNdviHi">—</b></div><p>头五年（1987—1991）和最近五年（2020—2024）的区域平均 NDVI。</p></div>
-<div class="today-observation"><span>最稀的那三分之一</span><h3>覆盖度从 7% 涨到 41%。</h3><div class="today-value"><b id="todayCoverLo">—</b><span>→</span><b id="todayCoverHi">—</b></div><p>1986—1990 年植被最稀、约占研究区三分之一的土地，植被覆盖度（像元二分模型估算）的五年均值。</p><button type="button" class="text-button" data-action="method">看计算方法和限制 ↗</button></div></div></div></section><section class="pull-quote" aria-label="作品自述"><div class="pq-mark">“</div><p>沙漠不是被一场雨变绿的，<br>是被一代人变绿的。</p><span>—— 作品自述</span></section><section id="panel" class="section">
-  <div class="sec-head">
-    <div class="sec-idx">06</div><div class="sec-main">
+  <div class="drawer" id="drawer">
+    <a href="#about">关于 <span>01</span></a><a href="#projects">项目 <span>02</span></a><a href="#method">方法 <span>03</span></a><a href="#skills">能力 <span>04</span></a><a href="#edu">教育与证书 <span>05</span></a><a href="#path">路径 <span>06</span></a><a href="#contact">联系 <span>→</span></a>
+  </div>
+</header>
+
+<main id="main">
+<span id="top"></span>
+
+<!-- ==================== 首屏 ==================== -->
+<section class="hero" id="hero">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <canvas id="school" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="hero-grid">
       <div>
-        <h2>自由探索数据</h2><p>当前年份 <b id="panelYear">1986</b>。8 张图表和地图共用这个年份：拖动任意一张图里的竖线，整个页面一起换年份。</p>
+        <span class="eyebrow rv"><span class="scr">北京工业大学 · 机械类 2026 级</span></span>
+        <h1 class="split" data-split aria-label="于金硕">于金硕</h1>
+        <span class="hero-en rv" style="--i:3">Jinshuo Yu</span>
+        <p class="lead rv" style="--i:4">先诊断，再动手；<em>用实测说话。</em></p>
+        <p class="typer rv" style="--i:5">最近在 <b id="typer">把一条仿真机器鱼从“跑不完”调到 14.53 秒</b><i class="caret" aria-hidden="true"></i></p>
+        <p class="hero-desc rv" style="--i:6">机械类大一新生，方向是<strong>物理 AI 与具身智能机器人</strong>。现阶段我用 AI 协作（Vibe Coding）把竞赛和项目做成<strong>可以验证的结果</strong>：每个数字能回到日志，每次改动留下复盘，做错的结论公开更正。</p>
+        <div class="cta rv" style="--i:7">
+          <a class="btn btn-p magnet" href="#projects">看项目 <svg class="ic"><use href="#i-arrow"/></svg></a>
+          <button class="btn btn-g magnet" type="button" data-copy-email><svg class="ic"><use href="#i-mail"/></svg> 复制邮箱</button>
+          <button class="btn btn-g" type="button" id="btnHi">🎉 打个招呼</button>
+        </div>
+        <p class="hint rv" style="--i:8">↖ 动一动鼠标，鱼群会跟上来；点一下，它们会散开。</p>
       </div>
-      <div class="sec-tools">
-        <span class="sec-hint">拖动图里的竖线换年份</span>
+
+      <aside class="card beam pf rv" id="pf" style="--i:4" aria-label="个人概况">
+        <div class="pf-top">
+          <button class="avatar" type="button" data-lb="me" data-src="yjs.jpg" data-cap="于金硕" aria-label="查看头像大图">
+            <img src="yjs.jpg" alt="于金硕的照片" decoding="async" />
+          </button>
+          <div>
+            <div class="pf-name">于金硕</div>
+            <div class="pf-role">机械类本科一年级<br />ESTP · 行动派</div>
+          </div>
+        </div>
+        <dl class="kv">
+          <div><dt>方向</dt><dd>物理 AI · 具身智能 · AI Agent</dd></div>
+          <div><dt>邮箱</dt><dd><button type="button" data-copy-email title="点击复制">y15201369835@qq.com</button></dd></div>
+          <div><dt>电话</dt><dd><a href="tel:15201369835">15201369835</a></dd></div>
+          <div><dt>场外</dt><dd>力量训练 · 球类运动</dd></div>
+        </dl>
+        <div class="now">
+          <div class="now-h"><span>NOW</span><span>更新于 2026-10-05</span></div>
+          <ul>
+            <li><a href="#p-fish">仿真机器鱼 · v10 定稿</a><span class="tag t-m">实测</span></li>
+            <li><a href="#p-shop">门店经营副驾 · 线上已更新</a><span class="tag t-m">实测</span></li>
+            <li><a href="#p-ndvi">绿进沙退 · 10-23 截止</a><span class="tag t-w">进行中</span></li>
+            <li><a href="#p-opc">校园小生意 · 90 天验证</a><span class="tag t-p">计划</span></li>
+            <li><a href="#p-learn">硬件入门 · L01 / 14</a><span class="tag t-w">进行中</span></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <div class="stats" data-stagger>
+      <div class="card stat">
+        <div class="stat-top"><div class="stat-n"><span data-count="14.53" data-dec="2" data-from="60">14.53</span><small>s</small></div><span class="tag t-m">实测</span></div>
+        <div class="stat-l">仿真机器鱼障碍竞速</div>
+        <div class="stat-s">起点是“撞柱卡死、60 秒超时”，中间稳定在 15.4 s</div>
+      </div>
+      <div class="card stat">
+        <div class="stat-top"><div class="stat-n">~<span data-count="170">170</span><small>轮</small></div><span class="tag t-m">实测</span></div>
+        <div class="stat-l">两天内的自动化实机测试</div>
+        <div class="stat-s">单轮好成绩不算数，看分布和失败率</div>
+      </div>
+      <div class="card stat">
+        <div class="stat-top"><div class="stat-n"><span data-count="50">50</span>+<small>篇</small></div><span class="tag t-m">实测</span></div>
+        <div class="stat-l">结构化复盘笔记</div>
+        <div class="stat-s">4 个项目，统一按“现象 → 定位 → 改动 → 实测”记录</div>
+      </div>
+      <div class="card stat">
+        <div class="stat-top"><div class="stat-n"><span data-count="28">28</span>+<small>项</small></div><span class="tag t-s">可查原图</span></div>
+        <div class="stat-l">AI 应用类课程认证</div>
+        <div class="stat-s">阿里达摩院 · 科大讯飞 · 华为云 · Datawhale</div>
       </div>
     </div>
   </div>
 
-  <div class="estimate-switch"><label><input id="showEstimates" type="checkbox" checked> 展开原工程中的趋势示意序列</label><p>这些序列由有限锚点插值，缺少完整逐年观测，不用于证明治理成效。</p></div><div class="panel-grid">
-    <div class="card tree-card">
-      <div class="card-title mb">图层树</div>
-      <div class="tree" id="layerTree"></div>
-      <div class="tree-note" id="treeNote">勾选地图图层或图表，组名可以整组开关：地图类节点控制地图叠加层，统计类节点控制右侧图表。组织方式参考 Global Forest Watch 的“图层树 + 统计面板”。</div>
-    </div>
-
-    <div class="charts">
-      <div class="card chart-card">
-        <div class="chart-head"><span class="card-title">生长季合成 NDVI</span><span class="chart-unit">归一化植被指数</span></div>
-        <div class="chart-box" id="chNdvi"></div>
-      </div>
-      <div class="card chart-card">
-        <div class="chart-head"><span class="card-title">植被覆盖度</span><span class="chart-unit">%</span></div>
-        <div class="chart-box" id="chCover"></div>
-      </div>
-      <div class="card chart-card">
-        <div class="chart-head"><span class="card-title">基期低植被区 NDVI</span><span class="chart-unit">按早期NDVI阈值选取，不等同自然沙地边界</span></div>
-        <div class="chart-box" id="chNdviCore"></div>
-      </div>
-      <div class="card chart-card">
-        <div class="chart-head"><span class="card-title">基期低植被区覆盖度</span><span class="chart-unit">%</span></div>
-        <div class="chart-box" id="chCoverCore"></div>
-      </div>
-      <div class="card chart-card" data-grade="estimate">
-        <div class="chart-head"><span class="card-title">沙化土地治理率</span><span class="chart-unit">%</span></div>
-        <div class="chart-box" id="chRate"></div>
-      </div>
-      <div class="card chart-card" data-grade="estimate">
-        <div class="chart-head"><span class="card-title">年沙尘日数</span><span class="chart-unit">天</span></div>
-        <div class="chart-box" id="chDust"></div>
-      </div>
-      <div class="card chart-card wide" data-grade="estimate">
-        <div class="chart-head"><span class="card-title">累计治理面积</span><span class="chart-unit">万亩</span></div>
-        <div class="chart-box" id="chTreated"></div>
-      </div>
-      <div class="card chart-card wide" data-grade="estimate">
-        <div class="chart-head"><span class="card-title">入黄泥沙（潼关站）</span><span class="chart-unit">亿吨</span></div>
-        <div class="chart-box" id="chSed"></div>
-        <div class="chart-note" id="sedNote"></div>
-      </div>
+  <div class="marq" aria-hidden="true">
+    <div class="marq-in">
+      <span>先诊断，再动手</span><i>✦</i><span>创业关键在创，而不是投</span><i>✦</i><span>做过的写实，没做的打问号</span><i>✦</i><span>程序算 · 模型说 · 程序验</span><i>✦</i><span>证书只是敲门砖</span><i>✦</i><span>单轮好成绩不算数</span><i>✦</i><span>冷水泼得越早，弯路走得越少</span><i>✦</i><span>可以失败，但别停下来</span><i>✦</i>
+      <span>先诊断，再动手</span><i>✦</i><span>创业关键在创，而不是投</span><i>✦</i><span>做过的写实，没做的打问号</span><i>✦</i><span>程序算 · 模型说 · 程序验</span><i>✦</i><span>证书只是敲门砖</span><i>✦</i><span>单轮好成绩不算数</span><i>✦</i><span>冷水泼得越早，弯路走得越少</span><i>✦</i><span>可以失败，但别停下来</span><i>✦</i>
     </div>
   </div>
+</section>
 
-  <div class="card static-card">
-    <div class="card-title mb">静态口径 · 不参与时间轴</div>
-    <div class="static-grid" id="staticCard"></div>
-    <div class="static-note">
-      这几项<b>没有可靠的逐年序列</b>，所以不给它们画曲线——用区间和极值呈现，而不是编一条看起来很漂亮的趋势线。行政统计与遥感估算分别呈现，范围和年份以各自来源为准。
+<!-- ==================== 01 关于 ==================== -->
+<section class="sec" id="about">
+  <div class="wrap">
+    <div class="sec-h rv">
+      <div><span class="sec-no scr">01 / ABOUT</span><h2 class="split" data-split>关于我</h2></div>
+      <p class="sec-sub">不堆名词。一次把一件事做成，并且留下能检查的证据。</p>
     </div>
-  </div>
-
-  <div class="card insight-card">
-  <div class="insight-l"><div class="card-title mb">全国尺度的背景资料</div><div id="cmpBars"></div><div class="insight-src">NASA Earth Observatory，2019（Chen 等，Nature Sustainability）。中国新增叶面积中，42% 来自森林、32% 来自农田。该研究反映全国尺度，不是毛乌素单独统计。</div></div>
-  <div class="insight-r"><div class="card-title mb">读图结论 · 这几组数各指什么</div><ul class="insight-list">
-    <li><b>变绿是真实的，不是感觉。</b>五年窗口避开首尾不完整年度；最稀的那三分之一土地覆盖度也在涨，说明不只是周边农田在变绿。</li>
-    <li>区域NDVI由早期五年窗口的 <b id="hlNdviLo">—</b> 变化到近期窗口的 <b id="hlNdviHi">—</b>。两期窗口采用固定观测范围。</li>
-    <li>覆盖度估算为 <b id="hlFvcLo">—</b>% 与 <b id="hlFvcHi">—</b>%。结果受模型端元和传感器差异影响。</li>
-    <li>早期低植被子集覆盖度估算为 <b id="hlCoreLo">—</b>% 与 <b id="hlCoreHi">—</b>%。这个子集不能完整排除农田，也不是官方沙地边界。</li>
-    <li><b>绿色由外向内推进。</b>逐年看地图，绿色先在河谷、城镇和道路周边扩展，流动沙丘腹地最后被切碎。这是目视读图，不是定量归因。</li>
-    <li><b>水和沙。</b>2025 年《黄河泥沙公报》：黄河干流重要控制站实测输沙量与多年均值相比全部偏小。旧版写过的地下水回升约 2.3 米、沙尘日数 46 天降到 7 天，缺少原始观测记录，本版只放在示意曲线里，不当结论。</li>
-    <li><b>两套卫星。</b>旧版写过 MODIS 同期 NDVI +44%、与 Landsat 相关系数 0.94；随包没有 MODIS 逐年数据，本版暂停引用，补齐后再算。</li>
-    <li><b>放在全球尺度看。</b>同期咸海萎缩、亚马逊森林减少、北极海冰缩小；毛乌素是反方向的例子，但四个案例指标不同，不合成全球退化率。</li>
-    <li>植被增长与治理记录可以一起阅读。仅凭这组影像，不能分离气候、土地利用和具体治理措施的贡献。</li>
-  </ul></div></div></section><section id="method" class="section">
-  <div class="sec-head">
-    <div class="sec-idx">07</div>
-    <div>
-      <p class="section-kicker">数据方法 · 怎么保证这四十年不是伪影</p><h2>这些数从哪里来</h2><p>结论只要错一个量级，整幅画面就白做了。从卫星数据到页面上的每个数字，处理步骤、能复现的脚本和还缺的材料都列在这里。</p>
-    </div>
-  </div>
-
-  <div class="card source-case-card"><div class="card-title mb">新增的30米局部影像</div><div id="caseSources">正在读取影像处理记录。</div><p>四景单日影像用来看细节；整片研究区的长期变化以年度合成序列为准。</p></div><div class="card">
-    <div class="card-title mb">从卫星数据到页面读数</div>
-    <div class="guard-row" id="guardRow"></div>
-  </div>
-
-  <div class="method-grid">
-    <div class="card">
-      <div class="card-title mb">目前能核对到哪一步</div>
-      <div class="ev-grid" id="evGrid"></div>
-      <div class="ev-note" id="evNote"></div>
-    </div>
-    <div class="card">
-      <div class="card-title mb">我们主动放弃写的说法</div>
-      <div class="refuse-list" id="refuseList"></div>
-    </div>
-  </div>
-
-  <div class="trace-tip">页面上任一<b class="trace">带虚线下划线的数字</b>都可点开，看它的完整计算链：使用了哪条序列、哪个时间窗口，以及有哪些限制。</div>
-</section><section id="about" class="section">
-  <div class="sec-head">
-    <div class="sec-idx">08</div>
-    <div>
-      <h2>数据来源与团队信息</h2><p>每条来源都附链接；A 级是有公开出处的事实，B 级是旧工程留下的趋势示意。</p>
-    </div>
-  </div>
-
-  <div class="card facts-card">
-    <div class="card-title mb">核心事实（均标注出处）</div>
-    <div class="facts-row" id="factsRow"></div>
-  </div>
-
-  <div class="card caveat-card">
-    <div class="card-title mb">口径说明（重要）</div>
-    <div class="caveat-list" id="caveatCard"></div>
-  </div>
-
-  <div class="card">
-    <div class="card-title mb">数据来源清单</div>
-    <div class="table-wrap">
-      <table class="src-table">
-        <thead><tr><th>类别</th><th>数据源</th><th>用途</th><th>定位</th></tr></thead>
-        <tbody id="srcBody"></tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="about-grid">
-    <div class="card"><div class="card-title mb">数据怎么分级</div><ul class="grade-list">
-      <li><span class="g a">A</span> 有公开出处：论文、官方报道、卫星产品，或由工程影像直接算出。</li>
-      <li><span class="g b">B</span> 旧工程留下的少量锚点加插值，只看趋势；默认展开，可在“自由探索”里收起。</li></ul>
-      <p class="grade-note">每一条 B 级序列都在 <code>assets/js/data.js</code> 里以“锚点 + 插值”给出。拿到实测逐年数据后，只换锚点数组，渲染和交互代码不用改。</p>
+    <div class="about">
+      <article class="card story rv">
+        <p>高中毕业后的那个暑假，我想验证一件事：<strong>学过的东西，能不能讲明白、真的帮到别人。</strong>于是给 3 名高中生做理科家教，最忙的几天把课排到了 12 小时；也送过外卖，做校园合伙人卖过数码产品，连家教也得自己去推销，知道了挣钱的重量，学着和人打交道。</p>
+        <p>同一个暑假，我从几乎零基础开始接触 AI、提示词和编程。一开始也被 Loop、API、MCP、RAG 这些名词裹挟过，后来发现办法很简单：<strong>先找一个具体问题，试着解决；遇到不会的，再去学。</strong>这个网站和一个坦克小游戏，就是这么做出来的。</p>
+        <p>现在我是北京工业大学机械类的大一新生。专业基础刚起步，所以我给自己定的规矩是：先把课程打牢，再用一个持续迭代的项目积累工程证据，在真实任务里判断要不要继续往具身智能深入。</p>
+        <blockquote>可以失败，但别停下来。</blockquote>
+      </article>
+      <div class="side">
+        <div class="card rv" style="--i:1">
+          <h3>本站的标注约定</h3>
+          <ul class="legend">
+            <li><span class="tag t-m">实测</span>来自日志、裁判成绩或线上验证</li>
+            <li><span class="tag t-s">自述</span>我自己的陈述，尚无第三方核实</li>
+            <li><span class="tag t-w">进行中</span>正在做，结果未定</li>
+            <li><span class="tag t-p">计划</span>还没发生</li>
+          </ul>
+          <p class="fine" style="margin-top:10px">做过的写实，没做的打问号。讲过不等于学会，报名不等于成果。</p>
+        </div>
+        <div class="card rv" style="--i:2">
+          <h3>可以找我做什么</h3>
+          <ul class="offer">
+            <li>把一个模糊需求做成能打开的网页原型</li>
+            <li>搭一个带工具调用和数字核验的 Agent 原型</li>
+            <li>把一堆日志或表格整理成“问题 → 证据 → 动作”</li>
+            <li>高中理科一对一讲解</li>
+          </ul>
+        </div>
       </div>
-    <div class="card"><div class="card-title mb">人工智能工具使用说明（摘要）</div><ul class="ai-list">
-      <li><b>使用环节</b>：前端组件与渲染算法原型、数据处理脚本、图表配置、文案修改。10 月 3 日的改版用 OpenAI Codex 辅助，10 月 4 日的优化用 Anthropic Claude 辅助。</li>
-      <li><b>人工负责</b>：选题与叙事结构、数据口径核定、视觉与交互决策、代码审查与调试，由团队按贡献表分工完成。</li>
-      <li><b>团队设计</b>：栅格渲染管线、全球对照场景、时间轴联动架构来自团队旧工程。</li>
-      <li><b>合规</b>：数据来自公开渠道并注明出处；演示视频旧版配音为电脑合成，正式版改为真人配音。</li></ul><a class="document-link" href="docs/AI工具使用说明.md" target="_blank" rel="noopener">查看完整说明</a></div>
-    <div class="card"><div class="card-title mb">团队与素材记录</div><p class="decl">新增的 30 米影像附官方数据记录、处理脚本和校验值。序章三张实景照片由项目组提供；治沙人照片来自新华社、国家林草局网站等刊发的新闻报道，逐张署名，正式提交前需取得使用许可。背景音乐沿用团队旧工程的素材，右上角唱片按钮可开关。</p><a class="document-link" href="docs/团队贡献记录模板.md" target="_blank" rel="noopener">填写实际贡献记录</a></div>
-    <div class="card"><div class="card-title mb">原创性与知识产权声明</div><p class="decl">本作品由团队创作。网站代码、渲染算法、版式设计与文案由团队完成，开发中使用了人工智能工具辅助（见左侧说明）。引用的遥感数据、统计数据都来自公开渠道，并在“数据来源清单”中注明。人物资料与新闻照片整理自公开报道，仅用于非商业性科普展示。</p></div>
-  </div></section><div class="trace-modal" id="traceModal" hidden>
-  <div class="tm-box" role="dialog" aria-modal="false" aria-label="数字溯源" aria-labelledby="tmTitle">
-    <div class="tm-head">
-      <span class="tm-title" id="tmTitle"></span>
-      <button class="tm-x" id="tmClose" aria-label="关闭">×</button>
     </div>
-    <div class="tm-val" id="tmVal"></div>
-    <dl class="tm-chain" id="tmChain"></dl>
-    <div class="tm-foot"><kbd>Esc</kbd> 或点 <b>×</b> 关闭</div>
   </div>
+</section>
+
+<!-- ==================== 02 项目 ==================== -->
+<section class="sec" id="projects">
+  <div class="wrap">
+    <div class="sec-h rv">
+      <div><span class="sec-no scr">02 / PROJECTS</span><h2 class="split" data-split>项目</h2></div>
+      <p class="sec-sub">每个项目都按“问题 → 做法 → 结果 → 边界”来写。和 AI 协作完成的，照实写明。</p>
+    </div>
+
+    <div class="filters rv" role="group" aria-label="按类别筛选项目">
+      <button class="fl on" type="button" data-f="all" aria-pressed="true">全部</button>
+      <button class="fl" type="button" data-f="ctrl" aria-pressed="false">控制与仿真</button>
+      <button class="fl" type="button" data-f="agent" aria-pressed="false">AI Agent</button>
+      <button class="fl" type="button" data-f="data" aria-pressed="false">数据叙事</button>
+      <button class="fl" type="button" data-f="biz" aria-pressed="false">创业</button>
+      <button class="fl" type="button" data-f="web" aria-pressed="false">Web</button>
+      <button class="fl" type="button" data-f="learn" aria-pressed="false">学习中</button>
+    </div>
+
+    <!-- 项目 1：仿真机器鱼 -->
+    <article class="card pj rv" id="p-fish" data-cat="ctrl">
+      <div class="pj-head">
+        <span class="tag t-m">实测</span>
+        <span class="pj-kicker">第十九届先进机器人及仿真技术大赛（RST）· 水中机器鱼仿真组 · 个人赛 · 障碍竞速</span>
+      </div>
+      <h3>把一条仿真机器鱼，从“撞柱卡死”调到 14.53 秒</h3>
+      <p class="pj-one">赛题要求鱼绕障碍 1 一圈、穿过 150 mm 宽的门、再绕障碍 3 两圈。拿到手的框架代码绕完第一根柱子就卡在门后，60 秒超时，成绩无效。</p>
+
+      <div class="pj-grid">
+        <div>
+          <div class="rp" id="rp">
+            <div class="rp-top">
+              <div class="segc" id="rpVer" role="group" aria-label="选择版本">
+                <button type="button" data-v="v02"><b>v02</b><small>卡死</small></button>
+                <button type="button" data-v="v04"><b>v04</b><small>15.41 s</small></button>
+                <button type="button" data-v="v10" class="on"><b>v10</b><small>14.53 s</small></button>
+              </div>
+              <div class="rp-clock" aria-live="off"><span id="rpTime">00.00</span><small>s</small></div>
+            </div>
+            <div class="rp-stage">
+              <canvas id="rpCanvas" role="img" aria-label="水池俯视图：机器鱼绕障碍 1 一圈、穿门、再绕障碍 3 两圈的轨迹回放"></canvas>
+              <div class="rp-badge" id="rpBadge"></div>
+            </div>
+            <div class="rp-cps" id="rpCps" aria-label="裁判判定顺序">
+              <span class="cp">柱1 右</span><span class="cp">柱1 左</span><span class="cp">门</span><span class="cp">柱3 右</span><span class="cp">柱3 左</span><span class="cp">柱3 右</span><span class="cp">柱3 左 · 停表</span>
+            </div>
+            <div class="rp-ctl">
+              <button class="rp-btn" type="button" id="rpPlay" aria-label="播放"><svg class="ic"><use href="#i-play"/></svg></button>
+              <button class="rp-btn" type="button" id="rpSpeed" aria-label="切换播放速度">1×</button>
+              <div class="bar"><i id="rpBar"></i></div>
+            </div>
+            <p class="rp-note" id="rpNote"></p>
+          </div>
+          <p class="fine" style="margin-top:8px">示意回放：路线按赛题几何与笔记里的实测分段用时重建，不是逐帧日志。</p>
+
+          <div class="splits rv" id="rpSplits">
+            <div class="splits-h"><span>分段用时（秒）</span><span><i class="c-a"></i>v04　<i class="c-b"></i>v10</span></div>
+            <div class="sp"><span>起点 → 柱1</span><div class="sp-b"><div class="sb" style="--w:23.6%"><i class="c-a"></i><em>1.53</em></div><div class="sb" style="--w:19.6%;--i:1"><i class="c-b"></i><em>1.27</em></div></div></div>
+            <div class="sp"><span>绕柱1 一圈</span><div class="sp-b"><div class="sb" style="--w:61.7%"><i class="c-a"></i><em>4.00</em></div><div class="sb" style="--w:60.5%;--i:1"><i class="c-b"></i><em>3.92</em></div></div></div>
+            <div class="sp"><span>柱1 → 门 → 柱3</span><div class="sp-b"><div class="sb" style="--w:52.5%"><i class="c-a"></i><em>3.40</em></div><div class="sb" style="--w:50.5%;--i:1"><i class="c-b"></i><em>3.27</em></div></div></div>
+            <div class="sp"><span>绕柱3 至停表</span><div class="sp-b"><div class="sb" style="--w:100%"><i class="c-a"></i><em>6.48</em></div><div class="sb" style="--w:93.8%;--i:1"><i class="c-b"></i><em>6.08</em></div></div></div>
+          </div>
+        </div>
+
+        <div>
+          <dl class="psr">
+            <div><dt>问题</dt><dd>鱼长 240 mm，却要以 16° 斜穿 150 mm 的门；“后退脱困”逻辑还会让它原地死循环。<b>调 PID 解决不了几何问题。</b></dd></div>
+            <div><dt>做法</dt><dd>
+              <ol>
+                <li><b>先诊断。</b>从逐帧日志反推卡点，发现规则文档里的柱子坐标与平台实际不一致，鱼的有效宽度也比标称大。</li>
+                <li><b>改路线，不硬调参数。</b>加辅助圆让穿门段变成水平直线，再做入圈限速、去掉帮倒忙的护柱转向。</li>
+                <li><b>追问“到顶了”的前提。</b>读懂平台对受力和裁判的实现后，发现推力来自尾鳍“怎么摆”而不是“偏多少”，于是改用方波摆尾、前馈查表、出圈慢撤偏置。</li>
+                <li><b>把实测自动化。</b>免鼠标一轮约 27 秒，两天跑了约 170 轮，才看得出分布而不是运气。</li>
+              </ol>
+            </dd></div>
+            <div><dt>结果</dt><dd>v04：14 轮里 13 轮落在 15.39–15.43 s，零卡死。v10：15 轮（含人为丢开头 1–3 帧的扰动测试）全部干净完成，<b>14.53–14.59 s</b>。</dd></div>
+            <div><dt>边界</dt><dd>这是本机平台实测，不是比赛名次；全程最紧处离柱角只有 9–10 mm，仍是已知风险。控制代码与 AI 协作完成。</dd></div>
+          </dl>
+          <div class="stack"><span class="chip">Python</span><span class="chip">PID</span><span class="chip">LOS 制导</span><span class="chip">Dubins 路径</span><span class="chip">系统辨识</span><span class="chip">离线仿真</span><span class="chip">自动化测试</span></div>
+        </div>
+      </div>
+
+      <details class="more">
+        <summary>展开复盘：11 个版本，和一个被我自己推翻的结论</summary>
+        <div class="vrail">
+          <div class="vr bad"><b>v00</b><span>官方框架：绕完柱 1 撞中门</span></div>
+          <div class="vr bad"><b>v01–v02</b><span>3 轮全卡在门后，成绩无效</span></div>
+          <div class="vr"><b>v03</b><span>水平穿门，3/3 过门；柱 3 卡住</span></div>
+          <div class="vr ok"><b>v04</b><span>13/14 轮 15.39–15.43 s，零卡死</span></div>
+          <div class="vr bad"><b>v05–v08</b><span>想提速：最好 15.27 s，约三成卡柱</span></div>
+          <div class="vr ok"><b>v09</b><span>回退到 v04 内核，稳定优先</span></div>
+          <div class="vr ok"><b>v10</b><span>读懂平台后重做：14.53–14.59 s</span></div>
+        </div>
+        <p class="note"><b>被推翻的结论：</b>我曾在笔记里写下“15.4 s 已贴近物理上限”。数据没错，前提错了——把“一种摆法下的规律”当成了鱼的固有能力。更正后的结论和原来的推理都留在笔记里，标注“已更正”。教训是：<b>“到顶了”之前先核对前提；对照实验无效，不等于这个方向无效。</b></p>
+      </details>
+    </article>
+
+    <!-- 项目 2：门店经营副驾 -->
+    <article class="card pj rv" id="p-shop" data-cat="agent">
+      <div class="pj-head">
+        <span class="tag t-m">线上已部署</span><span class="tag t-w">参赛中</span>
+        <span class="pj-kicker">人工智能创新赛 · 中小微企业方向 · 团队项目 · 我负责技术开发与智能体</span>
+      </div>
+      <h3>门店经营副驾「店小二」：让 Agent 说的每个数字都查得到出处</h3>
+      <p class="pj-one">给没有专职分析师的小店老板用：上传销售、库存和评价表，得到“主要矛盾是什么、每周影响多少钱、下一步做什么”。</p>
+
+      <div class="pj-grid flip">
+        <div>
+          <div class="pipe" id="pipe" role="group" aria-label="系统流程，点击查看每一步">
+            <button type="button" class="on"><span class="pn">1</span><b>数据</b><small>先修数据</small></button>
+            <button type="button"><span class="pn">2</span><b>程序算</b><small>主要矛盾 · 金额</small></button>
+            <button type="button"><span class="pn">3</span><b>模型说</b><small>固定结构</small></button>
+            <button type="button"><span class="pn">4</span><b>程序验</b><small>数字核验</small></button>
+            <button type="button"><span class="pn">5</span><b>人确认</b><small>小实验 · 复盘</small></button>
+          </div>
+          <div class="pipe-d" id="pipeD" aria-live="polite"></div>
+
+          <div class="vf rv" id="vf">
+            <div class="vf-h"><span>数字核验 · 测试用例节选</span><span>evidence.py</span></div>
+            <p>近 7 天日均营业额 <b>489</b> → <b>470</b> 元（<b>−4%</b>）。拆开看：客流 <b>−210</b> 元/周，客单价 <b>+77</b> 元/周，问题出在客流。预计能多赚 <b class="bad">9999</b> 元。</p>
+            <div class="vf-m"><div class="bar"><i></i></div><span>11/12 可追溯 · 待确认：<b>9999</b></span></div>
+          </div>
+          <p class="fine" style="margin-top:8px">最后一句是测试时故意让模型编的。核验模块把回答里的每个数字回查工具结果，找不到出处的标红。</p>
+        </div>
+
+        <div>
+          <dl class="psr">
+            <div><dt>问题</dt><dd>评委只看三件事：能不能<b>抓主要矛盾、给量化依据、出可执行建议</b>。而实测暴露出示例数据和上传数据混在一起、只能分析当天。</dd></div>
+            <div><dt>做法</dt><dd>
+              <ol>
+                <li><b>先修数据，再谈智能。</b>上传即替换示例，并写清用了哪些表、多少行、哪段日期。</li>
+                <li><b>主要矛盾必须可比较。</b>客流、断货、差评单位不同，统一换算成“每周影响金额”才能排出第一名。</li>
+                <li><b>程序算、模型说、程序验。</b>金额和保本线由程序算，模型只按固定结构表达，最后程序再核验数字。</li>
+                <li><b>主动交代局限。</b>数据天数不够、没有进价、用的是示例数据，都自动写进“前提与风险”。</li>
+              </ol>
+            </dd></div>
+            <div><dt>结果</dt><dd>双 Agent 网站已部署到云端；接入 14 个公开来源、38 条事实和 35 万行中国匿名生鲜评估记录；核验模块在测试中抓出了故意编造的数字。</dd></div>
+            <div><dt>边界</dt><dd>目前用的是模拟门店数据和公开数据，还没有真实门店试点；“降损、增收”只是目标，没有写成成效。</dd></div>
+          </dl>
+          <div class="stack"><span class="chip">Python</span><span class="chip">DeepSeek API</span><span class="chip">工具调用</span><span class="chip">数据清洗</span><span class="chip">Docker</span><span class="chip">Render</span><span class="chip">扣子原型</span></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 项目 3：绿进沙退 -->
+    <article class="card pj rv" id="p-ndvi" data-cat="data web">
+      <div class="pj-head">
+        <span class="tag t-w">进行中 · 10-23 截止</span>
+        <span class="pj-kicker">第十四届全国大学生数字媒体科技作品及创意竞赛 · 数字艺术与可视化设计类 · 团队作品</span>
+      </div>
+      <h3>绿进沙退｜用 40 年卫星影像讲清毛乌素怎么变绿</h3>
+      <p class="pj-one">用 1986–2025 年 40 张 NDVI 年度图、两个 30 米卫星窗口和四位治沙人的故事，回答三件事：变绿了多少、怎么一步步变绿、是谁让它变绿。</p>
+
+      <div class="pj-grid">
+        <div>
+          <div class="ndvi rv" id="ndvi">
+            <div class="ndvi-top"><span>NDVI · 1986 → 2025 · 三段拟合</span><span>示意</span></div>
+            <svg id="ndSvg" viewBox="0 0 520 214" role="img" aria-label="毛乌素沙地 NDVI 三段拟合示意：1986 到 2000 年平稳，2001 年起上升，2012 年后继续上升到 0.349"></svg>
+            <div class="ndvi-ctl">
+              <button class="rp-btn" type="button" id="ndPlay" aria-label="播放 40 年"><svg class="ic"><use href="#i-play"/></svg></button>
+              <input type="range" id="ndRange" min="1986" max="2025" step="1" value="2025" aria-label="选择年份" />
+            </div>
+            <p class="ndvi-out" id="ndOut"></p>
+          </div>
+          <p class="fine" style="margin-top:8px">示意曲线：按笔记里的三段拟合结果重绘，不是逐年原始值。分界年 2001、2012 由最小二乘自动找出，不是手挑的。</p>
+        </div>
+        <div>
+          <dl class="psr">
+            <div><dt>问题</dt><dd>导师反馈“不够震撼、看不出过程、看不出现在多好、人物只有履历”；复审还发现首屏地名标错了。</dd></div>
+            <div><dt>做法</dt><dd>
+              <ol>
+                <li><b>正确是底线。</b>先纠错再做别的；每个数字查原文，查不到的不用。</li>
+                <li><b>让算法定分界。</b>对 40 年序列做三段拟合，事件只标时间，不写成原因。</li>
+                <li><b>两条路径交叉验证。</b>序列均值与变化图解码对上了，才写“69% 的面积 NDVI 上升超过 0.1”。</li>
+                <li><b>用数据挑证据。</b>5 个候选窗口并排比较，选定横山以北（NDVI 0.158 → 0.482）。</li>
+              </ol>
+            </dd></div>
+            <div><dt>结果</dt><dd>两天 7 轮迭代；32 项测试通过，数字审计 50/50；上线后逐文件比对哈希，查出一个只在线上出现的预加载问题。</dd></div>
+            <div><dt>边界</dt><dd>团队作品，与 AI 协作完成；真人配音和照片授权仍在待办。</dd></div>
+          </dl>
+          <div class="stack"><span class="chip">遥感 NDVI</span><span class="chip">Landsat</span><span class="chip">JavaScript</span><span class="chip">WebP</span><span class="chip">Web Speech API</span><span class="chip">数据叙事</span></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 项目 4：校园小生意（创客空间 OPC 入驻答辩方案） -->
+    <article class="card pj rv" id="p-opc" data-cat="biz">
+      <div class="pj-head">
+        <span class="tag t-p">计划 · 验证阶段</span>
+        <span class="pj-kicker">北京工业大学创客空间 · OPC（一人公司）入驻答辩方案 · 内容 × 服务 × 工具</span>
+      </div>
+      <h3>把手上的技能，变成一门能被验证的校园小生意</h3>
+      <p class="pj-one">不讲宏大的创业故事，只做一件小事：沿着“内容获客 → 服务收费 → 工具复用”这条链，用 90 天验证有没有人愿意为它付钱。</p>
+
+      <div class="pj-grid flip">
+        <div>
+          <div class="d90" id="d90">
+            <div class="d90-h"><span>90 天验证计划</span><span>每 30 天一个关卡</span></div>
+            <div class="pipe p3" id="d90Pipe" role="group" aria-label="90 天计划的三个阶段，点击查看">
+              <button type="button" class="on"><span class="pn">30</span><b>找需求</b><small>第 0–30 天</small></button>
+              <button type="button"><span class="pn">60</span><b>看转化</b><small>第 31–60 天</small></button>
+              <button type="button"><span class="pn">90</span><b>做提效</b><small>第 61–90 天</small></button>
+            </div>
+            <ul class="d90-list" id="d90List" aria-live="polite"></ul>
+            <div class="fork">
+              <div class="fork-q">第 90 天<br />有人买单吗？</div>
+              <span class="no"><b>没有</b> → 换方向，不硬撑</span>
+              <span class="yes"><b>有</b> → 把它做深</span>
+            </div>
+          </div>
+          <div class="ask">
+            <span>计划先访谈 10–15 位同学。你要是正好有个反复出现的小麻烦，欢迎来聊。</span>
+            <a class="link" href="#contact">我有个小需求 <svg class="ic"><use href="#i-arrow"/></svg></a>
+          </div>
+        </div>
+
+        <div>
+          <dl class="psr">
+            <div><dt>问题</dt><dd>证书和技能攒了一些，但“会”不等于“有人要”。我想知道的是：这些技能<b>能不能帮别人把事办成，并且收到钱。</b></dd></div>
+            <div><dt>做法</dt><dd>
+              <ol>
+                <li><b>内容触达。</b>公众号推文从写到排版全流程，再配短视频做公域；目前只有家教方向沉淀到了私域。</li>
+                <li><b>服务交付。</b>先用已有技能接活，验证需求和付费意愿，而不是先做产品。</li>
+                <li><b>工具提效。</b>把重复的步骤写成 SOP，再用 AI 工作流或 Agent 提效，逐步变成可交付的产品。</li>
+                <li><b>先问需求，再写代码。</b>校园是验证场：需求就在身边，调研和反馈的成本最低。</li>
+              </ol>
+            </dd></div>
+            <div><dt>现状</dt><dd>帮一位教授修改过商业路演 PPT 并交付；家教做了两个多月，生源靠自己推销；做过校园合伙人，销售数码产品。</dd></div>
+            <div><dt>边界</dt><dd>这门“小生意”本身仍在验证阶段：还没有成型的产品和稳定的成交，目前一个人做。构想不写成成果。</dd></div>
+          </dl>
+          <div class="stack"><span class="chip">公众号运营</span><span class="chip">路演 PPT</span><span class="chip">家教</span><span class="chip">SOP</span><span class="chip">AI 工作流</span><span class="chip">用户访谈</span></div>
+          <a class="link" href="#think">往下看：我的六条创业思考 <svg class="ic" style="transform:rotate(90deg)"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+
+      <details class="more">
+        <summary>展开：做过的写实，没做的打问号</summary>
+        <div class="cols3">
+          <div>
+            <span class="tag t-s">已经做过</span>
+            <ul class="pts">
+              <li>个人网站、坦克小游戏、数媒赛参赛网页</li>
+              <li>帮一位教授修改商业路演 PPT</li>
+              <li>家教两个多月，自己推销、自己交付</li>
+              <li>校园合伙人：销售数码产品</li>
+            </ul>
+          </div>
+          <div>
+            <span class="tag t-w">正在推进</span>
+            <ul class="pts">
+              <li>RST 个人赛、人工智能创新赛、数媒赛</li>
+              <li>与 13 位企业 HR 沟通实习，被推荐往 FDE 方向走</li>
+              <li>组队准备工创赛（智能搬运方向）</li>
+              <li>AI 短剧制作学习与个人 IP 运营</li>
+            </ul>
+          </div>
+          <div>
+            <span class="tag t-p">还要验证</span>
+            <ul class="pts">
+              <li>目标用户到底要什么</li>
+              <li>内容能不能从公域转到私域</li>
+              <li>PPT 和家教服务能不能稳定成交</li>
+              <li>细分方向和目标客户选哪个</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <div class="duo">
+      <!-- 项目 5：网站与坦克 -->
+      <article class="card pj rv" id="p-web" data-cat="web">
+        <div class="pj-head"><span class="tag t-m">线上可访问</span><span class="pj-kicker">2026 暑假 · 从零开始的第一批作品</span></div>
+        <h3>这个网站，和一个能在电脑上玩的坦克小游戏</h3>
+        <p class="pj-one">从几乎零基础开始学 AI、提示词和编程时做的。那时的办法只有一个：先找一个具体问题，试着解决；遇到不会的，再去学。</p>
+        <button class="shot" type="button" data-lb="tank" data-src="tank.jpg" data-cap="坦克小游戏运行画面" aria-label="查看坦克小游戏截图">
+          <img src="tank.jpg" alt="坦克小游戏运行画面" loading="lazy" decoding="async" />
+        </button>
+        <ul class="pts">
+          <li>原生 HTML / CSS / JavaScript，无框架、无外部依赖</li>
+          <li>Canvas 渲染、碰撞检测与状态机</li>
+          <li>GitHub Pages 部署，本站的轨迹回放也是原生 Canvas</li>
+        </ul>
+        <a class="link mt-auto" href="https://vanvanimatheus2019-lgtm.github.io/tank/" target="_blank" rel="noopener">在线试玩坦克小游戏 <svg class="ic"><use href="#i-ext"/></svg></a>
+      </article>
+
+      <!-- 项目 6：硬件入门 -->
+      <article class="card pj rv" id="p-learn" data-cat="learn" style="--i:1">
+        <div class="pj-head"><span class="tag t-w">进行中</span><span class="pj-kicker">课题调研 · 学习记录</span></div>
+        <h3>从“闭合回路”开始，补一门不会的课</h3>
+        <p class="pj-one">机械专业、电子基础薄弱，却要参与一项可穿戴神经调控设备（taVNS）的调研。我先排了一条 14 课的零基础路线，从整机与回路一路学到台架验证和汇报。</p>
+        <div class="lessons" aria-label="14 课学习进度：第 1 课进行中">
+          <i class="cur">L01</i><i>02</i><i>03</i><i>04</i><i>05</i><i>06</i><i>07</i><i>08</i><i>09</i><i>10</i><i>11</i><i>12</i><i>13</i><i>14</i>
+        </div>
+        <ul class="pts">
+          <li>L01 整机与闭合回路：已讲解，三道检查题待答</li>
+          <li>路线：电学单位 → 元件 → 波形 → 输出反馈 → 电极接触 → 读图与芯片 → 机械定位 → 台架验证</li>
+          <li>规矩：没有答题和练习证据的内容，不标“已掌握”</li>
+        </ul>
+        <div class="stack mt-auto" style="padding-top:18px"><span class="chip">文献与专利调研</span><span class="chip">电路基础</span><span class="chip">需求与验证</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 幕间：创业思考（滚动钉住，一屏一句） ==================== -->
+<section class="stage" id="think" aria-label="创业思考">
+  <div class="stage-pin">
+    <div class="stage-orb" aria-hidden="true"></div>
+    <div class="stage-ghost" aria-hidden="true">01</div>
+    <div class="wrap stage-in">
+      <div class="stage-top">
+        <span class="sec-no">INTERLUDE / 创业思考</span>
+        <span class="stage-count" aria-hidden="true"><b id="stN">01</b> / 06</span>
+      </div>
+      <div class="stage-quotes">
+        <blockquote class="sq"><p>创业关键在创，而不是投。</p><footer>01 · 关于起点</footer></blockquote>
+        <blockquote class="sq"><p>证书只是敲门砖，能帮别人把事办成才是真本事。我现在最值钱的不是会多少，而是肯动手。</p><footer>02 · 关于本事</footer></blockquote>
+        <blockquote class="sq"><p>别急着写代码做 App。先问同学一句“你的真实需求？”，比闷头写一万行代码管用。</p><footer>03 · 关于需求</footer></blockquote>
+        <blockquote class="sq"><p>做过的写实，没做的打问号。要对自己的项目负责。</p><footer>04 · 关于诚实</footer></blockquote>
+        <blockquote class="sq"><p>来空间不是为了占个工位，是想干中学，多试错。冷水泼得越早，弯路走得越少。</p><footer>05 · 关于反馈</footer></blockquote>
+        <blockquote class="sq"><p>90 天后没人买单，我就换方向，不硬撑；有人买单，我就把它做深。大一最输得起的，就是试错。</p><footer>06 · 关于止损</footer></blockquote>
+      </div>
+      <div class="stage-foot">
+        <div class="bar"><i id="stBar"></i></div>
+        <span>摘自创客空间 OPC 入驻答辩</span>
+        <a class="stage-skip" href="#method">跳过 ↓</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 03 方法 ==================== -->
+<section class="sec" id="method">
+  <div class="wrap">
+    <div class="sec-h rv">
+      <div><span class="sec-no scr">03 / METHOD</span><h2 class="split" data-split>我怎么做事</h2></div>
+      <p class="sec-sub">从四个项目和一本心法笔记里沉淀下来的循环。点一下节点，看它在项目里长什么样。</p>
+    </div>
+
+    <div class="card lp rv">
+      <svg id="lpSvg" viewBox="0 0 320 320" role="group" aria-label="决策循环的七个步骤"></svg>
+      <div class="lp-body" id="lpBody" aria-live="polite">
+        <div class="lp-step" id="lpStep"></div>
+        <h3 class="lp-t" id="lpT"></h3>
+        <p class="lp-d" id="lpD"></p>
+        <div class="lp-ex"><small>在项目里</small><span id="lpEx"></span></div>
+      </div>
+    </div>
+
+    <p class="creed" id="creed" aria-label="不被情绪推着走，也不等到万无一失；看证据和代价，选可承受的一步，用结果校准下一步。">不被情绪推着走，也不等到万无一失；看证据和代价，选可承受的一步，用结果校准下一步。</p>
+
+    <div class="prs" data-stagger>
+      <div class="card pr"><span class="pr-n">P / 01</span><h3>先诊断，再动手</h3><p>卡死的根因是路线几何，调参数解决不了；凭印象改稿一定会漏，要逐句做对比。</p><div class="src"><span class="chip">仿真鱼</span><span class="chip">绿进沙退</span></div></div>
+      <div class="card pr"><span class="pr-n">P / 02</span><h3>一次只改一类变量</h3><p>同时改了微分、积分和限速，结果变差却分不清是谁的问题。这是我留在笔记里的反例。</p><div class="src"><span class="chip">仿真鱼 v06</span></div></div>
+      <div class="card pr"><span class="pr-n">P / 03</span><h3>程序算、模型说、程序验</h3><p>让“回答好不好”不再依赖大模型临场发挥：计算和核验交给程序，表达交给模型。</p><div class="src"><span class="chip">门店副驾</span></div></div>
+      <div class="card pr"><span class="pr-n">P / 04</span><h3>单轮好成绩不算数</h3><p>对参数敏感的系统里，单轮结果一半是运气。判据是同配置多轮，加上人为扰动全部通过。</p><div class="src"><span class="chip">仿真鱼 v10</span></div></div>
+      <div class="card pr"><span class="pr-n">P / 05</span><h3>主动交代局限，比夸大更可信</h3><p>示意就标“示意”，模拟就标“模拟”；公开列出“我们不写的说法”。</p><div class="src"><span class="chip">门店副驾</span><span class="chip">绿进沙退</span></div></div>
+      <div class="card pr"><span class="pr-n">P / 06</span><h3>用输出检验学习</h3><p>读过、收藏过不等于掌握。写一页总结、讲给别人听，或者解决一个真实问题。</p><div class="src"><span class="chip">心法笔记</span><span class="chip">家教</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 04 能力 ==================== -->
+<section class="sec" id="skills">
+  <div class="wrap">
+    <div class="sec-h rv">
+      <div><span class="sec-no scr">04 / SKILLS</span><h2 class="split" data-split>能力</h2></div>
+      <p class="sec-sub">按证据强度分三档，而不是罗列名词。点一下技能，看它来自哪里。</p>
+    </div>
+    <div class="sk" data-stagger>
+      <div class="card">
+        <div class="sk-h"><h3>能独立交付</h3><span class="lv" aria-hidden="true"><i class="f"></i><i class="f"></i><i class="f"></i></span></div>
+        <p class="sk-p">自己从头做到能用</p>
+        <div class="sk-list">
+          <button class="skill" type="button" data-ev="28+ 项认证打底；门店副驾两个 Agent 的提示词与工具结构由我搭建调试。">Prompt 工程与 Agent 配置</button>
+          <button class="skill" type="button" data-ev="本站和坦克小游戏：原生前端，AI 协作编码，GitHub Pages 上线。">Vibe Coding 建站与上线</button>
+          <button class="skill" type="button" data-ev="4 个项目共 50+ 篇笔记，统一按“现象 → 定位 → 改动 → 实测”记录，并区分实测、推断与待验证。">结构化复盘</button>
+          <button class="skill" type="button" data-ev="暑假给 3 名高中生做一对一理科家教（2 位高三、1 位高一），含新课讲授。（自述）">高中理科讲解</button>
+          <button class="skill" type="button" data-ev="已交付 2 份：帮一位教授修改商业路演 PPT；人工智能创新赛的答辩 PPT。（自述）">路演 / 答辩 PPT 修改</button>
+          <button class="skill" type="button" data-ev="推文从撰写到排版的全流程；目前用于家教方向的获客。（自述）">公众号推文撰写与排版</button>
+        </div>
+        <div class="ev"><small>证据</small><span>点一下上面的技能。</span></div>
+      </div>
+      <div class="card">
+        <div class="sk-h"><h3>在项目里用过</h3><span class="lv" aria-hidden="true"><i class="f"></i><i class="f"></i><i></i></span></div>
+        <p class="sk-p">与 AI 协作完成，能讲清原理和取舍</p>
+        <div class="sk-list">
+          <button class="skill" type="button" data-ev="仿真鱼 v03–v10：独立 PID 类、分区整定、LOS 前视制导、曲率 × 速度前馈。">PID · LOS 制导 · 前馈</button>
+          <button class="skill" type="button" data-ev="仿真鱼：从日志辨识运动特性，搭平面三刚体离线模型，开环回放速度误差约 12 mm/s。">系统辨识与离线仿真</button>
+          <button class="skill" type="button" data-ev="仿真鱼：免鼠标自动实机测试，约 27 秒一轮，两天约 170 轮。">自动化测试</button>
+          <button class="skill" type="button" data-ev="门店副驾：销售、库存、评价表的清洗脚本与测试；仿真鱼逐帧日志分析。">Python 数据清洗与日志分析</button>
+          <button class="skill" type="button" data-ev="门店副驾：Docker 镜像部署到 Render，含健康检查、访问码与限流。">云端部署</button>
+          <button class="skill" type="button" data-ev="绿进沙退：40 年 NDVI 序列、三段最小二乘拟合、Landsat 窗口对比。">遥感数据可视化</button>
+          <button class="skill" type="button" data-ev="坦克小游戏的碰撞检测与状态机；本站的轨迹回放、图表与动效。">JavaScript · Canvas</button>
+        </div>
+        <div class="ev"><small>证据</small><span>点一下上面的技能。</span></div>
+      </div>
+      <div class="card">
+        <div class="sk-h"><h3>正在学</h3><span class="lv" aria-hidden="true"><i class="f"></i><i></i><i></i></span></div>
+        <p class="sk-p">还没有成果，先写在这里盯着自己</p>
+        <div class="sk-list">
+          <button class="skill" type="button" data-ev="大一核心课：高等数学、大学物理、机械工程基础、程序设计基础、工程图学。成绩出来后更新。">机械类专业基础课</button>
+          <button class="skill" type="button" data-ev="taVNS 调研的 14 课路线，目前在 L01：整机与闭合回路。">电路基础</button>
+          <button class="skill" type="button" data-ev="计划：配合一个可演示的机电小项目来学（图纸 → 原型 → 测试记录）。">SolidWorks / CAD</button>
+          <button class="skill" type="button" data-ev="计划：按项目需要依次加入，不要求大一同时精通。">C++ · ROS</button>
+          <button class="skill" type="button" data-ev="刚开始学。写在入驻答辩里的远目标是威尼斯电影节——先把第一条片子做出来。">AI 短剧制作</button>
+          <button class="skill" type="button" data-ev="计划：先确认四级报考资格和场次，再定每周练习量。">英语四级</button>
+        </div>
+        <div class="ev"><small>状态</small><span>点一下上面的技能。</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 05 教育与证书 ==================== -->
+<section class="sec" id="edu">
+  <div class="wrap">
+    <div class="sec-h rv">
+      <div><span class="sec-no scr">05 / EDUCATION</span><h2 class="split" data-split>教育与证书</h2></div>
+      <p class="sec-sub">证书只是敲门砖，能帮别人把事办成才是真本事。</p>
+    </div>
+
+    <div class="card edu rv">
+      <div class="edu-top">
+        <div class="edu-id">
+          <div class="edu-logo">BJUT</div>
+          <div><h3>北京工业大学</h3><p>机械类 · 本科一年级（全日制）</p></div>
+        </div>
+        <span class="chip">2026.09 — 2030.06（预计）</span>
+      </div>
+      <ul class="pts edu-pts">
+        <li><b>在修核心课：</b>高等数学、大学物理、机械工程基础、程序设计基础、工程图学。</li>
+        <li><b>学习主线：</b>先把课程打牢；再用一个持续迭代的机电或机器人项目，积累图纸、代码、测试数据和复盘。</li>
+        <li><b>方向：</b>机械与 AI 的交叉——物理 AI、具身智能机器人。是否继续深入，放到真实项目里判断。</li>
+      </ul>
+    </div>
+
+    <div class="card certs-box rv">
+      <div class="certs-h">
+        <h3>AI 应用类认证 · 21 张原图</h3>
+        <span class="fine">点击任意一张放大，支持 ← → 键与左右滑动</span>
+      </div>
+      <div class="certs" id="certGrid"></div>
+      <div class="certs-more"><button class="btn btn-g" type="button" id="certMore">展开全部 21 张</button></div>
+
+      <div class="segc cl-tabs" id="clTabs" role="tablist" aria-label="证书清单分类">
+        <button type="button" role="tab" class="on" aria-selected="true" data-t="cl-ali">阿里 · 9</button>
+        <button type="button" role="tab" aria-selected="false" data-t="cl-hw">讯飞 · 华为 · 深势 · 12</button>
+        <button type="button" role="tab" aria-selected="false" data-t="cl-dw">Datawhale · 8</button>
+      </div>
+      <ul class="cl" id="cl-ali">
+        <li>阿里达摩院「人工智能训练师（高级）」</li>
+        <li>阿里达摩院「人工智能训练师（初级）」</li>
+        <li>基于通义灵码实现高效 AI 编码实践</li>
+        <li>基于百炼平台构建智能体应用</li>
+        <li>基于 PAI ArtLab 的 AIGC 设计</li>
+        <li>VISION 人工智能设计（入门 &amp; 进阶）</li>
+        <li>Spring AI 应用开发（入门）</li>
+        <li>利用大模型提升内容生产能力</li>
+        <li>RAG 应用构建及优化</li>
+      </ul>
+      <ul class="cl" id="cl-hw" hidden>
+        <li>讯飞「Prompt / 智能体 / 微调 / RAG」工程师（4 项）</li>
+        <li>玻尔「AI4S Cup · Python 基础能力认证」</li>
+        <li>华为：人工智能初识 &amp; 语音识别计算器微认证（2 项）</li>
+        <li>华为云：基于 AI Agent 实现人机扑克对战</li>
+        <li>华为云：大模型的咒语 · Prompt 工程</li>
+        <li>华为云：AI 打造专属企业风格海报</li>
+        <li>华为云：昇腾云服务训练 YOLOv8 目标检测</li>
+        <li>华为云：码道 CodeArts 实战速成</li>
+      </ul>
+      <ul class="cl" id="cl-dw" hidden>
+        <li>Datawhale &amp; 豆包 MarsCode：AI + 编程</li>
+        <li>Datawhale &amp; 讯飞星火：Prompt Engineer</li>
+        <li>Datawhale &amp; 浪潮信息：大模型开发工程师</li>
+        <li>Datawhale &amp; 魔搭社区：Agent Engineer</li>
+        <li>Datawhale &amp; 商汤小浣熊：AI + 数据分析</li>
+        <li>Datawhale &amp; 蚂蚁集团百宝箱：Agent Engineer</li>
+        <li>Datawhale &amp; 讯飞星辰：Fine-tuning Engineer</li>
+        <li>Datawhale &amp; 趋动云：LLM Engineer</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 06 路径 ==================== -->
+<section class="sec" id="path">
+  <div class="wrap">
+    <div class="sec-h rv">
+      <div><span class="sec-no scr">06 / PATH</span><h2 class="split" data-split>路径</h2></div>
+      <p class="sec-sub">已经发生的写成事实，还没发生的写成计划。</p>
+    </div>
+    <div class="tl" id="tl">
+      <span class="tl-fill" id="tlFill" aria-hidden="true"></span>
+      <div class="tl-i rv">
+        <div class="tl-t">2025 — 2026 · 高三</div>
+        <h3>学着沉住气 <span class="tag t-s">自述</span></h3>
+        <p>以前的我有些急躁。高三这一年，在班主任一点点引导下，我开始学着沉住气，把眼前的事做好。留下来的不只有试卷和分数，还有“被认真教导、最后真的开始改变”的那些时刻。</p>
+      </div>
+      <div class="tl-i rv">
+        <div class="tl-t">2026.07 — 08 · 暑假</div>
+        <h3>家教、外卖、销售，和第一行代码 <span class="tag t-s">自述</span></h3>
+        <ul class="pts">
+          <li>给 2 位高三实验班学生和 1 位高一学生做理科家教，认真备课、梳理主干；第一次感到学过的知识能在别人身上起作用。</li>
+          <li>送外卖；做校园合伙人销售数码产品，也自己推销家教服务——体会挣钱的重量，学着介绍产品、理解需求、与人合作。</li>
+          <li>从零学 AI、提示词和编程，做出个人网站和坦克小游戏，陆续完成一批 AI 应用类认证。</li>
+        </ul>
+      </div>
+      <div class="tl-i rv">
+        <div class="tl-t">2026.09 · 入学</div>
+        <h3>北京工业大学 · 机械类 <span class="tag t-s">自述</span></h3>
+        <ul class="pts">
+          <li>主动和学院老师沟通科研与竞赛方向，得到的建议是：先扎实掌握专业基础，持续积累后再争取进课题组。</li>
+          <li>邀请老师指导工创赛与 RST 比赛，达成共同推进选题的共识。</li>
+          <li>参加京津冀秋招双选会并主动投递，先后和 13 位企业 HR 聊过实习（AI 自研与前端方向），被推荐往 FDE 方向走。</li>
+          <li>向学校创客空间提交 OPC 入驻答辩：<a href="#p-opc" style="border-bottom:1px dashed var(--line2)">把技能变成可验证的校园小生意</a>。</li>
+        </ul>
+      </div>
+      <div class="tl-i rv">
+        <div class="tl-t">2026.10 · 现在</div>
+        <h3>三个竞赛项目并行 <span class="tag t-m">实测</span></h3>
+        <p>仿真机器鱼 v10 定稿（14.53 s）；门店经营副驾按评委反馈完成一轮改造并上线；“绿进沙退”两天迭代 7 轮；同时开始补电路基础。每个项目都留下了一套按逻辑链编号的复盘笔记。</p>
+        <ul class="pts">
+          <li>另外在组队准备工创赛，方向是智能搬运。<span class="tag t-w" style="margin-left:6px">进行中</span></li>
+        </ul>
+      </div>
+      <div class="tl-i rv">
+        <div class="tl-t">接下来 · 大一</div>
+        <h3>三件主线，加一个 90 天实验 <span class="tag t-p">计划</span></h3>
+        <ul class="pts">
+          <li><b>课程：</b>稳住在修的核心课，按真实成绩调整投入。</li>
+          <li><b>英语：</b>确认四级报考资格，用真题摸底后再定练习量。</li>
+          <li><b>一个小项目：</b>从小做成，例如一只小夹爪——画图、做原型、测三种物体、保存失败样例。完成标准是：自己能解释原理，有图纸或代码，有带日期的测试记录。</li>
+          <li><b>90 天实验：</b>内容获客 → 服务收费 → 工具复用，每 30 天过一个关卡。没人买单就换方向，不硬撑；有人买单就把它做深。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 07 场外 ==================== -->
+<section class="sec" id="life">
+  <div class="wrap">
+    <div class="sec-h rv">
+      <div><span class="sec-no scr">07 / OFF THE CLOCK</span><h2 class="split" data-split>场外</h2></div>
+      <p class="sec-sub">精力是一切的前提。</p>
+    </div>
+    <div class="life" data-stagger>
+      <button class="lf" type="button" data-lb="life" data-src="jianshen2.jpg" data-cap="力量训练">
+        <img src="jianshen2.jpg" alt="力量训练主题插画" loading="lazy" decoding="async" />
+        <div class="lf-b"><h3>力量训练</h3><p>坚持力量与体能训练，给高强度的学习和项目留足精力。</p></div>
+      </button>
+      <button class="lf" type="button" data-lb="life" data-src="Russel.jpg" data-cap="球类运动">
+        <img src="Russel.jpg" alt="篮球比赛现场" loading="lazy" decoding="async" />
+        <div class="lf-b"><h3>球类运动</h3><p>球场上的瞬时决策和配合，练的是高压下的判断。</p></div>
+      </button>
+      <button class="lf" type="button" data-lb="life" data-src="jianshen.jpg" data-cap="曼巴精神：渴望，那就全力以赴">
+        <img src="jianshen.jpg" alt="写着“渴望，那就全力以赴”的插画" loading="lazy" decoding="async" />
+        <div class="lf-b"><h3>曼巴精神</h3><p>渴望，那就全力以赴。把每一天都当作超越昨天的训练场。</p></div>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 联系 ==================== -->
+<div class="wrap">
+  <section class="card beam contact rv" id="contact">
+    <span class="sec-no">CONTACT</span>
+    <h2 style="margin-top:14px">有项目、竞赛或想法？聊聊。</h2>
+    <p>更愿意聊的话题：机器人与控制、Agent 落地、竞赛组队，以及怎么把一件事做到能验证。</p>
+    <div class="cta">
+      <button class="btn btn-p magnet" type="button" data-copy-email><svg class="ic"><use href="#i-mail"/></svg> y15201369835@qq.com</button>
+      <a class="btn btn-g" href="tel:15201369835"><svg class="ic"><use href="#i-phone"/></svg> 15201369835</a>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer class="ft">
+  <div class="wrap">
+    <p><b>© 2026 于金硕（Jinshuo Yu）</b></p>
+    <p>北京工业大学 · 机械类 ｜ 原生 HTML / CSS / JavaScript，无外部依赖 ｜ 内容更新于 2026-10-05</p>
+  </div>
+</footer>
+
+<!-- ==================== 浮动控件 ==================== -->
+<div class="music" id="music">
+  <button class="music-b" type="button" id="btnMusic" aria-label="播放背景音乐：空山·野马" aria-pressed="false">
+    <svg class="ic"><use href="#i-music"/></svg>
+    <span class="eq" aria-hidden="true"><i></i><i></i><i></i></span>
+  </button>
+  <span class="music-t">空山·野马</span>
+  <audio id="bgm" loop preload="none">
+    <source src="空山·野马.mp3" type="audio/mpeg" />
+    <source src="空山•野马.mp3" type="audio/mpeg" />
+  </audio>
+</div>
+<button class="totop" type="button" id="totop" aria-label="返回顶部"><svg class="ic"><use href="#i-up"/></svg></button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="图片预览" hidden>
+  <button class="lb-x" type="button" aria-label="关闭">×</button>
+  <button class="lb-nav prev" type="button" aria-label="上一张">‹</button>
+  <figure><img id="lbImg" alt="" /><figcaption id="lbCap"></figcaption></figure>
+  <button class="lb-nav next" type="button" aria-label="下一张">›</button>
 </div>
 
-</main><footer class="footer"><div class="ft-l">绿进沙退 · 毛乌素沙地四十年</div><div class="ft-r">第十四届全国大学生数字媒体科技作品及创意竞赛 · 数字艺术与可视化设计类</div><a href="presentation/演示视频_合成配音版.mp4" class="footer-video">观看配音演示</a></footer>
-<div class="story-player" id="storyPlayer" hidden role="region" aria-label="故事导览控制"><div class="sp-main"><div class="story-player-top"><span id="storyChapterCount">1 / 6</span><strong id="storyChapterTitle"></strong><span class="sp-mood" id="storyMood" hidden></span></div><p id="storyChapterSubtitle"></p></div><div class="story-player-actions"><button id="storyPrev" type="button">上一章</button><button id="storyPause" type="button">暂停</button><button id="storyNext" type="button">下一章</button><button id="storyVoice" class="sp-icon sp-voice" type="button" aria-pressed="false" aria-label="朗读这一章" title="朗读这一章"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path class="sp-wave sp-wave1" d="M16 9.2a4 4 0 0 1 0 5.6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path class="sp-wave sp-wave2" d="M18.6 6.6a7.6 7.6 0 0 1 0 10.8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button><button id="storyVoiceMenu" class="sp-icon" type="button" aria-expanded="false" aria-controls="storyVoicePanel" aria-label="语音设置" title="语音设置">⋯</button><button id="storyClose" class="sp-icon" type="button" aria-label="退出故事导览">×</button></div><div class="story-progress" role="progressbar" aria-label="本章进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i id="storyProgress"></i></div><div class="sp-voice-panel" id="storyVoicePanel" hidden><label>语音<select id="storyVoiceSelect"></select></label><label>语速<input type="range" id="storyVoiceSpeed" min="0.8" max="1.25" step="0.05" value="1"><output id="storyVoiceSpeedOut">1.00×</output></label><p class="sp-voice-note" id="storyVoiceNote">自动播放时每章自动朗读，读完再翻页；暂停后不再朗读，点小喇叭可以手动读当前这一章。语音由浏览器本地合成，每句按语气调整语速、音高和停顿。</p></div><span id="storyPlayerStatus" class="sr-only" aria-live="polite"></span></div>
-<script src="assets/js/data.js"></script><script src="assets/js/evidence.js"></script><script src="assets/js/geo.js"></script><script src="assets/js/roads.js"></script><script src="assets/js/render.js"></script><script src="assets/js/charts.js"></script><script src="assets/js/sand.js"></script><script src="assets/js/narrative-core.js"></script><script src="assets/js/app.js"></script><script src="assets/js/voice.js"></script>
-<script src="assets/js/narrative.js"></script><script src="assets/js/opening.js"></script><script src="assets/js/mood.js"></script></body></html>
+<script>
+(() => {
+'use strict';
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const root = document.documentElement;
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const FINE = matchMedia('(hover: hover) and (pointer: fine)').matches;
+const TAU = Math.PI * 2;
+const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+const cssv = n => getComputedStyle(root).getPropertyValue(n).trim();
+const setIcon = (btn, id) => $('use', btn).setAttribute('href', '#' + id);
+const replayAnim = (el, cls) => { el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls); };
+
+/* ---------- 1. Toast ---------- */
+const toastEl = $('#toast');
+let toastT = 0;
+function toast(msg) {
+  toastEl.textContent = msg;
+  toastEl.classList.add('show');
+  clearTimeout(toastT);
+  toastT = setTimeout(() => toastEl.classList.remove('show'), 2600);
+}
+
+/* ---------- 2. 粒子层：彩带 + 点击火花（只在有粒子时才跑动画帧） ---------- */
+const fx = $('#fx'), fctx = fx.getContext('2d');
+let parts = [], fxRaf = 0;
+function fxFit() {
+  const d = Math.min(2, devicePixelRatio || 1);
+  fx.width = innerWidth * d; fx.height = innerHeight * d;
+  fctx.setTransform(d, 0, 0, d, 0, 0);
+}
+function fxTick() {
+  fctx.clearRect(0, 0, innerWidth, innerHeight);
+  parts = parts.filter(p => p.a > 0);
+  for (const p of parts) {
+    fctx.globalAlpha = Math.max(0, p.a);
+    if (p.spark) {
+      p.r += (p.R - p.r) * .22; p.a -= .06;
+      fctx.strokeStyle = p.c; fctx.lineWidth = 2; fctx.lineCap = 'round'; fctx.beginPath();
+      for (let i = 0; i < 8; i++) {
+        const an = i * Math.PI / 4, r2 = p.r + 8 * p.a;
+        fctx.moveTo(p.x + Math.cos(an) * p.r, p.y + Math.sin(an) * p.r);
+        fctx.lineTo(p.x + Math.cos(an) * r2, p.y + Math.sin(an) * r2);
+      }
+      fctx.stroke();
+    } else {
+      p.x += p.vx; p.y += p.vy; p.vy += .22; p.vx *= .99; p.rot += p.vr; p.a -= p.d;
+      fctx.save(); fctx.translate(p.x, p.y); fctx.rotate(p.rot);
+      fctx.fillStyle = p.c; fctx.fillRect(-p.s / 2, -p.s / 3, p.s, p.s * .66);
+      fctx.restore();
+    }
+  }
+  fctx.globalAlpha = 1;
+  fxRaf = parts.length ? requestAnimationFrame(fxTick) : 0;
+}
+function fxRun() { if (!fxRaf) fxRaf = requestAnimationFrame(fxTick); }
+function confetti(x, y, n = 44) {
+  if (RM) return;
+  const cols = [cssv('--acc'), cssv('--gold'), cssv('--blue'), cssv('--violet'), cssv('--text')];
+  for (let i = 0; i < n; i++) {
+    const an = Math.random() * TAU, v = Math.random() * 8 + 3;
+    parts.push({ x, y, vx: Math.cos(an) * v, vy: Math.sin(an) * v - 3, s: Math.random() * 6 + 5, c: cols[i % cols.length], rot: Math.random() * TAU, vr: Math.random() * .4 - .2, a: 1, d: Math.random() * .012 + .012 });
+  }
+  fxRun();
+}
+function spark(x, y) {
+  parts.push({ spark: 1, x, y, r: 4, R: 22, a: 1, c: cssv('--acc') });
+  fxRun();
+}
+fxFit();
+addEventListener('resize', fxFit);
+if (!RM) addEventListener('pointerdown', e => { if (e.pointerType === 'mouse' && e.button === 0) spark(e.clientX, e.clientY); });
+
+/* ---------- 3. 主题切换（支持时用 View Transition 做圆形揭开） ---------- */
+function applyTheme(t) {
+  if (t === 'light') root.setAttribute('data-theme', 'light'); else root.removeAttribute('data-theme');
+  $('meta[name="theme-color"]').setAttribute('content', t === 'light' ? '#f5f3ee' : '#07090d');
+  dispatchEvent(new Event('themechange'));
+}
+$('#btnTheme').addEventListener('click', e => {
+  const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+  const run = () => { applyTheme(next); try { localStorage.setItem('user_theme', next); } catch (_) {} };
+  if (!document.startViewTransition || RM) { run(); return; }
+  const r = e.currentTarget.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2;
+  const R = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+  document.startViewTransition(run).ready.then(() => {
+    root.animate({ clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${R}px at ${x}px ${y}px)`] }, { duration: 520, easing: 'cubic-bezier(.4,0,.2,1)', pseudoElement: '::view-transition-new(root)' });
+  }).catch(() => {});
+});
+
+/* ---------- 4. 复制邮箱 / 打招呼 / 打印 ---------- */
+const EMAIL = 'y15201369835@qq.com';
+async function copyEmail(e) {
+  let ok = false;
+  try { await navigator.clipboard.writeText(EMAIL); ok = true; }
+  catch (_) {
+    const ta = document.createElement('textarea');
+    ta.value = EMAIL; ta.style.cssText = 'position:fixed;opacity:0';
+    document.body.appendChild(ta); ta.select();
+    try { ok = document.execCommand('copy'); } catch (__) {}
+    ta.remove();
+  }
+  toast(ok ? '邮箱已复制：' + EMAIL : '复制失败，请手动复制：' + EMAIL);
+  if (ok && e && e.clientX) confetti(e.clientX, e.clientY, 24);
+}
+$$('[data-copy-email]').forEach(b => b.addEventListener('click', copyEmail));
+$('#btnHi').addEventListener('click', e => { confetti(e.clientX, e.clientY, 56); toast('你好！很高兴认识你，欢迎来聊机器人、Agent 和竞赛 👋'); });
+$('#btnPrint').addEventListener('click', () => print());
+let wasOpen = [];
+addEventListener('beforeprint', () => { wasOpen = $$('details').map(d => d.open); $$('details').forEach(d => { d.open = true; }); });
+addEventListener('afterprint', () => { $$('details').forEach((d, i) => { d.open = wasOpen[i]; }); });
+
+/* ---------- 5. 滚动：进度条、顶栏、返回顶部、时间线填充、信条逐字点亮 ---------- */
+const hd = $('#hd'), progress = $('#progress'), totop = $('#totop'), tl = $('#tl'), tlFill = $('#tlFill'), creed = $('#creed');
+const creedText = creed.textContent.trim();
+creed.textContent = '';
+const creedChars = [...creedText].map(c => { const s = document.createElement('span'); s.textContent = c; s.setAttribute('aria-hidden', 'true'); creed.appendChild(s); return s; });
+const cite = document.createElement('cite');
+cite.textContent = '—— 心法笔记《不确定中的决策与成长》';
+creed.appendChild(cite);
+let creedLit = -1, ticking = false;
+const scrollHooks = [];   /* 其他模块（幕间舞台、幽灵编号）往这里挂滚动回调，共用一次 rAF */
+function onScroll() {
+  ticking = false;
+  for (const h of scrollHooks) h();
+  const y = scrollY, max = root.scrollHeight - innerHeight;
+  progress.style.transform = `scaleX(${max > 0 ? clamp(y / max, 0, 1) : 0})`;
+  hd.classList.toggle('scrolled', y > 8);
+  totop.classList.toggle('show', y > 700);
+  const tr = tl.getBoundingClientRect();
+  if (tr.bottom > 0 && tr.top < innerHeight) tlFill.style.height = Math.max(0, (tr.height - 16) * clamp((innerHeight * .62 - tr.top) / tr.height, 0, 1)) + 'px';
+  const cr = creed.getBoundingClientRect();
+  if (cr.bottom > 0 && cr.top < innerHeight) {
+    const n = RM ? creedChars.length : Math.round(clamp((innerHeight * .9 - cr.top) / (innerHeight * .5), 0, 1) * creedChars.length);
+    if (n !== creedLit) { creedLit = n; creedChars.forEach((s, i) => s.classList.toggle('lit', i < n)); }
+  }
+}
+addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+addEventListener('resize', onScroll);
+onScroll();
+totop.addEventListener('click', () => scrollTo({ top: 0, behavior: RM ? 'auto' : 'smooth' }));
+
+/* ---------- 6. 导航：滚动高亮 + 滑块，移动端抽屉 ---------- */
+const nav = $('#nav'), ink = $('#navInk'), navLinks = $$('a', nav);
+let navCur = '';
+function setNav(id) {
+  navCur = id;
+  let hitLink = null;
+  navLinks.forEach(a => { const on = a.getAttribute('href') === '#' + id; a.classList.toggle('on', on); if (on) hitLink = a; });
+  if (hitLink) { ink.style.opacity = 1; ink.style.width = hitLink.offsetWidth + 'px'; ink.style.transform = `translateX(${hitLink.offsetLeft}px)`; }
+  else ink.style.opacity = 0;
+}
+const spy = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) setNav(e.target.id); }), { rootMargin: '-42% 0px -54% 0px' });
+['hero', 'about', 'projects', 'method', 'skills', 'edu', 'path', 'life', 'contact'].forEach(id => spy.observe(document.getElementById(id)));
+addEventListener('resize', () => setNav(navCur));
+const drawer = $('#drawer'), burger = $('#btnBurger');
+const setDrawer = open => { drawer.classList.toggle('open', open); burger.setAttribute('aria-expanded', open); };
+burger.addEventListener('click', () => setDrawer(!drawer.classList.contains('open')));
+drawer.addEventListener('click', e => { if (e.target.closest('a')) setDrawer(false); });
+
+/* ---------- 7. 入场：逐字模糊、乱码解密、滚动显现、数字滚动 ---------- */
+$$('[data-split]').forEach(el => {
+  const t = el.textContent;
+  if (!el.hasAttribute('aria-label')) el.setAttribute('aria-label', t);
+  el.textContent = '';
+  [...t].forEach((c, i) => { const s = document.createElement('span'); s.className = 'ch'; s.setAttribute('aria-hidden', 'true'); s.style.setProperty('--i', i); s.textContent = c; el.appendChild(s); });
+});
+const POOL_L = 'ABCDEFGHJKLMNPQRSTUVWXYZ0123456789#*+<>', POOL_C = '工业机械智能物理仿真控制实测复盘';
+function scramble(el) {
+  if (RM || el.dataset.done) return;
+  el.dataset.done = '1';
+  const txt = el.textContent, chars = [...txt], total = 20;
+  let f = 0;
+  (function tick() {
+    f++;
+    const k = Math.floor(f / total * chars.length);
+    el.textContent = chars.map((c, i) => (i < k || c === ' ' || c === '·' || c === '/') ? c : (c.charCodeAt(0) > 255 ? POOL_C : POOL_L)[Math.random() * (c.charCodeAt(0) > 255 ? POOL_C.length : POOL_L.length) | 0]).join('');
+    if (f < total) setTimeout(tick, 36); else el.textContent = txt;
+  })();
+}
+function countUp(el) {
+  if (el.dataset.ran) return;
+  el.dataset.ran = '1';
+  const to = parseFloat(el.dataset.count), from = parseFloat(el.dataset.from || 0), dec = +(el.dataset.dec || 0);
+  if (RM) { el.textContent = to.toFixed(dec); return; }
+  const t0 = performance.now(), dur = 1600;
+  (function f(now) {
+    const p = clamp((now - t0) / dur, 0, 1), e = 1 - Math.pow(1 - p, 4);
+    el.textContent = (from + (to - from) * e).toFixed(dec);
+    if (p < 1) requestAnimationFrame(f);
+  })(t0);
+}
+$$('[data-stagger]').forEach(g => [...g.children].forEach((c, i) => { c.classList.add('rv'); c.style.setProperty('--i', i); }));
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting || (e.intersectionRatio < .12 && e.intersectionRect.height < 120)) return;
+  const el = e.target;
+  io.unobserve(el);
+  el.classList.add('in');
+  $$('[data-count]', el).forEach(countUp);
+  $$('.scr', el).forEach(scramble);
+  el.dispatchEvent(new CustomEvent('reveal'));
+  /* 显现结束后摘掉 rv，把 transform / transition 还给元素自己的悬停效果 */
+  setTimeout(() => el.classList.remove('rv'), 3400);
+}), { threshold: [0, .12, .3] });
+$$('.rv').forEach(el => io.observe(el));
+
+/* 开场幕布：计时器从 60.00 冲到 14.53，然后上下拉开。每个会话只播一次，点一下或按键可跳过 */
+(function intro() {
+  const h1 = $('.hero h1');
+  let seen = false;
+  try { seen = sessionStorage.getItem('intro') === '1'; sessionStorage.setItem('intro', '1'); } catch (_) {}
+  if (RM || seen || location.hash) { requestAnimationFrame(() => h1.classList.add('in')); return; }
+  root.classList.add('intro');
+  const el = document.createElement('div');
+  el.className = 'intro-c';
+  el.innerHTML = '<i></i><i></i><div class="intro-b"><div class="intro-n"><span>60.00</span><small>s</small></div><div class="intro-t">从 60 秒超时，到 14.53 秒</div><div class="intro-l"><b></b></div></div>';
+  document.body.appendChild(el);
+  const num = $('.intro-n span', el), line = $('.intro-l b', el), t0 = performance.now();
+  let closed = false;
+  function open() {
+    if (closed) return;
+    closed = true;
+    num.textContent = '14.53';
+    el.classList.add('open');
+    root.classList.remove('intro');
+    h1.classList.add('in');
+    setTimeout(() => el.remove(), 900);
+  }
+  (function f(now) {
+    if (closed) return;
+    const p = clamp((now - t0) / 1000, 0, 1), e = 1 - Math.pow(1 - p, 3);
+    num.textContent = (60 - (60 - 14.53) * e).toFixed(2);
+    line.style.transform = `scaleX(${e})`;
+    if (p < 1) requestAnimationFrame(f); else setTimeout(open, 280);
+  })(t0);
+  el.addEventListener('click', open);
+  addEventListener('keydown', open, { once: true });
+  setTimeout(open, 2800);   /* 兜底：动画帧被节流时也一定会拉开 */
+})();
+
+/* ---------- 8. 打字机 ---------- */
+const typer = $('#typer');
+const WORDS = ['把一条仿真机器鱼从“跑不完”调到 14.53 秒', '给小店老板做一个会算账、能核验数字的 Agent', '用 40 年卫星影像讲清毛乌素怎么变绿', '把手上的技能变成一门能被验证的校园小生意', '从“闭合回路”开始补电路基础'];
+if (!RM) {
+  let w = 0, c = WORDS[0].length, del = true;
+  (function loop() {
+    const word = WORDS[w];
+    let wait = del ? 28 : 62;
+    if (del) { c--; if (c <= 0) { del = false; w = (w + 1) % WORDS.length; wait = 380; } }
+    else { c++; if (c >= word.length) { del = true; wait = 2400; } }
+    typer.textContent = WORDS[w].slice(0, Math.max(0, c));
+    setTimeout(loop, wait);
+  })();
+}
+
+/* ---------- 9. 指针：卡片聚光、光标光晕、卡片倾斜、磁吸按钮 ---------- */
+if (FINE) {
+  const hero = $('#hero'), pf = $('#pf'), magnets = $$('.magnet');
+  let auraMove = null;
+  if (!RM) {
+    /* 光晕带一点惯性地跟随光标；追上后停止动画帧 */
+    const aura = document.createElement('div');
+    aura.className = 'aura'; aura.setAttribute('aria-hidden', 'true');
+    $('.bg').after(aura);
+    let tx = 0, ty = 0, ax = innerWidth / 2, ay = innerHeight / 3, run = 0;
+    const step = () => {
+      ax += (tx - ax) * .14; ay += (ty - ay) * .14;
+      aura.style.transform = `translate3d(${ax.toFixed(1)}px, ${ay.toFixed(1)}px, 0)`;
+      run = Math.abs(tx - ax) + Math.abs(ty - ay) > .5 ? requestAnimationFrame(step) : 0;
+    };
+    auraMove = e => { tx = e.clientX; ty = e.clientY; aura.classList.add('on'); if (!run) run = requestAnimationFrame(step); };
+    /* 数据卡与原则卡：跟随指针做 3D 倾斜 */
+    $$('.stat, .pr').forEach(el => {
+      el.addEventListener('pointermove', e => {
+        const r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+        el.style.transform = `perspective(700px) rotateX(${(-y * 9).toFixed(2)}deg) rotateY(${(x * 11).toFixed(2)}deg) translateY(-4px)`;
+      });
+      el.addEventListener('pointerleave', () => { el.style.transform = ''; });
+    });
+  }
+  document.addEventListener('pointermove', e => {
+    const card = e.target.closest && e.target.closest('.card');
+    if (card) { const r = card.getBoundingClientRect(); card.style.setProperty('--mx', (e.clientX - r.left) + 'px'); card.style.setProperty('--my', (e.clientY - r.top) + 'px'); }
+    if (RM) return;
+    auraMove(e);
+    for (const m of magnets) {
+      const r = m.getBoundingClientRect();
+      if (r.bottom < -100 || r.top > innerHeight + 100) continue;
+      const dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
+      m.style.transform = Math.abs(dx) < r.width / 2 + 46 && Math.abs(dy) < r.height / 2 + 46 ? `translate(${dx * .24}px, ${dy * .32}px)` : '';
+    }
+  }, { passive: true });
+  if (!RM) {
+    hero.addEventListener('pointermove', e => {
+      const p = pf.getBoundingClientRect();
+      const dx = (e.clientX - (p.left + p.width / 2)) / innerWidth, dy = (e.clientY - (p.top + p.height / 2)) / innerHeight;
+      pf.style.transition = 'transform .25s ease-out, border-color .3s';
+      pf.style.transform = `perspective(1000px) rotateY(${clamp(dx * 10, -6, 6)}deg) rotateX(${clamp(-dy * 10, -6, 6)}deg)`;
+    });
+    hero.addEventListener('pointerleave', () => { pf.style.transform = ''; });
+  }
+}
+
+/* ---------- 10. 项目筛选 ---------- */
+const fls = $$('.fl');
+fls.forEach(b => b.addEventListener('click', () => {
+  fls.forEach(x => { x.classList.toggle('on', x === b); x.setAttribute('aria-pressed', x === b); });
+  const f = b.dataset.f;
+  let i = 0;
+  $$('[data-cat]').forEach(p => {
+    const show = f === 'all' || p.dataset.cat.split(' ').includes(f);
+    p.classList.toggle('hide', !show);
+    if (show) { p.style.setProperty('--i', i++); replayAnim(p, 'pop'); }
+  });
+}));
+
+/* ---------- 11. 门店副驾：流程步骤 + 数字核验演示 ---------- */
+const PIPE = [
+  '<b>先修数据，再谈智能。</b>上传自己的表时自动替换示例数据，并写清这次用了哪些表、多少行、哪段日期。结论的上限，取决于输入数据的边界是否清楚。',
+  '<b>程序算出主要矛盾。</b>营业额 = 订单数 × 客单价；客流、断货、商品下滑都换算成“每周影响金额”，排第一的就是主要矛盾。积压是占用资金，不和流水混排。',
+  '<b>模型只负责表达。</b>回答必须按【数据范围】【主要矛盾】【量化依据】【可执行动作】【前提与风险】分块，数字只能来自工具结果。',
+  '<b>程序再核验一遍。</b>把回答里的每个数字回查工具结果、提问和知识总览；找不到出处的标红“待确认”。大模型最容易错的就是数字。',
+  '<b>决定权在人。</b>价格、采购、对外发布由店主确认；先做可逆的小试验，记录日期和范围，再用同一口径复盘。'
+];
+/* 步骤条：在视野内自动轮播，用户点过之后就停在他选的那一步 */
+function stepper(wrap, render, ms = 4200) {
+  const btns = $$('button', wrap);
+  let cur = 0, timer = 0, auto = !RM, vis = false;
+  const set = i => {
+    cur = i;
+    btns.forEach((b, k) => { b.classList.toggle('on', k === i); b.classList.toggle('done', k < i); b.setAttribute('aria-pressed', k === i); });
+    render(i);
+  };
+  const tick = () => { clearTimeout(timer); if (auto && vis) timer = setTimeout(() => { set((cur + 1) % btns.length); tick(); }, ms); };
+  btns.forEach((b, i) => b.addEventListener('click', () => { auto = false; set(i); }));
+  new IntersectionObserver(es => { vis = es[0].isIntersecting; tick(); }, { threshold: .4 }).observe(wrap);
+  set(0);
+}
+const pipeD = $('#pipeD');
+stepper($('#pipe'), i => { pipeD.innerHTML = PIPE[i]; });
+
+/* 校园小生意：90 天计划 + 创业者思考 */
+const D90 = [
+  ['调研校园里的目标用户', '访谈 10–15 位同学', '选一个高频的小需求', '完成首个可交付的服务'],
+  ['在小红书等公域发 4 条内容', '测试服务套餐与价格', '观察怎样沉淀到私域', '记录咨询、成交和复购'],
+  ['把重复步骤整理成 SOP', '尝试 AI 或小程序工具', '形成一个可交付的产品', '复盘：是否省时，是否有人用']
+];
+const d90 = $('#d90'), d90List = $('#d90List');
+stepper($('#d90Pipe'), i => {
+  d90List.innerHTML = D90[i].map((t, k) => `<li class="pop" style="--i:${k}">${t}</li>`).join('');
+  d90.classList.toggle('end', i === D90.length - 1);
+}, 4600);
+/* 幕间舞台：区块被“钉住”，滚动进度决定第几句上场、点亮到第几个字 */
+(function stage() {
+  const sec = $('#think'), qs = $$('.sq', sec), n = qs.length;
+  const stN = $('#stN'), stBar = $('#stBar'), orb = $('.stage-orb', sec), ghost = $('.stage-ghost', sec);
+  const HUES = ['--acc', '--gold', '--blue', '--violet', '--acc', '--gold'];
+  const chars = qs.map(q => {
+    const p = $('p', q), t = p.textContent;
+    p.innerHTML = '<span class="sr"></span>';
+    p.firstChild.textContent = t;   /* 读屏器读这一份完整文本，逐字 span 对它隐藏 */
+    return [...t].map(c => { const s = document.createElement('span'); s.setAttribute('aria-hidden', 'true'); s.textContent = c; p.appendChild(s); return s; });
+  });
+  if (RM) { sec.classList.add('flat'); return; }
+  let cur = -1, litN = -1;
+  function upd() {
+    const r = sec.getBoundingClientRect(), span = r.height - innerHeight;
+    if (r.bottom < 0 || r.top > innerHeight || span <= 0) return;
+    let i = 0, q = 0, lit;
+    if (r.top > 0) lit = clamp(1 - r.top / (innerHeight * .8), 0, 1) * .4;   /* 进场途中先点亮第一句的前四成 */
+    else {
+      const f = clamp(-r.top / span, 0, .9999) * n;
+      i = Math.floor(f); q = f - i;
+      lit = clamp(q / .62, 0, 1);
+      if (i === 0) lit = Math.max(.4, lit);
+    }
+    if (i !== cur) {
+      cur = i; litN = -1;
+      qs.forEach((el, k) => { el.classList.toggle('on', k === i); el.classList.toggle('past', k < i); });
+      stN.textContent = ghost.textContent = '0' + (i + 1);
+      orb.style.backgroundColor = cssv(HUES[i]);
+    }
+    const cs = chars[i], k = Math.round(lit * cs.length);
+    if (k !== litN) { litN = k; cs.forEach((s, j) => { s.classList.toggle('lit', j < k); s.classList.toggle('hot', k < cs.length && j < k && j >= k - 2); }); }
+    stBar.style.width = clamp(-r.top / span, 0, 1) * 100 + '%';
+    ghost.style.transform = `translateY(${((q - .5) * -46).toFixed(1)}px)`;
+  }
+  scrollHooks.push(upd);
+  addEventListener('themechange', () => { cur = -1; upd(); });
+  upd();
+})();
+
+/* 小节标题后的巨型描边编号（取自“01 / ABOUT”的前两位），滚动时做视差 */
+(function ghosts() {
+  const list = $$('.sec-h').map(h => {
+    const no = $('.sec-no', h);
+    if (!no) return null;
+    const g = document.createElement('span');
+    g.className = 'ghost'; g.setAttribute('aria-hidden', 'true'); g.textContent = no.textContent.trim().slice(0, 2);
+    h.appendChild(g);
+    return g;
+  }).filter(Boolean);
+  if (RM) return;
+  const upd = () => {
+    for (const g of list) {
+      const r = g.parentElement.getBoundingClientRect();
+      if (r.bottom > -260 && r.top < innerHeight + 260) g.style.setProperty('--py', ((r.top - innerHeight / 2) * .16).toFixed(1) + 'px');
+    }
+  };
+  scrollHooks.push(upd);
+  upd();
+})();
+
+/* 首屏鱼群：分离 / 对齐 / 聚合三条规则；有光标时围着光标游，点击处会把附近的鱼冲散 */
+(function school() {
+  const cv = $('#school'), hero = $('#hero');
+  if (RM) { cv.remove(); return; }
+  const ctx = cv.getContext('2d');
+  let W = 0, H = 0, fish = [], raf = 0, vis = false, last = 0, mx = 0, my = 0, hasPtr = false, c1 = '', c2 = '';
+  const pal = () => { c1 = cssv('--acc'); c2 = cssv('--gold'); };
+  const spawn = () => {
+    const a = Math.random() * TAU, s = 60 + Math.random() * 50;
+    return { x: Math.random() * W, y: Math.random() * H, vx: Math.cos(a) * s, vy: Math.sin(a) * s, ph: Math.random() * TAU, wd: Math.random() * TAU, sz: 6 + Math.random() * 6, gold: Math.random() < .14, boost: 0 };
+  };
+  function fit() {
+    const r = hero.getBoundingClientRect(), d = Math.min(1.5, devicePixelRatio || 1);
+    W = r.width; H = r.height;
+    cv.width = Math.round(W * d); cv.height = Math.round(H * d);
+    ctx.setTransform(d, 0, 0, d, 0, 0);
+    const n = clamp(Math.round(W * H / 24000), 14, 56);
+    while (fish.length < n) fish.push(spawn());
+    fish.length = n;
+  }
+  function tick(now) {
+    raf = 0;
+    if (!vis) return;
+    const dt = Math.min(.05, (now - last) / 1000 || .016);
+    last = now;
+    /* 不清屏，而是把旧像素擦淡一点，留下拖尾 */
+    ctx.globalCompositeOperation = 'destination-out'; ctx.fillStyle = 'rgba(0,0,0,.22)'; ctx.fillRect(0, 0, W, H);
+    ctx.globalCompositeOperation = 'source-over';
+    for (const f of fish) {
+      let ax = 0, ay = 0, cx = 0, cy = 0, avx = 0, avy = 0, n = 0;
+      for (const o of fish) {
+        if (o === f) continue;
+        const dx = o.x - f.x, dy = o.y - f.y, d2 = dx * dx + dy * dy;
+        if (d2 > 8100) continue;
+        const d = Math.sqrt(d2) || 1;
+        n++; cx += o.x; cy += o.y; avx += o.vx; avy += o.vy;
+        if (d < 30) { ax -= dx / d * (30 - d) * 9; ay -= dy / d * (30 - d) * 9; }
+      }
+      if (n) { ax += (cx / n - f.x) * .9 + (avx / n - f.vx) * 1.4; ay += (cy / n - f.y) * .9 + (avy / n - f.vy) * 1.4; }
+      if (hasPtr) {
+        const dx = mx - f.x, dy = my - f.y, d = Math.hypot(dx, dy) || 1, pull = d > 50 ? 180 : -260;
+        ax += dx / d * pull; ay += dy / d * pull;
+      } else {
+        f.wd += (Math.random() - .5) * 9 * dt;
+        ax += Math.cos(f.wd) * 55; ay += Math.sin(f.wd) * 55;
+      }
+      const m = 36;
+      if (f.x < m) ax += (m - f.x) * 7; else if (f.x > W - m) ax -= (f.x - W + m) * 7;
+      if (f.y < m) ay += (m - f.y) * 7; else if (f.y > H - m) ay -= (f.y - H + m) * 7;
+      f.vx += ax * dt; f.vy += ay * dt;
+      const sp = Math.hypot(f.vx, f.vy) || 1, lim = clamp(sp, 55, f.boost > 0 ? 460 : hasPtr ? 190 : 120);
+      f.vx = f.vx / sp * lim; f.vy = f.vy / sp * lim;
+      if (f.boost > 0) f.boost -= dt;
+      f.x += f.vx * dt; f.y += f.vy * dt;
+      f.ph += dt * (7 + lim * .07);
+      const s = f.sz, wag = Math.sin(f.ph) * s * .55;
+      ctx.save(); ctx.translate(f.x, f.y); ctx.rotate(Math.atan2(f.vy, f.vx));
+      ctx.fillStyle = f.gold ? c2 : c1; ctx.globalAlpha = W < 700 ? .36 : .55;   /* 窄屏上鱼会游到正文后面，调淡以保证可读 */
+      ctx.beginPath(); ctx.ellipse(0, 0, s, s * .34, 0, 0, TAU); ctx.fill();
+      ctx.beginPath(); ctx.moveTo(-s * .8, 0); ctx.lineTo(-s * 1.75, wag - s * .4); ctx.lineTo(-s * 1.75, wag + s * .4); ctx.closePath(); ctx.fill();
+      ctx.restore();
+    }
+    raf = requestAnimationFrame(tick);
+  }
+  const run = () => { if (vis && !raf) { last = performance.now(); raf = requestAnimationFrame(tick); } };
+  hero.addEventListener('pointermove', e => { const r = hero.getBoundingClientRect(); mx = e.clientX - r.left; my = e.clientY - r.top; hasPtr = e.pointerType === 'mouse'; }, { passive: true });
+  hero.addEventListener('pointerleave', () => { hasPtr = false; });
+  hero.addEventListener('pointerdown', e => {
+    const r = hero.getBoundingClientRect(), px = e.clientX - r.left, py = e.clientY - r.top;
+    for (const f of fish) {
+      const dx = f.x - px, dy = f.y - py, d = Math.hypot(dx, dy) || 1;
+      if (d < 280) { f.vx += dx / d * 620; f.vy += dy / d * 620; f.boost = .7; }
+    }
+  }, { passive: true });
+  new ResizeObserver(fit).observe(hero);
+  new IntersectionObserver(es => { vis = es[0].isIntersecting; run(); }).observe(hero);
+  addEventListener('themechange', pal);
+  pal(); fit();
+})();
+const vf = $('#vf');
+vf.addEventListener('reveal', () => {
+  const bs = $$('p b', vf), step = RM ? 0 : 300;
+  bs.forEach((b, i) => setTimeout(() => b.classList.add('chk'), 500 + i * step));
+  setTimeout(() => vf.classList.add('done'), 700 + bs.length * step);
+});
+
+/* ---------- 12. 绿进沙退：三段拟合示意曲线 ---------- */
+(function ndvi() {
+  const box = $('#ndvi'), svg = $('#ndSvg'), rng = $('#ndRange'), out = $('#ndOut'), btn = $('#ndPlay');
+  const X = y => 44 + (y - 1986) / 39 * 456, Y = v => 186 - (v - .12) / .26 * 160;
+  const fit = y => y <= 2000 ? .17 : y <= 2011 ? .17 + .0053 * (y - 2000) : .24 + (.349 - .24) * (y - 2012) / 13;
+  const phase = y => y <= 2000 ? '第一段：平稳' : y <= 2011 ? '第二段：开始上升' : '第三段：高位继续上升';
+  const pts = [1986, 2000, 2001, 2011, 2012, 2025].map(y => `${X(y).toFixed(1)},${Y(fit(y)).toFixed(1)}`);
+  let h = '<defs><linearGradient id="ndG" gradientUnits="userSpaceOnUse" x1="44" x2="500" y1="0" y2="0"><stop offset="0" stop-color="rgb(var(--sand-rgb))"/><stop offset=".45" stop-color="rgb(var(--sand-rgb))"/><stop offset="1" stop-color="rgb(var(--green-rgb))"/></linearGradient>'
+        + '<linearGradient id="ndA" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="rgb(var(--green-rgb))" stop-opacity=".35"/><stop offset="1" stop-color="rgb(var(--green-rgb))" stop-opacity="0"/></linearGradient></defs>';
+  [.15, .25, .35].forEach(v => { h += `<line class="nd-grid" x1="44" x2="500" y1="${Y(v)}" y2="${Y(v)}"/><text x="38" y="${Y(v) + 3}" text-anchor="end">${v.toFixed(2)}</text>`; });
+  [2001, 2012].forEach(y => { h += `<line class="nd-bp" x1="${X(y)}" x2="${X(y)}" y1="18" y2="186"/><text x="${X(y)}" y="12" text-anchor="middle">分界 ${y}</text>`; });
+  [1986, 2001, 2012, 2025].forEach(y => { h += `<text x="${X(y)}" y="204" text-anchor="middle">${y}</text>`; });
+  h += `<path class="nd-area" d="M${pts.join(' L')} L${X(2025)},186 L${X(1986)},186 Z"/><path class="nd-line" d="M${pts.join(' L')}"/>`;
+  h += '<g id="ndM"><line class="nd-guide" x1="0" x2="0" y1="18" y2="186"/><circle class="nd-dot" cx="0" cy="0" r="5.5"/></g>';
+  svg.innerHTML = h;
+  const mk = $('#ndM'), dot = $('circle', mk);
+  function set(y) {
+    const v = fit(y);
+    mk.setAttribute('transform', `translate(${X(y)},0)`);
+    dot.setAttribute('cy', Y(v));
+    out.innerHTML = `<b>${y}</b> 年 · 拟合值 ≈ <b>${v.toFixed(3)}</b> · ${phase(y)}`;
+    box.style.setProperty('--g', clamp((v - .17) / (.349 - .17), 0, 1).toFixed(3));
+  }
+  rng.addEventListener('input', () => { stop(); set(+rng.value); });
+  let raf = 0;
+  function stop() { cancelAnimationFrame(raf); raf = 0; setIcon(btn, 'i-play'); }
+  function play() {
+    const t0 = performance.now(), dur = 6500;
+    setIcon(btn, 'i-pause');
+    (function f(now) {
+      const p = clamp((now - t0) / dur, 0, 1), y = Math.round(1986 + 39 * p);
+      rng.value = y; set(y);
+      if (p < 1) raf = requestAnimationFrame(f); else stop();
+    })(t0);
+  }
+  btn.addEventListener('click', () => raf ? stop() : play());
+  set(2025);
+  box.addEventListener('reveal', () => { if (!RM) setTimeout(play, 600); });
+})();
+
+/* ---------- 13. 决策循环 ---------- */
+(function loop() {
+  const LOOP = [
+    { k: '安顿', t: '先安顿自己', d: '允许不舒服存在，但不让一时的情绪直接接管决定。', ex: '仿真鱼 v06 改坏了，v07 又有三成卡柱。我没有继续硬调，而是回退到唯一经过 14 轮验证的 v04 内核，把它定为 v09。' },
+    { k: '观察', t: '分清事实和解释', d: '把看到的、推断的、希望的分开写，不让旧经验替代眼前的证据。', ex: '规则文档写的柱子坐标和平台实测对不上，裁判什么时候停表，文档里也没写清。以日志为准。' },
+    { k: '预判', t: '写下几种可能', d: '列出可能的结果和各自的依据，并承认预测会错。', ex: '“绿进沙退”的首屏窗口：先按“早期低、上升多、离城镇远”筛出 5 个候选，再并排比较，而不是凭感觉挑一个。' },
+    { k: '判断', t: '按代价和可逆性取舍', d: '不找绝对正确的答案，只选当前承受得起的那一步。', ex: '排位赛按用时排序，一次卡死的损失远大于快 0.1 秒的收益。所以稳定优先于偶尔更快。' },
+    { k: '行动', t: '小步，一次一个变量', d: '可逆的事先做小实验，尽快拿到真实反馈。', ex: '反例也留着：v06 同时改了微分、积分和限速，结果变差，却分不清是谁的问题。' },
+    { k: '记录', t: '给未来的自己留证据', d: '让以后的我知道，当时掌握了什么信息、为什么这样选。', ex: '每一版都按“现象 → 定位 → 改动 → 实测”记录；新版本写入后读回核对哈希，因为有一次新文件根本没写进去。' },
+    { k: '修正', t: '用结果推翻旧结论', d: '比较预期和实际，保留有效的判断，推翻失效的假设。', ex: '“15.4 s 已到物理上限”是我自己写下、又自己推翻的结论。v10 做到 14.53 s 之后，原来的推理原样保留，只加上“已更正”。' }
+  ];
+  const svg = $('#lpSvg'), body = $('#lpBody'), NS = 'http://www.w3.org/2000/svg';
+  const mk = (n, a) => { const e = document.createElementNS(NS, n); for (const k in a) e.setAttribute(k, a[k]); return e; };
+  const R = 122, CX = 160, CY = 160, CIRC = TAU * R, nodes = [];
+  svg.append(mk('circle', { class: 'lp-ring', cx: CX, cy: CY, r: R }));
+  const arc = mk('circle', { class: 'lp-arc', cx: CX, cy: CY, r: R, 'stroke-dasharray': CIRC, 'stroke-dashoffset': CIRC });
+  const c1 = mk('text', { class: 'lp-c1', x: CX, y: CY + 8 }), c2 = mk('text', { class: 'lp-c2', x: CX, y: CY + 30 });
+  c2.textContent = 'DECISION LOOP';
+  svg.append(arc, c1, c2);
+  let cur = 0, auto = !RM, vis = false, timer = 0;
+  function set(i) {
+    cur = i;
+    const s = LOOP[i];
+    nodes.forEach((n, k) => n.classList.toggle('on', k === i));
+    arc.setAttribute('stroke-dashoffset', CIRC * (1 - i / LOOP.length));
+    c1.textContent = `${i + 1}/7`;
+    $('#lpStep').textContent = `STEP 0${i + 1}`;
+    $('#lpT').textContent = s.t; $('#lpD').textContent = s.d; $('#lpEx').textContent = s.ex;
+    replayAnim(body, 'sw');
+  }
+  function tick() { clearTimeout(timer); if (auto && vis) timer = setTimeout(() => { set((cur + 1) % LOOP.length); tick(); }, 4600); }
+  LOOP.forEach((s, i) => {
+    const a = -Math.PI / 2 + i * TAU / LOOP.length, x = CX + R * Math.cos(a), y = CY + R * Math.sin(a);
+    const g = mk('g', { class: 'lp-node', tabindex: 0, role: 'button', 'aria-label': `第 ${i + 1} 步：${s.t}` });
+    const t = mk('text', { x, y });
+    t.textContent = s.k;
+    g.append(mk('circle', { cx: x, cy: y, r: 26 }), t);
+    const pick = () => { auto = false; set(i); };
+    g.addEventListener('click', pick);
+    g.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); } });
+    svg.append(g); nodes.push(g);
+  });
+  new IntersectionObserver(es => { vis = es[0].isIntersecting; tick(); }, { threshold: .4 }).observe(svg);
+  set(0);
+})();
+
+/* ---------- 14. 能力：点技能看证据 ---------- */
+$$('.sk .card').forEach(card => {
+  const out = $('.ev span', card), all = $$('.skill', card);
+  all.forEach(b => {
+    const show = () => { all.forEach(x => x.classList.toggle('on', x === b)); out.textContent = b.dataset.ev; };
+    b.addEventListener('click', show);
+    b.addEventListener('focus', show);
+    if (FINE) b.addEventListener('pointerenter', show);
+  });
+});
+
+/* ---------- 15. 证书：缩略图按需加载（原图很大，先只载入第一屏）+ 清单分类 ---------- */
+const CERT_N = 21, CERT_FIRST = 8, CERT_EXT = { 11: 'jpg' }, certGrid = $('#certGrid');
+function certLoad(b) {
+  if ($('img', b)) return;
+  const img = new Image(), tries = ['png', 'jpg', 'jpeg'].filter(x => !b.dataset.src.endsWith('.' + x));
+  img.loading = 'lazy'; img.decoding = 'async'; img.alt = b.dataset.cap;
+  img.onload = () => b.classList.add('ok');
+  img.onerror = () => {
+    const ext = tries.shift();
+    if (ext) { b.dataset.src = b.dataset.src.replace(/\.\w+$/, '.' + ext); img.src = b.dataset.src; }
+    else { img.remove(); b.classList.add('miss'); b.removeAttribute('data-lb'); }
+  };
+  img.src = b.dataset.src;
+  b.prepend(img);
+}
+for (let i = 1; i <= CERT_N; i++) {
+  const b = document.createElement('button');
+  b.type = 'button'; b.className = 'cert';
+  b.dataset.lb = 'cert'; b.dataset.src = `证书${i}.${CERT_EXT[i] || 'png'}`; b.dataset.cap = `AI 应用类认证 · 证书 #${i}`;
+  b.setAttribute('aria-label', `查看证书 ${i}`);
+  b.innerHTML = `<span class="cert-n">#${String(i).padStart(2, '0')}</span>`;
+  if (i > CERT_FIRST) b.hidden = true; else certLoad(b);
+  certGrid.appendChild(b);
+}
+$('#certMore').addEventListener('click', e => {
+  $$('.cert[hidden]', certGrid).forEach((b, i) => { b.hidden = false; b.style.setProperty('--i', i); b.classList.add('pop'); certLoad(b); });
+  e.currentTarget.parentElement.hidden = true;
+});
+const clTabs = $$('#clTabs button');
+clTabs.forEach(b => b.addEventListener('click', () => {
+  clTabs.forEach(x => { x.classList.toggle('on', x === b); x.setAttribute('aria-selected', x === b); });
+  clTabs.forEach(x => { const el = document.getElementById(x.dataset.t); el.hidden = x !== b; if (x === b) replayAnim(el, 'pop'); });
+}));
+
+/* ---------- 16. 图片灯箱：分组浏览、键盘、滑动 ---------- */
+const lb = $('#lb'), lbImg = $('#lbImg'), lbCap = $('#lbCap');
+let lbList = [], lbIdx = 0, lbFrom = null;
+function lbShow(i) {
+  lbIdx = (i + lbList.length) % lbList.length;
+  const it = lbList[lbIdx];
+  lbImg.src = it.src; lbImg.alt = it.cap;
+  lbCap.textContent = it.cap + (lbList.length > 1 ? `　${lbIdx + 1} / ${lbList.length}` : '');
+}
+function lbOpen(el) {
+  const els = $$(`[data-lb="${el.dataset.lb}"]`).filter(x => !x.hidden);
+  lbList = els.map(x => ({ src: x.dataset.src, cap: x.dataset.cap || '' }));
+  lbFrom = el;
+  lb.hidden = false;
+  $$('.lb-nav', lb).forEach(b => { b.hidden = lbList.length < 2; });
+  requestAnimationFrame(() => lb.classList.add('open'));
+  document.body.style.overflow = 'hidden';
+  lbShow(Math.max(0, els.indexOf(el)));
+  $('.lb-x', lb).focus();
+}
+function lbClose() {
+  lb.classList.remove('open');
+  document.body.style.overflow = '';
+  setTimeout(() => { lb.hidden = true; lbImg.removeAttribute('src'); }, 240);
+  if (lbFrom) lbFrom.focus();
+}
+document.addEventListener('click', e => { const t = e.target.closest('[data-lb]'); if (t) lbOpen(t); });
+lb.addEventListener('click', e => {
+  if (e.target.closest('.prev')) lbShow(lbIdx - 1);
+  else if (e.target.closest('.next')) lbShow(lbIdx + 1);
+  else if (e.target !== lbImg) lbClose();
+});
+document.addEventListener('keydown', e => {
+  if (lb.hidden) return;
+  if (e.key === 'Escape') lbClose();
+  else if (e.key === 'ArrowLeft') lbShow(lbIdx - 1);
+  else if (e.key === 'ArrowRight') lbShow(lbIdx + 1);
+});
+let tx = 0;
+lb.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+lb.addEventListener('touchend', e => { const dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 50 && lbList.length > 1) lbShow(lbIdx + (dx < 0 ? 1 : -1)); }, { passive: true });
+/* 图片缺失时的降级 */
+$$('.avatar img, .shot img, .lf img').forEach(img => {
+  const miss = () => { const p = img.parentElement; if (!p) return; img.remove(); p.classList.add('miss'); p.removeAttribute('data-lb'); p.style.cursor = 'default'; };
+  if (img.complete && !img.naturalWidth) miss(); else img.addEventListener('error', miss);
+});
+
+/* ---------- 17. 背景音乐：改为手动开启，不再自动播放 ---------- */
+const music = $('#music'), bgm = $('#bgm'), btnMusic = $('#btnMusic');
+const setMusic = on => { music.classList.toggle('playing', on); btnMusic.setAttribute('aria-pressed', on); btnMusic.setAttribute('aria-label', (on ? '暂停' : '播放') + '背景音乐：空山·野马'); };
+btnMusic.addEventListener('click', () => {
+  if (bgm.paused) bgm.play().then(() => { setMusic(true); toast('正在播放：空山·野马'); }).catch(() => toast('音频暂时加载不出来'));
+  else { bgm.pause(); setMusic(false); }
+});
+
+/* ---------- 18. 仿真鱼轨迹回放 ----------
+   路线按赛题几何重建：起步圆 → 绕柱1 一圈 → 辅助圆 → 水平穿门 → 辅助圆 → 绕柱3 两圈。
+   圆与圆之间用公切线连接（带符号半径：逆时针为正、顺时针为负）；各段用时取自笔记里的实测分段。 */
+(function replay() {
+  const cv = $('#rpCanvas'), ctx = cv.getContext('2d'), stage = cv.parentElement;
+  const elT = $('#rpTime'), elBar = $('#rpBar'), elNote = $('#rpNote'), elBadge = $('#rpBadge');
+  const btnPlay = $('#rpPlay'), btnSpeed = $('#rpSpeed');
+  const cpEls = $$('#rpCps .cp'), spEls = $$('#rpSplits .sp'), verBtns = $$('#rpVer button');
+  const mod = a => ((a % TAU) + TAU) % TAU;
+  const P1 = [-750, 0], P3 = [750, 0];
+  const POSTS = [[-750, 0, '柱1'], [0, 175, '门'], [0, -175, ''], [750, 0, '柱3']];
+  const STRIPS = { p1R: [-650, -430], p1L: [-1070, -850], p3R: [850, 1070], p3L: [430, 650] };
+  const ORDER = ['p1R', 'p1L', 'gate', 'p3R', 'p3L', 'p3R', 'p3L'];
+  const INFO = {
+    v02: { c: 'red', total: 60, badge: '✕ 卡在门后 · 60 s 超时', note: '<b>v02 · 成绩无效。</b>路线以 16° 斜穿 150 mm 的门，鱼尾扫到门柱角被拧住；错误的“贴柱就后退”逻辑每 0.83 秒触发一次，原地循环到 60 秒超时。' },
+    v04: { c: 'blue', total: 15.41, badge: '✓ 15.41 s · 13/14 轮稳定', note: '<b>v04 · 第一个稳定版。</b>用辅助圆把穿门段改成水平直线，入圈前限速，去掉帮倒忙的护柱转向，高度控制加积分。14 轮里 13 轮落在 15.39–15.43 s。' },
+    v10: { c: 'acc', total: 14.53, badge: '✓ 14.53 s · 15 轮全部干净', note: '<b>v10 · 现定稿。</b>读懂平台实现后重做：方波摆尾、曲率 × 速度前馈查表、出圈慢撤偏置。裁判其实只认鱼身依次碰到的 7 条薄条。15 轮全部干净完成。' }
+  };
+
+  function tangent(c1, s1, c2, s2) {
+    const dx = c2[0] - c1[0], dy = c2[1] - c1[1], D = Math.hypot(dx, dy);
+    const h = Math.atan2(dy, dx) + Math.asin(clamp((s1 - s2) / D, -1, 1)), nx = Math.sin(h), ny = -Math.cos(h);
+    return { h, p1: [c1[0] + s1 * nx, c1[1] + s1 * ny], p2: [c2[0] + s2 * nx, c2[1] + s2 * ny] };
+  }
+  function build(v) {
+    const pts = [], ends = [];
+    let len = 0;
+    const push = (x, y, h, g) => { if (pts.length) { const p = pts[pts.length - 1]; len += Math.hypot(x - p.x, y - p.y); } pts.push({ x, y, h, g, d: len }); ends[g] = len; };
+    const line = (a, b, h, g) => { const n = Math.max(2, Math.ceil(Math.hypot(b[0] - a[0], b[1] - a[1]) / 12)); for (let i = 0; i <= n; i++) push(a[0] + (b[0] - a[0]) * i / n, a[1] + (b[1] - a[1]) * i / n, h, g); };
+    const arc = (c, s, h0, h1, loops, g) => {
+      const dir = Math.sign(s);
+      const sw = (dir > 0 ? mod(h1 - h0) : -mod(h0 - h1)) + dir * loops * TAU, n = Math.max(4, Math.ceil(Math.abs(sw * s) / 12));
+      for (let i = 0; i <= n; i++) { const h = h0 + sw * i / n; push(c[0] + s * Math.sin(h), c[1] - s * Math.cos(h), h, g); }
+    };
+    const C0 = [-1250, -250], s0 = -250, stuck = v === 'v02';
+    let times;
+    if (stuck) {
+      const r = 210, t01 = tangent(C0, s0, P1, r), t13 = tangent(P1, r, P3, -r);
+      arc(C0, s0, 0, t01.h, 0, 0); line(t01.p1, t01.p2, t01.h, 0);
+      arc(P1, r, t01.h, t13.h, 1, 1);
+      line(t13.p1, [115, t13.p1[1] + (115 - t13.p1[0]) * Math.tan(t13.h)], t13.h, 2);
+      times = [1.55, 4.15, (len - ends[1]) / 430];
+    } else {
+      const r1 = v === 'v10' ? 202 : 200, r3 = v === 'v10' ? 205 : 215, y0 = v === 'v10' ? 8 : 0;
+      const A1 = [-250, y0 - 300], A2 = [250, y0 - 300], sa = -300;
+      const t01 = tangent(C0, s0, P1, r1), t1a = tangent(P1, r1, A1, sa), ta3 = tangent(A2, sa, P3, r3);
+      arc(C0, s0, 0, t01.h, 0, 0); line(t01.p1, t01.p2, t01.h, 0);
+      arc(P1, r1, t01.h, t1a.h, 1, 1);
+      line(t1a.p1, t1a.p2, t1a.h, 2); arc(A1, sa, t1a.h, 0, 0, 2); line([-250, y0], [250, y0], 0, 2);
+      arc(A2, sa, 0, ta3.h, 0, 2); line(ta3.p1, ta3.p2, ta3.h, 2);
+      arc(P3, r3, ta3.h, -Math.PI / 2, 1, 3);
+      times = v === 'v10' ? [1.27, 3.92, 3.27, 6.07] : [1.53, 4.00, 3.40, 6.48];
+    }
+    const segs = [];
+    let t = 0, d0 = 0;
+    times.forEach((T, g) => { segs.push({ g, d0, d1: ends[g], t0: t, t1: t + T }); d0 = ends[g]; t += T; });
+    /* 裁判薄条：按顺序记录鱼经过每一条时的里程 */
+    const cps = [];
+    for (let i = 1, k = 0; i < pts.length && k < ORDER.length; i++) {
+      const a = pts[i - 1], b = pts[i];
+      let type = null;
+      if ((a.y < 0 && b.y >= 0) || (a.y > 0 && b.y <= 0)) {
+        const x = a.x + (b.x - a.x) * (a.y / (a.y - b.y));
+        for (const key in STRIPS) if (x >= STRIPS[key][0] && x <= STRIPS[key][1]) type = key;
+      }
+      if (!type && a.x < 0 && b.x >= 0 && Math.abs(a.y) < 75) type = 'gate';
+      if (type === ORDER[k]) { cps.push(b.d); k++; }
+    }
+    if (!stuck && cps.length === ORDER.length - 1) cps.push(len);
+    return { pts, len, segs, cps, total: t, stuck };
+  }
+
+  let ver = 'v10', D = build(ver), t = 0, speed = 1, playing = false, done = false, started = false, resume = false;
+  let last = 0, raf = 0, dpr = 1, curD = 0, stuckT = 0, hit = -1, curG = -1, C = {};
+  const pal = () => { C = { t: cssv('--text-rgb'), acc: cssv('--acc-rgb'), red: cssv('--red-rgb'), blue: cssv('--blue-rgb') }; };
+
+  function distAt(tt) {
+    for (const s of D.segs) if (tt <= s.t1) { let p = (tt - s.t0) / (s.t1 - s.t0); if (s.g === 0) p = Math.pow(p, 1.3); return s.d0 + (s.d1 - s.d0) * p; }
+    return D.len;
+  }
+  function at(d) {
+    const P = D.pts;
+    let lo = 0, hi = P.length - 1;
+    while (hi - lo > 1) { const m = (lo + hi) >> 1; if (P[m].d <= d) lo = m; else hi = m; }
+    const a = P[lo], b = P[hi], L = b.d - a.d, u = L > 1e-6 ? clamp((d - a.d) / L, 0, 1) : 0, dh = b.h - a.h, smooth = Math.abs(dh) < 1;
+    return { x: a.x + (b.x - a.x) * u, y: a.y + (b.y - a.y) * u, h: smooth ? a.h + dh * u : b.h, turn: smooth ? Math.sign(Math.round(dh * 1e4)) : 0, i: hi, g: b.g };
+  }
+
+  function drawFish(k, X, Y, x, y, h, wag, col) {
+    const s = k * 1.2;
+    ctx.save(); ctx.translate(X(x), Y(y)); ctx.rotate(-h);
+    ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    const bx = -58 * s, a1 = wag * .3, a2 = a1 + wag;
+    const j1 = [bx - 50 * s * Math.cos(a1), 50 * s * Math.sin(a1)], j2 = [j1[0] - 56 * s * Math.cos(a2), j1[1] + 56 * s * Math.sin(a2)];
+    const px = Math.sin(a2), py = Math.cos(a2);
+    ctx.strokeStyle = ctx.fillStyle = `rgb(${col})`;
+    ctx.lineWidth = Math.max(2, 16 * s); ctx.beginPath(); ctx.moveTo(bx, 0); ctx.lineTo(j1[0], j1[1]); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo((j1[0] + j2[0]) / 2, (j1[1] + j2[1]) / 2); ctx.lineTo(j2[0] + px * 30 * s, j2[1] + py * 30 * s); ctx.lineTo(j2[0] - px * 30 * s, j2[1] - py * 30 * s); ctx.closePath(); ctx.fill();
+    ctx.lineWidth = Math.max(1.5, 9 * s); ctx.beginPath(); ctx.moveTo(j1[0], j1[1]); ctx.lineTo(j2[0], j2[1]); ctx.stroke();
+    ctx.globalAlpha = .75;
+    ctx.beginPath(); ctx.ellipse(22 * s, -30 * s, 22 * s, 9 * s, .5, 0, TAU); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(22 * s, 30 * s, 22 * s, 9 * s, -.5, 0, TAU); ctx.fill();
+    ctx.globalAlpha = 1;
+    ctx.beginPath(); ctx.ellipse(12 * s, 0, 80 * s, 27 * s, 0, 0, TAU); ctx.fill();
+    ctx.fillStyle = 'rgba(0,0,0,.55)';
+    ctx.beginPath(); ctx.arc(62 * s, -10 * s, Math.max(1, 5 * s), 0, TAU); ctx.arc(62 * s, 10 * s, Math.max(1, 5 * s), 0, TAU); ctx.fill();
+    ctx.restore();
+  }
+
+  function draw() {
+    const w = cv.width / dpr, h = cv.height / dpr;
+    if (!w) return;
+    const k = w / 3000, X = x => (x + 1500) * k, Y = y => (1000 - y) * k, col = C[INFO[ver].c], P = D.pts;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, w, h);
+    ctx.lineWidth = 1; ctx.strokeStyle = `rgba(${C.t},.05)`; ctx.beginPath();
+    for (let x = -1250; x <= 1250; x += 250) { ctx.moveTo(X(x), 0); ctx.lineTo(X(x), h); }
+    for (let y = -750; y <= 750; y += 250) { ctx.moveTo(0, Y(y)); ctx.lineTo(w, Y(y)); }
+    ctx.stroke();
+    /* 裁判薄条：碰到后点亮 */
+    const lit = new Set(ORDER.slice(0, Math.max(0, hit)));
+    ctx.lineCap = 'round'; ctx.lineWidth = Math.max(2, 14 * k);
+    for (const key in STRIPS) { ctx.strokeStyle = lit.has(key) ? `rgba(${C.acc},.95)` : `rgba(${C.t},.16)`; ctx.beginPath(); ctx.moveTo(X(STRIPS[key][0] + 14), Y(0)); ctx.lineTo(X(STRIPS[key][1] - 14), Y(0)); ctx.stroke(); }
+    ctx.strokeStyle = lit.has('gate') ? `rgba(${C.acc},.95)` : `rgba(${C.t},.16)`; ctx.beginPath(); ctx.moveTo(X(0), Y(-58)); ctx.lineTo(X(0), Y(58)); ctx.stroke();
+    /* 障碍与标注 */
+    ctx.font = `600 ${clamp(w / 50, 9, 12)}px Consolas, "PingFang SC", "Microsoft YaHei", sans-serif`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.lineWidth = 1;
+    for (const [px, py, label] of POSTS) {
+      ctx.fillStyle = `rgba(${C.t},.13)`; ctx.strokeStyle = `rgba(${C.t},.42)`;
+      ctx.beginPath(); ctx.rect(X(px - 100), Y(py + 100), 200 * k, 200 * k); ctx.fill(); ctx.stroke();
+      if (label) { ctx.fillStyle = `rgba(${C.t},.6)`; ctx.fillText(label, X(px), Y(py)); }
+    }
+    ctx.strokeStyle = `rgba(${C.t},.45)`; ctx.beginPath(); ctx.arc(X(-1250), Y(0), Math.max(3, 24 * k), 0, TAU); ctx.stroke();
+    ctx.fillStyle = `rgba(${C.t},.5)`; ctx.fillText('起点', X(-1250) + 4, Y(150));
+    /* 计划路线（虚线）与已走轨迹 */
+    ctx.setLineDash([3, 5]); ctx.strokeStyle = `rgba(${C.t},.24)`; ctx.beginPath();
+    for (let i = 0; i < P.length; i += 2) { if (i) ctx.lineTo(X(P[i].x), Y(P[i].y)); else ctx.moveTo(X(P[i].x), Y(P[i].y)); }
+    ctx.stroke(); ctx.setLineDash([]);
+    const cur = at(curD);
+    let fxp = cur.x, fyp = cur.y, fh = cur.h;
+    if (stuckT > 0) {
+      const back = 22 * Math.abs(Math.sin(Math.PI * stuckT / .83));
+      fxp -= back * Math.cos(cur.h); fyp -= back * Math.sin(cur.h);
+      fh += Math.min(1, stuckT / 1.6) * .76;
+    }
+    ctx.strokeStyle = `rgba(${col},.92)`; ctx.lineWidth = 2; ctx.lineJoin = 'round'; ctx.shadowColor = `rgba(${col},.75)`; ctx.shadowBlur = 8;
+    ctx.beginPath(); ctx.moveTo(X(P[0].x), Y(P[0].y));
+    for (let i = 1; i < cur.i; i++) ctx.lineTo(X(P[i].x), Y(P[i].y));
+    ctx.lineTo(X(cur.x), Y(cur.y)); ctx.stroke(); ctx.shadowBlur = 0;
+    /* 尾迹水波：沿刚游过的路线留下一串逐渐扩散、变淡的圆环 */
+    if (!done && stuckT === 0) {
+      ctx.lineWidth = 1;
+      for (let j = 1; j <= 6; j++) {
+        const dd = curD - j * 120;
+        if (dd <= 0) break;
+        const q = at(dd);
+        ctx.strokeStyle = `rgba(${col},${(.3 * (1 - j / 7)).toFixed(3)})`;
+        ctx.beginPath(); ctx.arc(X(q.x), Y(q.y), (22 + j * 15) * k, 0, TAU); ctx.stroke();
+      }
+    }
+    if (stuckT > 0) {
+      const f = (stuckT / .83) % 1;
+      ctx.strokeStyle = `rgba(${C.red},${.8 * (1 - f)})`; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.arc(X(fxp), Y(fyp), (70 + 150 * f) * k, 0, TAU); ctx.stroke();
+    }
+    /* 尾鳍：转弯时带偏置；v10 是方波摆尾，其余是正弦 */
+    let wag = 0;
+    if (!done || stuckT > 0) {
+      const ph = TAU * (ver === 'v10' ? 3.33 : 3) * t;
+      wag = -cur.turn * .36 + (ver === 'v10' ? .5 * clamp(Math.sin(ph) * 3, -1, 1) : .42 * Math.sin(ph));
+      fh += .045 * Math.sin(ph);
+    }
+    drawFish(k, X, Y, fxp, fyp, fh, wag, col);
+  }
+
+  function setBtn() {
+    setIcon(btnPlay, done ? 'i-replay' : playing ? 'i-pause' : 'i-play');
+    btnPlay.setAttribute('aria-label', done ? '重播' : playing ? '暂停' : '播放');
+  }
+  function finish() {
+    done = true; playing = false;
+    elBadge.textContent = INFO[ver].badge;
+    elBadge.classList.toggle('bad', D.stuck);
+    elBadge.classList.add('show');
+    setBtn();
+    /* 冲线放彩带，卡死则抖一下画面（仅在真正播放到终点时触发） */
+    if (started && !RM) {
+      if (D.stuck) replayAnim(stage, 'shake');
+      else {
+        const r = cv.getBoundingClientRect(), e = D.pts[D.pts.length - 1], s = r.width / 3000;
+        if (r.bottom > 0 && r.top < innerHeight) confetti(r.left + (e.x + 1500) * s, r.top + (1000 - e.y) * s, 60);
+      }
+    }
+  }
+  function update() {
+    let clock = t;
+    stuckT = 0;
+    if (D.stuck) {
+      if (t > D.total) {
+        stuckT = t - D.total;
+        if (stuckT >= 4.8) { clock = 60; finish(); }
+        else if (stuckT > 3.4) clock = D.total + 3.4 + (60 - D.total - 3.4) * (stuckT - 3.4) / 1.4;
+      }
+    } else if (t >= D.total) { t = D.total; clock = INFO[ver].total; finish(); }
+    curD = distAt(Math.min(t, D.total));
+    let n = 0;
+    while (n < D.cps.length && D.cps[n] <= curD + .01) n++;
+    if (n !== hit) { hit = n; cpEls.forEach((el, i) => el.classList.toggle('hit', i < n)); }
+    const g = D.stuck || done ? -1 : at(curD).g;
+    if (g !== curG) { curG = g; spEls.forEach((el, i) => el.classList.toggle('cur', i === g)); }
+    elT.textContent = clock.toFixed(2).padStart(5, '0');
+    elBar.style.width = clamp(D.stuck ? t / (D.total + 4.8) : t / D.total, 0, 1) * 100 + '%';
+    draw();
+  }
+  function frame(now) {
+    raf = 0;
+    if (!playing) return;
+    t += Math.min(.05, (now - last) / 1000) * speed; last = now;
+    update();
+    if (playing) raf = requestAnimationFrame(frame);
+  }
+  function reset() { t = 0; done = false; hit = -1; curG = -1; elBadge.classList.remove('show'); }
+  function play() {
+    if (done) reset();
+    playing = true; started = true; last = performance.now();
+    setBtn();
+    if (!raf) raf = requestAnimationFrame(frame);
+  }
+  function pause() { playing = false; setBtn(); }
+  function setVer(v, autoplay) {
+    ver = v; D = build(v);
+    verBtns.forEach(b => { b.classList.toggle('on', b.dataset.v === v); b.setAttribute('aria-pressed', b.dataset.v === v); });
+    elNote.innerHTML = INFO[v].note;
+    reset();
+    if (autoplay) play();
+    else { playing = false; if (RM) t = D.total + (D.stuck ? 4.8 : 0); update(); if (!RM) setBtn(); }
+  }
+
+  btnPlay.addEventListener('click', () => { resume = false; playing ? pause() : play(); });
+  btnSpeed.addEventListener('click', () => { speed = speed === 1 ? 2 : speed === 2 ? 4 : 1; btnSpeed.textContent = speed + '×'; });
+  verBtns.forEach(b => b.addEventListener('click', () => setVer(b.dataset.v, true)));
+  new ResizeObserver(() => {
+    dpr = Math.min(2, devicePixelRatio || 1);
+    const r = stage.getBoundingClientRect();
+    cv.width = Math.round(r.width * dpr); cv.height = Math.round(r.height * dpr);
+    draw();
+  }).observe(stage);
+  /* 进入视野自动播放一次；离开视野暂停，回来继续 */
+  new IntersectionObserver(es => {
+    if (es[0].isIntersecting) { if ((!started && !RM) || resume) { resume = false; play(); } }
+    else if (playing) { resume = true; pause(); }
+  }, { threshold: .35 }).observe(stage);
+  addEventListener('themechange', () => { pal(); draw(); });
+  pal();
+  setVer('v10', false);
+})();
+})();
+</script>
+</body>
+</html>
